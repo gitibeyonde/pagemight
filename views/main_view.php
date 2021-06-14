@@ -11,7 +11,7 @@ $user_email = $_SESSION ['user_email'];
 $_SESSION['log'] = new Log('debug');
 
 $T = new Template();
-$ts = $T->getTemplate();
+$ts = $T->getAllTemplates();
 ?>
 
 <!-- Page content-->
@@ -29,7 +29,7 @@ $ts = $T->getTemplate();
               <?php foreach ($ts as $t) { ?>
             	  <div class="col">
             	  	<div class="overlay-image" style="width: 150px;">
-            	  	  <a href="/redirect.php?view=editor_view">
+            	  	  <a href="/redirect.php?view=editor_view&template=<?php echo $t['name']; ?>">
                       <img class="image" src="/img/<?php echo $t['name']; ?>.png" alt="Alt text"/>
                       <div class="normal">
                         <div class="text">
@@ -38,7 +38,7 @@ $ts = $T->getTemplate();
                       </div>
                       <div class="hover">
                         <div class="text">
-                        +
+                        +<br/><?php echo $t['name']; ?>
                         </div>
                       </div>
                       </a>

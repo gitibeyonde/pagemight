@@ -17,14 +17,14 @@ class Aws {
                     'secret' => S3_SECRET,
             ],
     );
-    
-    const bucket = 'data.ibeyonde';
+
+    const bucket = 'data.pagemight';
     public function __construct() {
         if (self::$s3 == null) {
             self::$s3 = Aws\S3\S3Client::factory ( self::$credentials  );
         }
     }
-    
+
     public function uploadFileToSimOnline($fileKey, $filePath){
         error_log("Saving ".$fileKey. " to =". $filePath);
         $result = self::$s3->upload(
@@ -39,25 +39,25 @@ class Aws {
     public function uploadFile($uuid, $fileKey, $filePath, $type){
         error_log("Adding image to s3 with key ".$fileKey. " image path =". $filePath);
         $result = self::$s3->upload(
-                self::bucket, 
-                $uuid . "/" . $fileKey, 
+                self::bucket,
+                $uuid . "/" . $fileKey,
                 fopen($filePath, 'rb'),
-                'public-read', 
+                'public-read',
                 array('params' => array('ContentType' => $type))
                 );
         error_log("Result=".print_r($result, true));
     }
-    
+
     public function uploadImage($fileKey, $image, $type){
         // Create temp file
         $tempFilePath = basename($fileKey);
         //error_log("upload Image temp file=".$tempFilePath);
         $result = imagejpeg($image, $tempFilePath);
         //error_log("upload Image temp file saving result =".print_r($result, true)." image file size ".print_r(getimagesize($tempFilePath), true));
-        $result = self::$s3->upload( 
-                self::bucket, 
-                $fileKey, 
-                fopen($tempFilePath, 'rb'), 
+        $result = self::$s3->upload(
+                self::bucket,
+                $fileKey,
+                fopen($tempFilePath, 'rb'),
                 'public-read',
                 array('params' => array('ContentType' => $type))
                 );
@@ -65,30 +65,30 @@ class Aws {
         //error_log("Result=".print_r($result, true));
         unlink($tempFilePath);
     }
-    
+
     public function addWaterMark($watermarktext, $target_file)
     {
         $image=imagecreatefromjpeg($this->getSignedFileUrl($target_file));
         $font="/srv/www/ping.ibeyonde.com/public_html/classes/font.ttf";
         $height=imagesy($image);
-        
+
         $fontsize = (string)intval(0.06*$height);
-        
+
         $white = imagecolorallocate($image, 255, 255, 255);
         $result = imagettftext($image, $fontsize, 0, 30, $height/2, $white, $font, $watermarktext);
         //error_log(" AddWaterMark  $target_file".print_r($result, true));
         $this->uploadImage($target_file, $image, 'image/jpeg');
     }
-    
+
     public function getSignedFileUrl($file) {
-        $cmd = self::$s3->getCommand ( 'GetObject', 
-                [ 
+        $cmd = self::$s3->getCommand ( 'GetObject',
+                [
                         'Bucket' => self::bucket,
-                        'Key' => ( string ) $file 
+                        'Key' => ( string ) $file
                 ] );
-        
+
         $request = self::$s3->createPresignedRequest ( $cmd, '+240 minutes' );
-        
+
         // Get the actual presigned-url
         $presignedUrl = ( string ) $request->getUri ();
         return $presignedUrl;
@@ -117,17 +117,17 @@ class Aws {
         }
         $motion=array();
         $iterator = self::$s3->getIterator('ListObjects', array(
-                'Bucket' => self::bucket, 'Prefix' => $uuid.'/'.$date 
+                'Bucket' => self::bucket, 'Prefix' => $uuid.'/'.$date
         ));
-    
+
         foreach ($iterator as $object) {
             $motion[] = new Motion($object['Key']);
         }
         usort($motion, array($this, "compareDesc"));
-    
+
         return $motion;
     }
-    
+
     public function loadTimeMotionDataDesc($uuid, $path, $time1){ // format path = 2016/06/02; time1 = 05 time2=08
         $motions = $this->loadMotionDataDesc ( $uuid,  $path );
         $urls = array();
@@ -147,15 +147,15 @@ class Aws {
         $iterator = self::$s3->getIterator('ListObjects', array(
                 'Bucket' => self::bucket, 'Prefix' => $uuid.'/'.$date
         ));
-        
+
         foreach ($iterator as $object) {
             $motion[] = new Motion($object['Key']);
         }
         usort($motion, array($this, "compareAsc"));
-        
-        return $motion;    
+
+        return $motion;
     }
-    
+
     public function loadTimeMotionData($uuid, $path, $time1){ // format path = 2016/06/02; time1 = 05 time2=08
         $motions = $this->loadMotionData ( $uuid,  $path );
         $urls = array();
@@ -166,8 +166,8 @@ class Aws {
         }
         return $urls;
     }
-    
-    public function loadMinuteMotionDataUrl($uuid, $path, $time){ // format path = 2016/06/02; time = 05_21 NOTE this loads URL not objects 
+
+    public function loadMinuteMotionDataUrl($uuid, $path, $time){ // format path = 2016/06/02; time = 05_21 NOTE this loads URL not objects
         $motions = $this->loadMotionData ( $uuid,  $path );
         $urls = array();
         foreach ($motions as $motion){
@@ -177,7 +177,7 @@ class Aws {
         }
         return $urls;
     }
-  
+
     public function latestMotionDataUrl($uuid)
     {
         $utils = new Utils();
@@ -223,7 +223,7 @@ class Aws {
         }
         $result = self::$s3->deleteMatchingObjects(self::bucket, $uuid.'/');
     }
-    
+
     public function loadRecording($uuid, $key) // format 2016/06/02
     {
         if (!isset($uuid)){
@@ -233,13 +233,13 @@ class Aws {
         $iterator = self::$s3->getIterator('ListObjects', array(
                 'Bucket' => self::bucket, 'Prefix' => $uuid.'/record/'.$key
         ));
-        
+
         foreach ($iterator as $object) {
             $recordings[] = new RecordFile($object['Key']);
         }
         //error_log(print_r($recordings));
         usort($recordings, array($this, "compareDesc"));
-        
+
         return $recordings;
     }
     public function deleteRecording($uuid, $key){
@@ -255,11 +255,11 @@ class Aws {
         }
         //error_log("Keys=".print_r($keys, true));
         $result = self::$s3->deleteObjects(array(
-                'Bucket' => self::bucket, 
+                'Bucket' => self::bucket,
                 'Delete' => [ 'Objects' => array_map(function ($key) {
                                         return array('Key' => $key);
                                 }, $keys),
-                             'Quiet' => true 
+                             'Quiet' => true
                             ]
         ));
         //error_log(print_r($result, true));

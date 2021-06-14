@@ -8,12 +8,13 @@ class Page extends Mysql {
         parent::__construct ();
     }
 
+
     public function savePage($user_id, $page_name, $content) {
         $page_name = $this->quote($page_name);
         $content = $this->quote($content);
-        $this->changeRow ( sprintf ( "insert into page values( %s, %s, %s, 'true', now()) ".
-            "on duplicate key update user_id=%s, page_name=%s, content=%s",
-             $user_id, $page_name, $content ) );
+        return $this->changeRow ( sprintf ( "insert into page (user_id, name, content, comment_enabled, changedOn)  values( %s, %s, %s, 'true', now()) ".
+            "on duplicate key update user_id=%s, name=%s, content=%s",
+            $user_id, $page_name, $content,  $user_id, $page_name, $content ) );
     }
 
     public function getPage($id) {
@@ -24,4 +25,9 @@ class Page extends Mysql {
         $page_name = $this->quote($page_name);
         return $this->selectRow( sprintf ( "select * from page where user_id=%s and name=%d;", $user_id , $page_name) );
     }
+
+    public function createPageFromTemplate($user_id, $template){
+        return $this->savePage($user_id, $template['name'], $template['content']);
+    }
+
 }

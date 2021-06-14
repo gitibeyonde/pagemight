@@ -14,81 +14,62 @@ $log = $_SESSION['log'] = new Log ("trace");
 $user_id=$_SESSION['user_id'];
 
 
-$message = isset($_POST['message']) ? $_POST['message'] : $wfnode['message'];
-$state = isset($_POST['state']) ? $_POST['state'] : $wfnode['state'];
+$template_name = $_GET['template'];
+$page_name = $_GET['page'];
 
-$log->debug("Bot id=".$bot_id." submit=".$submit." message=".$message);
+$log->debug("User id=".$user_id." submit=".$submit." template=".$template_name);
 
-if ($submit == "add" && $state != null && $message != null){
-    $state = $_POST['state'];
+if (isset($page_name)){
+    //editing and existing page
 }
-else if ($submit == "set_css"){
-    $css = $_GET['css'];
-    $WFDB->updateCss($user_id, $bot_id, $css);
+else if (isset($template_name)){
+    //create page from template and start
+    $user_id = $_SESSION['user_id'];
+    $T = new Template();
+    $P = new Page();
+    $t = $T->getTemplate($template_name);
+    $r = $P->createPageFromTemplate($user_id, $t);
+    if ($r){
+        $page_name = $template_name;
+        $content = $t['content'];
+    }
+}
+
+if ($submit == "add" && $state != null && $content != null){
+    $state = $_POST['state'];
 }
 
 
 ?>
-
 <link rel="stylesheet" href="/css/editor.css">
-
 <link rel="stylesheet" href="/css/thumbnail.css">
-
 <script src="/js/editor.js"></script>
-
 <div class='container-fluid'>
 
     <?php //include_once(__ROOT__.'/views/sms/wiz/wiz_wf_node_menu.php'); ?>
 
     <div class="row">
-        <div class="col-lg-9 col-md-9">
-            <div class="row">
-
+    	<div class="col-lg-1 d-lg-block d-md-none d-sm-none d-none">
+    	</div>
+    	<div class="col-lg-8 col-md-9 d-lg-block d-md-block col-12 col-sm-12">
                 <form id="nodeform" name="nodeform" action="/index.php" method="post" onsubmit="return doSubmitNodeForm();">
 
+                  <?php include_once(__ROOT__ . '/views/editor/page_toolbar.php'); ?>
 
-                   <input type="hidden" name="actions_str" value="<?php echo htmlspecialchars($wfnode['actions']); ?>">
-                   <div class="row">
-
-                        <div class="col-12" style="padding-left: 20px;">
-
-                            <h2 class="sel0"><?php echo $wf['name']; ?></h2>
-
-                           <?php include_once(__ROOT__ . '/views/editor/page_toolbar.php'); ?>
-
-                           <div class="form-group" id="html_content">
-                           		<div id="htmlEditorPane" contenteditable="true" onscroll="setScrollPosition();"><?php echo $state==null ? "": $message; ?></div>
-                           </div>
-
-                           <input id="message_input" type="hidden" name="message" value="">
-                        </div>
+                  <div class="form-group" id="html_content">
+                   		<div id="htmlEditorPane" contenteditable="true" onscroll="setScrollPosition();"><?php echo $page_name==null ? "": $content; ?></div>
                   </div>
 
-                  <input type="hidden" name="help" value="">
-                  <input type="hidden" name="bot_id" value="<?php echo $bot_id; ?>">
-                  <input type="hidden" id="viewname" name=view value="">
+                  <input id="content_input" type="hidden" name="content" value="">
 
-                  <table width="100%">
-                      <tr style="background: var(--blue1);">
-                      <td style="text-align: center">
-                       <button type="submit" id="save_message" name="submit" value="update" class="btn btn-sim1"   onclick="return onClickSubmitButton('<?php echo WORKFLOW_NODE; ?>');">
-                       <i class="ti-save"></i></button>
-                      </td>
-                      <?php if ($wfnode['state'] != "start") { ?>
-                      <td style="text-align: center">
-                       <button type="submit" name="submit" value="delete"  class="btn btn-sim2"  onclick="return onClickDel('<?php echo WIZ_WF_PAGES; ?>');">
-                       <i class="ti-trash"></i></button>
-                      </td>
-                      <?php } ?>
-                      </tr>
-                  </table>
              </form>
-         </div>
       </div> <!-- End second Column -->
 
 
+	<div class="col-lg-3 col-md-3 d-lg-block d-md-block d-sm-none d-none  sel0">
        <?php include_once(__ROOT__.'/views/editor/page_right.php'); ?><!-- End third Column -->
-    </div> <!-- End Big Row -->
+	</div>
+  </div> <!-- End Big Row -->
 
 
 </div> <!-- End fluid Container -->
@@ -96,7 +77,7 @@ else if ($submit == "set_css"){
 <script>
 $("#html_content").keyup(function(e) {
     if (e.keyCode == 83 && event.ctrlKey){
-        $("#save_message").click();
+        $("#save_content").click();
     }
 });
 
@@ -137,8 +118,8 @@ function doSubmitNodeForm(){
     //remove resize frames added by image resizer
     document.querySelectorAll(".resize-frame,.resizer").forEach((item) => item.parentNode.removeChild(item));
 
-    console.log("Setting message to " + oDoc.innerHTML);
-    $("#message_input").val(oDoc.innerHTML);
+    console.log("Setting content to " + oDoc.innerHTML);
+    $("#content_input").val(oDoc.innerHTML);
     return true;
 }
 

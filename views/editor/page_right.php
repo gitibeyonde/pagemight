@@ -1,6 +1,5 @@
 
 
-<div class="col-lg-3 col-md-3 sel0" >
 <div class="container">
 
     <div id="message_image_tool">
@@ -37,7 +36,6 @@
         </div>
     </div>
 
-</div>
 </div>
  <script>
  <?php $Limges = PageUtils::getImageList($bot_id);

@@ -7,7 +7,7 @@ class Images
 {
 
     private static $s3 = null;
-    const bucket = 'data.simonline';
+    const bucket = 'data.pagemight';
 
     private static $credentials = array (
             'version' => S3_VERSION,

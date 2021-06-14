@@ -26,8 +26,7 @@ img.intLink {
 
 #htmlEditorPane {
     position: relative;
-    height: 68vh;
-    width: 72vw;
+    height: 78vh;
     padding-left: 5px;
     padding-bottom: 18px;
     padding-right: 18px;
@@ -38,6 +37,21 @@ img.intLink {
     user-select: text;
 }
 
+@media ( max-width : 768px) {
+	#htmlEditorPane {
+    	width: 90vw;
+	}
+}
+@media ( max-width : 992px) {
+	#htmlEditorPane {
+    	width: 72vw;
+	}
+}
+@media ( min-width : 1200px) {
+	#htmlEditorPane {
+    	width: 64vw;
+	}
+}
 #textBox #sourceText {
     padding: 0;
     margin: 0;
@@ -71,4 +85,8 @@ img.intLink {
 
 #htmlEditorPane > * > * > * > * > * {
   border: 1px dotted grey;
+}
+
+.text-center {
+	text-align: center;
 }

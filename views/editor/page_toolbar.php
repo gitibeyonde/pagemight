@@ -5,11 +5,11 @@
         </div>
         <div class="col-4">
                   <?php if ($submit == "add") {?>
-                    <label for="name">Page Name:</label>
-                     <input type="text" name="state" placeholder="state" size="16" value="<?php echo $state; ?>" required>
+                    <label for="page_name">Page Name:</label>
+                     <input type="text" name="page_name" placeholder="state" size="16" value="<?php echo $state; ?>" required>
                   <?php } else { ?>
-                    <label for="name">Page Name :&nbsp;&nbsp;&nbsp;<b><?php echo $state; ?></b></label>
-                    <input type="hidden" name="state" value="<?php echo $state; ?>">
+                    <label for="page_name">Page Name :&nbsp;&nbsp;&nbsp;<b><?php echo $page_name; ?></b></label>
+                    <input type="hidden" name="page_name" value="<?php echo $page_name; ?>">
                   <?php } ?>
         </div>
         <div class="col-2">
@@ -18,9 +18,16 @@
                 <input type="checkbox" name="switchMode" onchange="setDocMode(this.checked);" /> <label for="switchBox">HTML</label>
         </div>
       </div>
-		<br/>
       <div class="row">
 		<div class="col-12" id="toolBar1">
+
+
+            <button type="submit" id="save_content" name="submit" value="update" class="btn btn-sim1"   onclick="return onClickSubmitButton('<?php echo WORKFLOW_NODE; ?>');">
+            <i class="ti-save"></i></button>
+
+            <button type="submit" name="submit" value="delete"  class="btn btn-sim2"  onclick="return onClickDel('<?php echo WIZ_WF_PAGES; ?>');">
+            <i class="ti-trash"></i></button>
+
 			Text:<select
 				onchange="formatDoc('formatBlock',this[this.selectedIndex].value);this.selectedIndex=0;">
 				<option selected>&nbsp;&nbsp;- formatting -</option>

@@ -8,7 +8,7 @@ include (__ROOT__ . '/views/_header.php');
         <div class="container">
 
             <div class="row" style="padding-top: 10vh;">
-             <div class="col-lg-1 d-lg-block d-md-none d-sm-none d-none"></div>
+             	<div class="col-lg-1 d-lg-block d-md-none d-sm-none d-none"></div>
         		<div class="col-lg-5 col-md-6 col-12 col-sm-12">
             		<form role="form" method="post" action="/redirect.php?<?php echo $_SERVER['QUERY_STRING'] == "view=logout_view" ? "" : $_SERVER['QUERY_STRING']; ?>" name="loginform">
 		               <div class="card card-feature text-center text-lg-left mb-4 mb-lg-0">
