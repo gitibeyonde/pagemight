@@ -671,9 +671,11 @@ class Login
     {
         $client = SesClient::factory(array(
                 'version' => SES_VERSION,
-                'key'    => SES_KEY,
-                'secret' => SES_SECRET,
-                'region' => SES_REGION
+                'region' => SES_REGION,
+                'credentials' => [
+                    'key'    => SES_KEY,
+                    'secret' => SES_SECRET,
+                ],
         ));
 
         $msg = array();

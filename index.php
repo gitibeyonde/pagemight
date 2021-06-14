@@ -54,23 +54,22 @@ include (__ROOT__ . '/views/_header.php');
 <?php
 include (__ROOT__ . '/views/_footer.php');
 ?>
+<!-- Core theme JS-->
+<script src="/js/scripts.js"></script>
 
-        <!-- Core theme JS-->
-        <script src="/js/scripts.js"></script>
+<script src="/js/type-writer.js"></script>
+<script>
+var app = document.getElementById('app');
 
-  		<script src="/js/type-writer.js"></script>
-        <script>
-        var app = document.getElementById('app');
+var typewriter = new Typewriter(app, {
+    loop: true
+});
 
-        var typewriter = new Typewriter(app, {
-            loop: true
-        });
-
-        typewriter.typeString('Create online html pages')
-        .pauseFor(500)
-        .deleteAll()
-        .typeString('Share them using minified links')
-        .pauseFor(600)
-        .deleteAll()
-        .start();
-        </script>
+typewriter.typeString('Create online html pages')
+.pauseFor(500)
+.deleteAll()
+.typeString('Share them using minified links')
+.pauseFor(600)
+.deleteAll()
+.start();
+</script>

@@ -2,25 +2,25 @@
 // include the config
 require_once (__ROOT__ . '/config/config.php');
 require_once(__ROOT__.'/classes/core/Log.php');
-require_once(__ROOT__.'/classes/wf/SmsWfUtils.php');
+require_once(__ROOT__.'/classes/core/Utils.php');
 
 class Mysql {
-    
+
     protected $db_connection = null;
     protected $log=null;
-    
+
     public function __construct()
     {
         $this->log  = isset($_SESSION['log']) ? $_SESSION['log'] : $GLOBALS['log'];
     }
-    
-    
+
+
     public static function guidv4()
     {
         $data = random_bytes(10);
         return substr(bin2hex($data), 0, 10);
     }
-    
+
     protected function databaseConnection()
     {
         // if connection already exists
@@ -36,7 +36,7 @@ class Mysql {
         }
         return false;
     }
-    
+
     public function selectOne($sql){
         if ($this->databaseConnection()) {
             $sth = $this->db_connection->prepare($sql);
@@ -49,7 +49,7 @@ class Mysql {
             return $sth->fetch()[0];
         }
     }
-    
+
     public function selectRow($sql){
         if ($this->databaseConnection()) {
             $sth = $this->db_connection->prepare($sql);
@@ -62,7 +62,7 @@ class Mysql {
             return $sth->fetch(PDO::FETCH_ASSOC);
         }
     }
-    
+
     public function selectRows($sql){
         if ($this->databaseConnection()) {
             $res=array();
@@ -79,9 +79,9 @@ class Mysql {
             return $res;
         }
     }
-    
+
     public function changeRow($sql){
-        
+
         if ($this->databaseConnection()) {
             // database query, getting all the info of the selected user
             $sth = $this->db_connection->prepare($sql);
@@ -95,8 +95,8 @@ class Mysql {
         }
         return true;
     }
-    
-    
+
+
     public function quote ($s) {
         if ($this->databaseConnection()) {
             if ($s != null){
@@ -107,8 +107,8 @@ class Mysql {
             }
         }
     }
-    
-    
+
+
 }
 
 ?>

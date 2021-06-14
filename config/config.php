@@ -8,6 +8,7 @@ require_once(__ROOT__.'/translations/en.php');
 
 define("MAIN_VIEW", "main_view");
 define("LOGOUT_VIEW", "logout_view");
+define("EDITOR_VIEW", "editor_view");
 
 
 

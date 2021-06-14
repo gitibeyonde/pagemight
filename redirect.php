@@ -39,14 +39,22 @@ if  ($login->getView() == MAIN_VIEW){
         include("login.php");
     }
 }
+else if  ($login->getView() == EDITOR_VIEW){
+        if (isset( $_SESSION ['user_id']) && isset( $_SESSION ['user_name'])){
+            include("views/editor_view.php");
+        }
+        else {
+            include("login.php");
+        }
+}
 else if  ($login->getView() == LOGOUT_VIEW){
         $login->doLogout();
-        include("login.php");
+        include("index.php");
 }
 else {
     // the user is not logged in. you can do whatever you want here.
     // for demonstration purposes, we simply show the "you are not logged in" view.
-    include("index.html");
+    include("index.php");
 }
 
 ?>
