@@ -20,7 +20,7 @@ else {
         <meta name="author" content="" />
         <title>PageMight - Online Page builder</title>
         <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <link rel="icon" type="image/x-icon" href="/img/favicon.ico" />
         <link href="/css/styles.css" rel="stylesheet" />
         <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" href="/themify-icons/themify-icons.css">
