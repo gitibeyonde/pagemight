@@ -5,6 +5,7 @@ require_once(__ROOT__.'/libraries/aws.phar');
 use Aws\Common\Enum\Region;
 use Aws\Ses\SesClient;
 
+require_once (__ROOT__ . '/classes/core/Log.php');
 /**
  * handles the user login/logout/session
  * @author Panique
@@ -71,16 +72,23 @@ class Login
      */
     public $messages = array();
 
+    private $log=null;
+
     /**
      * the function "__construct()" automatically starts whenever an object of this class is created,
-     * you know, when you do "$login = new Login();"
+     * you know, when you do "$this->login = new Login();"
      */
     public function __construct()
     {
         if (session_status() == PHP_SESSION_NONE) {
             session_start();
+            $_SESSION['log'] = new Log('debug');
         }
 
+        $this->log = $_SESSION['log'];
+        $this->log->trace("Logging on at trace");
+        $this->log->trace("post=".print_r($_POST, true));
+        $this->log->trace("get=".print_r($_GET, true));
         // TODO: organize this stuff better and make the constructor very small
         // TODO: unite Login and Registration classes ?
 
@@ -96,7 +104,9 @@ class Login
             $this->doLogout();
 
         // if user has an active session on the server
-        } elseif (!empty($_SESSION['user_name']) && ($_SESSION['user_logged_in'] == 1)) {
+        } elseif (!empty($_SESSION['user_email']) && ($_SESSION['user_logged_in'] == 1)) {
+            $this->log->trace("Active session");
+
             $this->loginWithSessionData();
 
             // checking for form submit from editing screen
@@ -120,10 +130,11 @@ class Login
 
         // if user just submitted a login form
         } elseif (isset($_POST["login"])) {
+            $this->log->trace("login ".$_POST['user_email']);
             if (!isset($_POST['user_rememberme'])) {
                 $_POST['user_rememberme'] = null;
             }
-            $this->loginWithPostData($_POST['user_name'], $_POST['user_password'], $_POST['user_rememberme']);
+            $this->loginWithPostData($_POST['user_email'], $_POST['user_password'], $_POST['user_rememberme']);
         }
 
         // checking if user requested a password reset mail
@@ -276,6 +287,7 @@ class Login
      */
     private function loginWithPostData($user_name, $user_password, $user_rememberme)
     {
+        $this->log->debug("Login with post data ".$user_name.$user_password,$user_rememberme);
         if (empty($user_name)) {
             $this->errors[] = MESSAGE_USERNAME_EMPTY;
         } else if (empty($user_password)) {
@@ -429,6 +441,7 @@ class Login
 
         $this->deleteRememberMeCookie();
 
+        $_SESSION['user_logged_in'] == 0;
         $_SESSION = array();
         session_destroy();
 

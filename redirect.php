@@ -1,9 +1,8 @@
 <?php
-
 define ( '__ROOT__',  dirname ( __FILE__ ));
-
 // include the config
 require_once(__ROOT__.'/config/config.php');
+require_once (__ROOT__ . '/classes/core/Log.php');
 
 // check for minimum PHP version
 if (version_compare(PHP_VERSION, '5.3.7', '<')) {
@@ -22,6 +21,12 @@ require_once(__ROOT__.'/classes/Mobile_detect.php');
 // so this single line handles the entire login process.
 $login = new Login();
 
+
+$log = $_SESSION['log'] = new Log('trace');
+
+$log->debug( $_SESSION ['user_name']." logged in ".$login->isUserLoggedIn());
+
+
 if (isset($_POST['view'])){
     unset($_GET['logout']);
     $login->setView($_POST['view']);
@@ -31,12 +36,13 @@ else if (isset($_GET['view'])) {
     $login->setView($_GET['view']);
 }
 
+$log->debug( "VIEW=".$login->getView() );
 if  ($login->getView() == MAIN_VIEW){
     if (isset( $_SESSION ['user_id']) && isset( $_SESSION ['user_name'])){
          include("views/main_view.php");
     }
     else {
-        include("login.php");
+        include("index.php");
     }
 }
 else if  ($login->getView() == EDITOR_VIEW){
@@ -44,8 +50,16 @@ else if  ($login->getView() == EDITOR_VIEW){
             include("views/editor_view.php");
         }
         else {
-            include("login.php");
+            include("index.php");
         }
+}
+else if  ($login->getView() == UPLOAD_IMAGES){
+    if (isset( $_SESSION ['user_id']) && isset( $_SESSION ['user_name'])){
+        include("views/editor/upload_images.php");
+    }
+    else {
+        include("index.php");
+    }
 }
 else if  ($login->getView() == LOGOUT_VIEW){
         $login->doLogout();

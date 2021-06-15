@@ -1,17 +1,52 @@
 
 <footer class="footer">
   <div class="container">
+  <div class="row">
+<?php
+// show potential errors / feedback (from login object)
+if (isset ( $login )) {
+    if ($login->errors) {
+        foreach ( $login->errors as $error ) {
+            echo $error;
+        }
+    }
+    if ($login->messages) {
+        foreach ( $login->messages as $message ) {
+            echo $message;
+        }
+    }
+}
+if (isset ( $registration )) {
+    if ($registration->errors) {
+        foreach ( $registration->errors as $error ) {
+            echo $error;
+        }
+    }
+    if ($registration->messages) {
+        foreach ( $registration->messages as $message ) {
+            echo $message;
+        }
+    }
+}
+if (isset ( $_SESSION ['message'] ) && $_SESSION ['message'] != "") {
+    echo $_SESSION ['message'];
+    $_SESSION ['message'] = "";
+}
+?>
+</div>
     <div class="row">
-        <div class="col-lg-3 col-md-6">
-            <a href="/catalog-maker/terms&conditions.html" class="footer-text">Terms</a>&emsp;& &emsp;
+        <div class="col-md-4 col-6">
+            <a href="/catalog-maker/terms&conditions.html" class="footer-text">Terms</a>&emsp;|&emsp;
             <a href="/catalog-maker/privacy_policy.html" class="footer-text">Privacy</a>
         </div>
-        <div class="col-lg-3">
+        <div class="col-md-1 d-md-block d-sm-none d-none">
         </div>
-        <div class="col-lg-3">
-            	<font class="txt-name">Signed In as <?php echo $_SESSION ['user_name']; ?></font>
+        <div class="col-md-3 d-md-block d-sm-none d-none">
+             <?php if ( isset($_SESSION ['user_email'])) { ?>
+            	<i class="ti-user" style="color: blue;"></i>&nbsp;&nbsp;<?php echo $_SESSION ['user_email']; ?>
+             <?php } ?>
         </div>
-        <div class="col-lg-3 col-md-6 footer-social">
+        <div class="col-md-4 col-6 footer-social">
             <a href="https://twitter.com/agneya2001" class="footer-text"><i class="ti-twitter-alt"></i></a>
             <a href="https://fb.me/ibeyonde" class="footer-text"><i class="ti-facebook"></i></a>
             <a href="https://github.com/gitibeyonde" class="footer-text"><i class="ti-github"></i></a>

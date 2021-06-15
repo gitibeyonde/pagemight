@@ -35,8 +35,10 @@ else {
             <div class="container-fluid">
                 <a class="navbar-brand" href="#"><i class="ti-write">&nbsp;&nbsp;</i>PageMight</a>
                  <ul class="nav navbar-nav menu_nav justify-content-end">
-                 	<li class="nav-item"><a class="nav-link" href="/index.php?view=<?php echo LOGOUT_VIEW ?>">
+                    <?php if ($_SESSION['user_logged_in'] == 1){ ?>
+                 	<li class="nav-item"><a class="nav-link" href="/redirect.php?view=<?php echo LOGOUT_VIEW ?>">
                     	<i class="ti-power-off btn-logout"></i></a></li>
+                    <?php } ?>
                  </ul>
             </div>
         </nav>

@@ -23,7 +23,7 @@ include (__ROOT__ . '/views/_header.php');
 		                    </div>
 		                    <div class="row">
 		                        <div class="col-md-6 col-12 col-sm-12">
-		                            <button type="submit" name="login" class="btn btn-block btn-sim4">
+		                            <button type="submit" name="login" value="login" class="btn btn-block btn-sim4">
 		                                <h7><?php echo WORDING_LOGIN; ?></h7>
 		                            </button>
 		                        </div>

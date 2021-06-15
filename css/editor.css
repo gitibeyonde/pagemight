@@ -1,11 +1,4 @@
 
-/* Variables */
-:root {
-  --thumbnail-width: 400px;
-  --thumbnail-height: 600px;
-  --thumbnail-zoom: 0.50;
-}
-
 .intLink {
     cursor: pointer;
 }
@@ -13,16 +6,17 @@
 img.intLink {
     border: 0;
     outline: 0;
-    height: 41px;
+    height: 32px;
 }
 
 #toolBar1 select {
-    font-size: 18px;
+    font-size: calc(.6vh + .6vw);
 }
 
-#toolBar2 select {
-    font-size: 18px;
+#toolBar2 img {
+    height: calc(1vh + 1.2vw);
 }
+
 
 #htmlEditorPane {
     position: relative;

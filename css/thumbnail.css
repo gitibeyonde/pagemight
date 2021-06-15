@@ -1,4 +1,12 @@
 
+/* Variables */
+:root {
+  --thumbnail-width: 600px;
+  --thumbnail-height: 800px;
+  --thumbnail-zoom: 0.25;
+}
+
+
 /* This container helps the thumbnail behave as if it were an unscaled IMG element */
 .thumbnail-container {
   width: calc(var(--thumbnail-width) * var(--thumbnail-zoom));

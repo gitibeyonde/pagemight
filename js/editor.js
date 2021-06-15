@@ -23,7 +23,7 @@ window.addEventListener('load', () => {
 });
 
 var imported = document.createElement('script');
-imported.src = '/js/wiz/tidy.js';
+imported.src = '/js/tidy.js';
 document.head.appendChild(imported);
 
 

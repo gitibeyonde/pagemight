@@ -8,19 +8,28 @@ include_once(__ROOT__ . '/classes/pm/PageUtils.php');
 include_once(__ROOT__ . '/classes/pm/Images.php');
 include_once(__ROOT__ . '/classes/pm/UserForm.php');
 
-
-
-$log = $_SESSION['log'] = new Log ("trace");
+$log = $_SESSION['log'];
 $user_id=$_SESSION['user_id'];
 
 
-$template_name = $_GET['template'];
-$page_name = $_GET['page'];
+$submit = isset($_GET['submit']) ? $_GET['submit'] : $_POST['submit'];
+$template_name = isset($_GET['template']) ? $_GET['template'] : $_POST['template'];
+$page_name = isset($_GET['page']) ? $_GET['page'] : $_POST['page'];
+$page_id = null;
 
-$log->debug("User id=".$user_id." submit=".$submit." template=".$template_name);
+$log->debug("User id=".$user_id." submit=".$submit." template=".$template_name." page=".$page_name);
 
+$P = new Page();
 if (isset($page_name)){
-    //editing and existing page
+    if ($submit == "update"){
+        //editing and existing page
+        $page_id = $P->savePage($user_id, $page_name, $content = $_POST['content']);
+    }
+    else {
+        $p = $P->getPageForUser($user_id, $page_name);
+        $page_id = $p['id'];
+        $content = $p['content'];
+    }
 }
 else if (isset($template_name)){
     //create page from template and start
@@ -28,23 +37,21 @@ else if (isset($template_name)){
     $T = new Template();
     $P = new Page();
     $t = $T->getTemplate($template_name);
-    $r = $P->createPageFromTemplate($user_id, $t);
+    $page_id  = $P->createPageFromTemplate($user_id, $t);
     if ($r){
         $page_name = $template_name;
         $content = $t['content'];
     }
 }
 
-if ($submit == "add" && $state != null && $content != null){
-    $state = $_POST['state'];
-}
-
-
+error_log("Page id = ".$page_id)
 ?>
 <link rel="stylesheet" href="/css/editor.css">
 <link rel="stylesheet" href="/css/thumbnail.css">
 <script src="/js/editor.js"></script>
+<script src="/js/tidy.js"></script>
 <div class='container-fluid'>
+<body onload="initDoc();">
 
     <?php //include_once(__ROOT__.'/views/sms/wiz/wiz_wf_node_menu.php'); ?>
 
@@ -52,7 +59,7 @@ if ($submit == "add" && $state != null && $content != null){
     	<div class="col-lg-1 d-lg-block d-md-none d-sm-none d-none">
     	</div>
     	<div class="col-lg-8 col-md-9 d-lg-block d-md-block col-12 col-sm-12">
-                <form id="nodeform" name="nodeform" action="/index.php" method="post" onsubmit="return doSubmitNodeForm();">
+                <form id="nodeform" name="nodeform" action="/redirect.php" method="post" onsubmit="return doSubmitNodeForm();">
 
                   <?php include_once(__ROOT__ . '/views/editor/page_toolbar.php'); ?>
 
@@ -61,6 +68,8 @@ if ($submit == "add" && $state != null && $content != null){
                   </div>
 
                   <input id="content_input" type="hidden" name="content" value="">
+                  <input type="hidden" id="viewname" name="view" value="">
+                  <input type="hidden" name="page" value="<?php echo $page_name; ?>">
 
              </form>
       </div> <!-- End second Column -->
@@ -94,15 +103,9 @@ function onClickSubmitButton(view){
 
 
 function onClickDel(view){
-    if (confirm('Do you really want delete this Node ?')){
-        if ("start1" == "<?php echo $state; ?>"){
-            alert("Cannot delete start1 node");
-            return false;
-        }
-        else {
+    if (confirm('Do you really want delete this Page ?')){
             $("#viewname").val(view);
             return true;
-        }
     }
     else {
        return false;

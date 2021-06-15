@@ -24,7 +24,7 @@ class Images
         }
     }
 
-    public function uploadFileToSimOnline($fileKey, $filename){
+    public function uploadFilePageMight($fileKey, $filename){
         error_log("Saving ".$fileKey. " to =". $filename);
         $result = self::$s3->upload(
                 self::bucket,
@@ -69,7 +69,7 @@ class Images
                 'Bucket' => self::bucket, 'Delimiter' => '/', 'Prefix' => $bot_id.'/img/'
         ));
         foreach ($iterator as $object) {
-            $images[] = "https://s3.ap-south-1.amazonaws.com/data.simonline/".$object['Key'];
+            $images[] = "https://s3.ap-south-1.amazonaws.com/data.pagemight/".$object['Key'];
         }
         return $images;
     }

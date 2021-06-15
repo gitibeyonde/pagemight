@@ -22,11 +22,12 @@
 		<div class="col-12" id="toolBar1">
 
 
-            <button type="submit" id="save_content" name="submit" value="update" class="btn btn-sim1"   onclick="return onClickSubmitButton('<?php echo WORKFLOW_NODE; ?>');">
-            <i class="ti-save"></i></button>
+            <button type="submit" id="save_content" name="submit" value="update" class="btn btn-link"
+            					onclick="return onClickSubmitButton('<?php echo EDITOR_VIEW; ?>');">
+            <i class="ti-save" style="color: green;font-size: 26px;"></i></button>
 
-            <button type="submit" name="submit" value="delete"  class="btn btn-sim2"  onclick="return onClickDel('<?php echo WIZ_WF_PAGES; ?>');">
-            <i class="ti-trash"></i></button>
+            <button type="submit" name="submit" value="delete"  class="btn btn-link"  onclick="return onClickDel('<?php echo MAIN_VIEW; ?>');">
+            <i class="ti-trash" style="color: red;font-size: 26px;"></i></button>
 
 			Text:<select
 				onchange="formatDoc('formatBlock',this[this.selectedIndex].value);this.selectedIndex=0;">
@@ -38,8 +39,8 @@
 				<option value="h5">Title 5 &lt;h5&gt;</option>
 				<option value="h6">Subtitle &lt;h6&gt;</option>
 				<option value="p">Paragraph &lt;p&gt;</option>
-				<option value="pre">Preformatted &lt;pre&gt;</option>
-                <option value="div">Remove Formatting</option>
+				<option value="pre">Pre &lt;pre&gt;</option>
+                <option value="div">Tidy</option>
 			</select>
 
             <!-- <select
@@ -75,7 +76,7 @@
 			</select>
             Insert:<select
                     onchange="formatDoc('insertHtml',this[this.selectedIndex].value + '\n');this.selectedIndex=0;">
-                    <option class="heading" selected>- row -</option>
+                    <option class="heading" selected>-row-</option>
                      <option value='<br/><div class="row"><div class="col">col-1</div><div class="col">col-2</div><br/>'>2 Col</option>
                      <option value='<br/><div class="row"><div class="col">col-1</div><div class="col">col-2</div><div class="col">col-3</div></div><br/>'>3 Col</option>
                      <option value='<br/><div class="row"><div class="col">col-1</div><div class="col">col-2</div><div class="col">col-3</div><div class="col">col-4</div></div><br/>'>4 Col</option>
