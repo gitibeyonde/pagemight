@@ -34,7 +34,7 @@ include (__ROOT__ . '/views/_header.php');
         		                    <h7>
         		                    <a href="/password_reset.php">Forgot Password</a>
         		                    &nbsp;|&nbsp;
-        		                    <a href="/register.php">SignUp</a>
+        		                    <a href="/register.php">Sign Up</a>
         		                    </h7>
         		                </div>
 		                    </div>

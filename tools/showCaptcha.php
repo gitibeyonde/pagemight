@@ -19,10 +19,10 @@ if (!extension_loaded('gd')) {
 session_start();
 
 // target captcha string length
-$iCaptchaLength = 4;
+$iCaptchaLength = 5;
 
 // following letters are excluded from captcha: I, O, Q, S, 0, 1, 5
-$str_choice = 'ABCDEFGHJKLMNPRTUVWXYZ2346789';
+$str_choice = 'abcdefghjkmnprtuvwxyzABCDEFGHJKMNPRTUVWXYZ2346789';
 $str_captcha = '';
 // create target captcha with letters comming from $str_choice
 for ($i=0; $i < $iCaptchaLength; $i++) {
@@ -57,6 +57,7 @@ imagefill($im, 0, 0, $bg);
 // create letters. for more info on how this works, please
 // @see php.net/manual/en/function.imagefttext.php
 // TODO: put the font path into the config
+//error_log("Captcha=".$str_captcha);
 for ($i=0; $i < $iCaptchaLength; $i++) {
     $text_color = imagecolorallocate($im, rand(0, 100), rand(10, 100), rand(0, 100));
     // font-path relative to this file

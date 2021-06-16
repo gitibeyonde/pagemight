@@ -8,11 +8,13 @@ if (isset ( $login )) {
     if ($login->errors) {
         foreach ( $login->errors as $error ) {
             echo $error;
+            $error="";
         }
     }
     if ($login->messages) {
         foreach ( $login->messages as $message ) {
             echo $message;
+            $message="";
         }
     }
 }
@@ -20,11 +22,13 @@ if (isset ( $registration )) {
     if ($registration->errors) {
         foreach ( $registration->errors as $error ) {
             echo $error;
+            $error="";
         }
     }
     if ($registration->messages) {
         foreach ( $registration->messages as $message ) {
             echo $message;
+            $message="";
         }
     }
 }

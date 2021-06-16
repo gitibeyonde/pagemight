@@ -58,9 +58,9 @@ include ('_header.php');
 
                 <div class="row" style="padding: 3vh 0vh 0vh 5vh;">
                     <div class="col-md-12 align-self-md-end col-xs-12 col-sm-12">
-                		<h7> <a href="/index.php"><h7>Sign In</h7></a>
+                		<h7> <a href="/index.php">Sign In</a>
         		                    &nbsp;|&nbsp;
-        		           <a href="register.php">Sign Up</a> </h7>
+        		           <a href="/register.php">Sign Up</a> </h7>
                     </div>
                  </div>
             </div>

@@ -13,7 +13,7 @@ include('_header.php');
                         <h3 class="card-feature__title">Sign Up</h3>
                 </div>
             </div>
-            <form method="post" action="/register.php" onsubmit="return onSubmitTel();">
+            <form method="post" action="/register.php">
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                     </div>
