@@ -61,6 +61,14 @@ else if  ($login->getView() == UPLOAD_IMAGES){
         include("index.php");
     }
 }
+else if  ($login->getView() == CREATE_FORMS){
+    if (isset( $_SESSION ['user_id']) && isset( $_SESSION ['user_name'])){
+        include("views/editor/create_forms.php");
+    }
+    else {
+        include("index.php");
+    }
+}
 else if  ($login->getView() == LOGOUT_VIEW){
         $login->doLogout();
         include("index.php");

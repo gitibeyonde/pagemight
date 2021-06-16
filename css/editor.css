@@ -31,21 +31,31 @@ img.intLink {
     user-select: text;
 }
 
-@media ( max-width : 768px) {
+@media (min-width: 576px) { 
 	#htmlEditorPane {
-    	width: 90vw;
+    	width: 95vw;
 	}
 }
-@media ( max-width : 992px) {
+
+@media (min-width: 768px) { 
+	#htmlEditorPane {
+    	width: 80vw;
+	}
+}
+
+@media (min-width: 992px) { 
 	#htmlEditorPane {
     	width: 72vw;
 	}
 }
-@media ( min-width : 1200px) {
+
+@media (min-width: 1200px) { 
 	#htmlEditorPane {
-    	width: 64vw;
+    	width: 72vw;
 	}
 }
+
+
 #textBox #sourceText {
     padding: 0;
     margin: 0;

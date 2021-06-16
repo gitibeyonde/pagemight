@@ -3,12 +3,12 @@
 require_once (__ROOT__ . '/classes/core/Sqlite.php');
 
 class UserForm extends Sqlite {
-    private $user_id = null;
+    private $user_name = null;
 
     // User id is the first param
-    public function __construct($uid) {
-        parent::__construct ( $uid, "forms", self::$UD );
-        $this->user_id = $uid;
+    public function __construct($uname) {
+        parent::__construct ( $uname, "forms", self::$UD );
+        $this->user_name = $uname;
         if (! $this->t_exists ( "form_metadata" )) {
             $this->t_crtinsupd ( "CREATE TABLE IF NOT EXISTS form_metadata ( name text, metadata text, changedOn text, unique(name)) ;" );
         }

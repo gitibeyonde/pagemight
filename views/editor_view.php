@@ -9,35 +9,36 @@ include_once(__ROOT__ . '/classes/pm/Images.php');
 include_once(__ROOT__ . '/classes/pm/UserForm.php');
 
 $log = $_SESSION['log'];
-$user_id=$_SESSION['user_id'];
+$user_name=$_SESSION['user_name'];
 
 
 $submit = isset($_GET['submit']) ? $_GET['submit'] : $_POST['submit'];
 $template_name = isset($_GET['template']) ? $_GET['template'] : $_POST['template'];
 $page_name = isset($_GET['page']) ? $_GET['page'] : $_POST['page'];
 $page_id = null;
+$public = null;
+$comment = null;
 
-$log->debug("User id=".$user_id." submit=".$submit." template=".$template_name." page=".$page_name);
+$log->debug("User name=".$user_name." submit=".$submit." template=".$template_name." page=".$page_name);
 
 $P = new Page();
 if (isset($page_name)){
     if ($submit == "update"){
         //editing and existing page
-        $page_id = $P->savePage($user_id, $page_name, $content = $_POST['content']);
+        $page_id = $P->savePage($user_name, $page_name, $content = $_POST['content']);
     }
     else {
-        $p = $P->getPageForUser($user_id, $page_name);
+        $p = $P->getPageForUser($user_name, $page_name);
         $page_id = $p['id'];
         $content = $p['content'];
     }
 }
 else if (isset($template_name)){
     //create page from template and start
-    $user_id = $_SESSION['user_id'];
     $T = new Template();
     $P = new Page();
     $t = $T->getTemplate($template_name);
-    $page_id  = $P->createPageFromTemplate($user_id, $t);
+    $page_id  = $P->createPageFromTemplate($user_name, $t);
     if ($r){
         $page_name = $template_name;
         $content = $t['content'];
@@ -50,6 +51,9 @@ error_log("Page id = ".$page_id)
 <link rel="stylesheet" href="/css/thumbnail.css">
 <script src="/js/editor.js"></script>
 <script src="/js/tidy.js"></script>
+<link href="/css/toggle.min.css" rel="stylesheet">
+<script src="/js/toggle.min.js"></script>
+
 <div class='container-fluid'>
 <body onload="initDoc();">
 
@@ -58,7 +62,7 @@ error_log("Page id = ".$page_id)
     <div class="row">
     	<div class="col-lg-1 d-lg-block d-md-none d-sm-none d-none">
     	</div>
-    	<div class="col-lg-8 col-md-9 d-lg-block d-md-block col-12 col-sm-12">
+    	<div class="col-lg-9 col-md-10 d-lg-block d-md-block col-12 col-sm-12">
                 <form id="nodeform" name="nodeform" action="/redirect.php" method="post" onsubmit="return doSubmitNodeForm();">
 
                   <?php include_once(__ROOT__ . '/views/editor/page_toolbar.php'); ?>
@@ -75,7 +79,7 @@ error_log("Page id = ".$page_id)
       </div> <!-- End second Column -->
 
 
-	<div class="col-lg-3 col-md-3 d-lg-block d-md-block d-sm-none d-none  sel0">
+	<div class="col-lg-2 col-md-2 d-lg-block d-md-block d-sm-none d-none  sel0">
        <?php include_once(__ROOT__.'/views/editor/page_right.php'); ?><!-- End third Column -->
 	</div>
   </div> <!-- End Big Row -->

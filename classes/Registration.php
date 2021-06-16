@@ -2,6 +2,7 @@
 
 require_once(__ROOT__.'/config/config.php');
 require_once(__ROOT__.'/libraries/aws.phar');
+include_once(__ROOT__ . '/classes/core/Utils.php');
 
 use Aws\Common\Enum\Region;
 use Aws\Ses\SesClient;
@@ -45,12 +46,7 @@ class Registration
     {
         session_start();
 
-        // if we have such a POST request, call the registerNewUser() method 
-        if (isset($_POST["register"]) && $_SERVER['SERVER_NAME']=="app.ibeyonde.com") {
-            $this->registerNewUser($_POST['user_name'], $_POST['user_email'], "", $_POST['user_password_new'], $_POST['user_password_repeat'], $_POST["captcha"]);
-        // if we have such a GET request, call the verifyNewUser() method
-        }  
-        else if (isset($_POST["register"])) {
+        if (isset($_POST["register"])) {
             $this->registerNewUser($_POST['user_name'], $_POST['user_email'], $_POST['user_phone'], $_POST['user_password_new'], $_POST['user_password_repeat'], $_POST["captcha"]);
             // if we have such a GET request, call the verifyNewUser() method
         }
@@ -89,13 +85,14 @@ class Registration
      * handles the entire registration process. checks all error possibilities, and creates a new user in the database if
      * everything is fine
      */
-    public function registerNewUserFromApp($user_name, $user_email, $user_phone, $user_password, $user_password_repeat)
+    public function registerNewUserFromApp($user_email, $user_phone, $user_password, $user_password_repeat)
     {
+        $user_name = Utils::rand32();
         // we just remove extra space on username and email
         $user_name  = trim($user_name);
         $user_email = trim($user_email);
         $user_phone = trim($user_phone);
-        
+
         // check provided data validity
         // TODO: check for "return true" case early, so put this first
         if (empty($user_name)) {
@@ -120,7 +117,7 @@ class Registration
             $this->errors[] = MESSAGE_EMAIL_TOO_LONG;
         } elseif (!filter_var($user_email, FILTER_VALIDATE_EMAIL)) {
             $this->errors[] = MESSAGE_EMAIL_INVALID;
-            
+
             // finally if all the above checks are ok
         } else if ($this->databaseConnection()) {
             // check if username or email already exists
@@ -129,7 +126,7 @@ class Registration
             $query_check_user_name->bindValue(':user_email', $user_email, PDO::PARAM_STR);
             $query_check_user_name->execute();
             $result = $query_check_user_name->fetchAll();
-            
+
             // if username or/and email find in the database
             // TODO: this is really awful!
             if (count($result) > 0) {
@@ -140,7 +137,7 @@ class Registration
                 // check if we have a constant HASH_COST_FACTOR defined (in config/hashing.php),
                 // if so: put the value into $hash_cost_factor, if not, make $hash_cost_factor = null
                 $hash_cost_factor = (defined('HASH_COST_FACTOR') ? HASH_COST_FACTOR : null);
-                
+
                 // crypt the user's password with the PHP 5.5's password_hash() function, results in a 60 character hash string
                 // the PASSWORD_DEFAULT constant is defined by the PHP 5.5, or if you are using PHP 5.3/5.4, by the password hashing
                 // compatibility library. the third parameter looks a little bit shitty, but that's how those PHP 5.5 functions
@@ -148,31 +145,31 @@ class Registration
                 $user_password_hash = password_hash($user_password, PASSWORD_DEFAULT, array('cost' => $hash_cost_factor));
                 // generate random hash for email verification (40 char string)
                 $user_activation_hash = sha1(uniqid(mt_rand(), true));
-                
+
                 // write new users data into database
-                $query_new_user_insert = $this->db_connection->prepare('INSERT INTO users (user_name, user_password_hash, user_email, user_phone, user_activation_hash, user_registration_ip, 
+                $query_new_user_insert = $this->db_connection->prepare('INSERT INTO users (user_name, user_password_hash, user_email, user_phone, user_activation_hash, user_registration_ip,
                            user_registration_datetime) VALUES(:user_name, :user_password_hash, :user_email, :user_phone, :user_activation_hash, :user_registration_ip, now())');
-                $query_new_user_insert->bindValue(':user_name', $user_name, PDO::PARAM_STR);
+                $query_new_user_insert->bindValue(':user_name', , PDO::PARAM_STR);
                 $query_new_user_insert->bindValue(':user_password_hash', $user_password_hash, PDO::PARAM_STR);
                 $query_new_user_insert->bindValue(':user_email', $user_email, PDO::PARAM_STR);
                 $query_new_user_insert->bindValue(':user_phone', $user_phone, PDO::PARAM_STR);
                 $query_new_user_insert->bindValue(':user_activation_hash', $user_activation_hash, PDO::PARAM_STR);
                 $query_new_user_insert->bindValue(':user_registration_ip', $_SERVER['REMOTE_ADDR'], PDO::PARAM_STR);
                 $query_new_user_insert->execute();
-                
+
                 //create default box
-                
+
                 // database query, getting all the info of the selected user
                 $query_user = $this->db_connection->prepare('insert into device_box value( :username, :box, now())');
                 $query_user->bindValue(':username', $username, PDO::PARAM_STR);
                 $query_user->bindValue(':box', 'default', PDO::PARAM_STR);
-                $query_user->execute(); 
-                
+                $query_user->execute();
+
                 error_log("registerNewUserFromApp Sql=".$query_new_user_insert->queryString);
                 error_log("registerNewUserFromApp Error=".implode(",", $query_new_user_insert->errorInfo()));
                 // id of new user
                 $user_id = $this->db_connection->lastInsertId();
-                
+
                 if ($query_new_user_insert) {
                     // send a verification email
                     if ($this->sendVerificationEmail($user_id, $user_email, $user_activation_hash)) {
@@ -184,7 +181,7 @@ class Registration
                         $query_delete_user = $this->db_connection->prepare('DELETE FROM users WHERE user_id=:user_id');
                         $query_delete_user->bindValue(':user_id', $user_id, PDO::PARAM_INT);
                         $query_delete_user->execute();
-                        
+
                         $this->errors[] = MESSAGE_VERIFICATION_MAIL_ERROR;
                     }
                 } else {
@@ -193,18 +190,19 @@ class Registration
             }
         }
     }
-    
+
     /**
      * handles the entire registration process. checks all error possibilities, and creates a new user in the database if
      * everything is fine
      */
-    private function registerNewUser($user_name, $user_email, $user_phone, $user_password, $user_password_repeat, $captcha)
+    private function registerNewUser($user_email, $user_phone, $user_password, $user_password_repeat, $captcha)
     {
+        $user_name = Utils::rand32();
         // we just remove extra space on username and email
         $user_name  = trim($user_name);
         $user_email = trim($user_email);
         $user_phone = trim($user_phone);
-        
+
 
         // check provided data validity
         // TODO: check for "return true" case early, so put this first
@@ -307,23 +305,23 @@ class Registration
                         'secret' => SES_SECRET,
                         'region' => SES_REGION
                     ));
-    
+
         $msg = array();
-        
+
         $msg['Destination']['ToAddresses'][] = $user_email;
-    
+
         $msg['Message']['Subject']['Data'] = EMAIL_VERIFICATION_SUBJECT;
         $msg['Message']['Subject']['Charset'] = "UTF-8";
-    
+
         $link = EMAIL_VERIFICATION_URL.'?id='.urlencode($user_id).'&verification_code='.urlencode($user_activation_hash);
-        
+
         $msg['Source'] = "no_reply@deltacatalog.com";//EMAIL_VERIFICATION_FROM;
         $msg['Message']['Body']['Html']['Data'] = EMAIL_VERIFICATION_CONTENT.'<br/><br/> <a href='.$link.'>'.$link.
         '</a><br/><br/><hr/><br/><a href="https://deltacatalog.com/catalog-maker/terms&conditions.html">Terms of Use</a><br/>';
-        
-    
+
+
         $msg['Message']['Body']['Html']['Charset'] = "UTF-8";
-        
+
         error_log(print_r($msg, true));
         try{
             $result = $client->sendEmail($msg);
@@ -336,7 +334,7 @@ class Registration
         }
         error_log($user_email." Msg id=".$msg_id. " sent from ".EMAIL_VERIFICATION_FROM);
         return true;
-       
+
     }
 
     /**
@@ -360,7 +358,7 @@ class Registration
             }
         }
     }
-    
+
     public function validatePhoneNumber($user_name, $user_phone, $user_email, $my_number){
         if ($this->databaseConnection()) {
             $stmt = $this->db_connection->prepare('UPDATE users SET user_otp=:otp, user_phone=:user_phone WHERE user_name = :user_name and user_email=:user_email');
@@ -369,7 +367,7 @@ class Registration
             $stmt->bindValue(':user_phone', $user_phone, PDO::PARAM_STR);
             $stmt->bindValue(':user_email', $user_email, PDO::PARAM_STR);
             $stmt->execute();
-            error_log("validatePhoneNumber Error=" . implode(",", $stmt->errorInfo()).$user_name. $user_phone. $user_email.substr($my_number, 6)); 
+            error_log("validatePhoneNumber Error=" . implode(",", $stmt->errorInfo()).$user_name. $user_phone. $user_email.substr($my_number, 6));
             if ( $stmt->errorInfo()[0] != "0000"){
                 return "-1";
             }

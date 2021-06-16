@@ -32,20 +32,17 @@ class Sqlite  {
 
 
     // User id is the first param
-    function __construct($uid, $bid, $ext){
-        if (!is_numeric($uid)){
-            throw new Exception("Bad user id ".$uid);
-        }
+    function __construct($uname, $bid, $ext){
         $this->log = isset($_SESSION['log']) ? $_SESSION['log'] : $GLOBALS['log'];
-        $dir =  __ROOT__.'/data/'.$uid;
+        $dir =  __ROOT__.'/data/'.$uname;
         if (!file_exists($dir)) {
             mkdir($dir, 0777, true);
         }
-        if ($uid!=null && $ext == self::$AUD){
-            $this->filename = $dir.'/db-'.$uid.".".$ext;
+        if ($uname!=null && $ext == self::$AUD){
+            $this->filename = $dir.'/db-'.$uname.".".$ext;
         }
-        else if ($bid!=null && $uid !=null){
-            $this->filename = $dir.'/db-'.$uid.".".$bid.".".$ext;
+        else if ($bid!=null && $uname !=null){
+            $this->filename = $dir.'/db-'.$uname.".".$bid.".".$ext;
         }
         else {
             $_SESSION['message'] = "FATAL: Parameter exception ";

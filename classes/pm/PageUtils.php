@@ -12,8 +12,8 @@ class PageUtils {
         return $Im->listImages($bid);
     }
 
-    public static function getForms($user_id){
-        $kb = new UserForm($user_id);
+    public static function getForms($user_name){
+        $kb = new UserForm($user_name);
         return $kb->ls();
     }
 

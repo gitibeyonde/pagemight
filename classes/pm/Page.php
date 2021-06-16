@@ -10,34 +10,61 @@ class Page extends Mysql {
         Page::$dv = str_split('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ');
     }
 
-    public function savePage($user_id, $page_name, $content) {
+    public function savePage($user_name, $page_name, $content) {
+        $user_name = $this->quote($user_name);
         $page_name = $this->quote($page_name);
         $content = $this->quote($content);
-        $r = $this->changeRow ( sprintf ( "insert into page (user_id, name, content, bitmap, changedOn)  values( %s, %s, %s, 'true', now()) ".
-            "on duplicate key update user_id=%s, name=%s, content=%s",
-            $user_id, $page_name, $content,  $user_id, $page_name, $content ) );
-        return $this->selectOne(sprintf ("select id from page where user_id=%d and name=%s;", $user_id , $page_name));
+        $r = $this->changeRow ( sprintf ( "insert into page (user_name, name, content, changedOn)  values( %s, %s, %s, now()) ".
+            "on duplicate key update user_name=%s, name=%s, content=%s",
+            $user_name, $page_name, $content,  $user_name, $page_name, $content ) );
+        return $this->selectOne(sprintf ("select id from page where user_name=%s and name=%s;", $user_name , $page_name));
     }
 
-    public function getPages($user_id) {
-        return $this->selectRows( sprintf ( "select * from page where user_id=%d;", $user_id) );
+    public function getPages($user_name) {
+        return $this->selectRows( sprintf ( "select * from page where user_name=%s;", $this->quote($user_name)) );
     }
 
-    public function getPageForUser($user_id, $page_name) {
+    public function getPage($user_name, $id) {
+        return $this->selectRows( sprintf ( "select * from page where user_name=%s and id=%s;",  $this->quote($user_name), $id) );
+    }
+    public function getPageForUser($user_name, $page_name) {
         $page_name = $this->quote($page_name);
-        return $this->selectRow( sprintf ( "select * from page where user_id=%d and name=%s;", $user_id , $page_name) );
+        return $this->selectRow( sprintf ( "select * from page where user_name=%s and name=%s;", $this->quote($user_name) , $page_name) );
     }
 
-    public function getPageUrlCode($user_id, $page_id) {
-        $url_code=  $this->selectOne( sprintf ( "select id from url_map where user_id=%s and page_id=%d;", $user_id , $page_id) );
+    public function getPageUrlCode($user_name, $page_id) {
+        $url_code=  $this->selectOne( sprintf ( "select id from url_map where user_name=%s and page_id=%d;", $this->quote($user_name) , $page_id) );
         error_log("createUrlCode=".$url_code);
         if ($url_code == null){
-            $url_code = $this->quote($this->createUrlCode($user_id, $page_id));
+            $url_code = $this->quote($this->createUrlCode($user_name, $page_id));
         }
         return $url_code;
     }
-    public function createPageFromTemplate($user_id, $template){
-        return $this->savePage($user_id, $template['name'], $template['content']);
+    public function createPageFromTemplate($user_name, $template){
+        return $this->savePage($user_name, $template['name'], $template['content']);
+    }
+    public function updatePageComment($user_name, $page_id, $comment){
+        $user_name = $this->quote($user_name);
+        if ($comment == 0 || $comment == 1){
+            $r = $this->changeRow ( sprintf ( "update page set comment=%d where user_name=%s and id=%d;", $comment, $user_name, $page_id) );
+            return $r;
+        }
+        else {
+            $_SESSION['message'] = "The comment value is not boolean !";
+            return false;
+        }
+    }
+    public function updatePagePublic($user_name, $page_id, $public){
+        $user_name = $this->quote($user_name);
+        error_log(" updatePagePublic=".$public);
+        if ($public == 0 || $public == 1){
+            $r = $this->changeRow ( sprintf ( "update page set public=%d where user_name=%s and id=%d;", $public, $user_name, $page_id) );
+            return $r;
+        }
+        else {
+            $_SESSION['message'] = "The public value is not boolean !";
+            return false;
+        }
     }
 
 
@@ -87,19 +114,19 @@ class Page extends Mysql {
         return $result;
     }
 
-    public function createUrlCode($user_id, $page_id){
+    public function createUrlCode($user_name, $page_id){
         $li = $this->getLastIndex();
         error_log("Li=".$li);
         $id = $this->getNext($li);
         error_log("Id=".$id);
         if ($this->databaseConnection()) {
             // database query, getting all the info of the selected user
-            $sth = $this->db_connection->prepare('insert into url_map(id, user_id, page_id, createdOn) values(:id, :user_id, :page_id, now())');
+            $sth = $this->db_connection->prepare('insert into url_map(id, user_name, page_id, createdOn) values(:id, :user_name, :page_id, now())');
             $sth->bindValue(':id',  $id, PDO::PARAM_STR);
             $sth->bindValue(':user_id', $user_id, PDO::PARAM_STR);
             $sth->bindValue(':page_id', $page_id, PDO::PARAM_STR);
             $sth->execute();
-            error_log("createMap Error=".implode(",", $sth->errorInfo()));
+            error_log("createUrlCode Error=".implode(",", $sth->errorInfo()));
         }
         return $url_id;
     }

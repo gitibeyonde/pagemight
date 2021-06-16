@@ -1,6 +1,6 @@
 <?php
 
-class SmsWfUtils {
+class Utils {
 
     private $_log = null;
 
@@ -93,7 +93,7 @@ class SmsWfUtils {
             return null;
         }
         $da =  date_parse($string);
-        $this->_log->debug("Date array = ".SmsWfUtils::flatten($da));
+        $this->_log->debug("Date array = ".Utils::flatten($da));
         $now = new DateTime('now');
         if ($da['year'] == null){
             $da['year'] = $now->format('Y');
@@ -187,11 +187,11 @@ class SmsWfUtils {
     }
 
     public static function flatten($a){
-        return "( ". SmsWfUtils::put_together($a, ", ", "(", ")")  . ")";
+        return "( ". Utils::put_together($a, ", ", "(", ")")  . ")";
     }
 
     public static function join($a){
-        return SmsWfUtils::put_together($a, '', '', '');
+        return Utils::put_together($a, '', '', '');
     }
 
     public static function put_together($a, $separator, $prefix, $suffix){
@@ -200,10 +200,10 @@ class SmsWfUtils {
             foreach($a as $i){
                 if (is_array($i)){
                     if ($result==null){
-                        $result = SmsWfUtils::put_together($i, $separator, $prefix, $suffix);
+                        $result = Utils::put_together($i, $separator, $prefix, $suffix);
                     }
                     else {
-                        $result = $result .$separator .SmsWfUtils::put_together($i, $separator, $prefix, $suffix);
+                        $result = $result .$separator .Utils::put_together($i, $separator, $prefix, $suffix);
                     }
                 }
                 else {
@@ -228,95 +228,25 @@ class SmsWfUtils {
     }
 
 
-    public static function processEmbeddedCommand($chat,  $user_id, $bot_id, $there_phone){
-        $log = new Log("info");
-        if (preg_match_all("/%%(.*?)%%/", $chat, $m)){
-            //this is a command
-            $cmd = $m[1][0];
-            $context = new SmsContext($user_id, $bot_id);
-            $log->trace("processEmbeddedCommand ".$cmd);
-            if ($cmd == "CLEAR"){
-                //clean user data and context
-                $context->deleteContext($there_phone);
-            }
-            else if ($cmd == "CLEARALL"){
-                //clean user data and context
-                $context->deleteContext($there_phone);
-                //$smsuser->deleteUserData($bot_id, $there_phone);
-            }//DEL(drname,appointment)
-            else {
-                $log->debug("Illegal or unimplemented command ".$cmd);
-            }
-            return array(True, preg_replace("/%%(.*?)%%/", "", $chat));
-        }
-        return array(False, $chat);
+
+
+    public static function rand10()
+    {
+        $data = random_bytes(10);
+        return substr(bin2hex($data), 0, 10);
     }
 
-
-    public static function tranId($ip){
-        $ip = ip2long($ip);
-        $len = strlen($ip);
-        if ($len > 11){
-            $ip = $ip.substring(0, 11);
-            error_log("IP=".$ip);
-        }
-        else {
-            $ip = str_pad($ip, 11, "0", STR_PAD_LEFT);
-            error_log("tranId PADDED IP=".$ip);
-        }
-        return "1".$ip;
+    public static function rand20()
+    {
+        $data = random_bytes(20);
+        return substr(bin2hex($data), 0, 20);
     }
 
-    public static function getPublicAppList(){
-        $Md = new Mobile_Detect();
-        $type = 1;
-        if ($Md->isMobile()){
-            $type=0;
-        }
-
-        $WFDB = new WfMasterDb();
-        $sharedwf = $WFDB->getSharedWorkflow();
-
-        $min = new SmsMinify();
-        $SI = new SmsImages();
-
-        include_once(__ROOT__ . '/classes/core/Icons.php');
-        $Icon = new Icons();
-
-        $html = 'Click <i class="ti-folder" style="color: blue;font-size: 2rem;"></i> for App. <i class="ti-comment-alt" style="color: red;font-size: 2rem;"></i>for Chat.';
-        $html = $html . '<table class="table-striped" width="100%">';
-       foreach ($sharedwf as $wf) {
-            $lg = $SI->logo($wf['bot_id']);
-            $url = $min->createMicroAppUrl(95, $wf['bot_id']);
-            $curl = $min->createChatUrl(95, $wf['bot_id']);
-            $tcurl = $min->createTextChatUrl(95, $wf['bot_id']);
-            $html = $html."</tr>";
-            $html = $html. "<tr>";
-            $html = $html. "<td colspan=6 style='padding: 20px;'></td>";
-            $html = $html. "</tr>";
-            $html = $html. "<tr>";
-            if ($type == 1){
-                $html = $html. "<td style='padding: 10px;width: 15%;'><img class='img-fluid' src='".$lg."'></td>";
-                $html = $html. "<td style='padding: 10px;width: 40%'><a href='https://".$url."'  target='_blank'><h4 class='selblock'>".$wf['name']."</h4></a></td>";
-                $html = $html. "<td style='padding: 10px;width: 7%;'><a href='/sample_app.php?link=https://".$url."' target='_blank'><i class='ti-folder' style='color: blue;font-size: 2rem;'></i></a></td>";
-                $html = $html. "<td style='padding: 10px;width: 7%;'><a href='/sample_chat.php?chat=https://".$curl."&tchat=https://".$tcurl."' target='_blank'><i class='ti-comment-alt' style='color: red;font-size: 2rem;'></i></a></td>";
-            }
-            else {
-                $html = $html. "<td style='padding: 1px;width: 10%;'><img class='img-fluid' src='".$lg."'></td>";
-                $html = $html. "<td style='padding: 10px;width: 40%'><a href='https://".$url."'  target='_blank'><h4 class='selblock'>".$wf['name']."</h4></a></td>";
-                $html = $html. "<td style='padding: 10px;width: 7%;'><a href='https://".$url."'  target='_blank'><h5>".$Icon->get("folder", 1.5, "blue")."</h5></a></td>";
-                $html = $html. "<td style='padding: 10px;width: 7%;'><a href='https://".$curl."'  target='_blank'><h5>".$Icon->get("chat_left", 1.5, "green")."</h5></a></td>";
-            }
-            $html = $html. "</tr>";
-            $html = $html. "<tr>";
-            $html = $html. "<td colspan=6 style='padding: 10px;'>".$wf['description']."</td>";
-            $html = $html. "</tr>";
-          }
-
-        $html = $html.'</table>';
-        return $html;
+    public static function rand32()
+    {
+        $data = random_bytes(32);
+        return substr(bin2hex($data), 0, 32);
     }
-
 }
 
 ?>

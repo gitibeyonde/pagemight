@@ -7,15 +7,15 @@ require_once (__ROOT__ . '/classes/pm/Template.php');
 require_once (__ROOT__ . '/classes/pm/Page.php');
 
 $log = $_SESSION['log'];
-$user_id = $_SESSION ['user_id'];
+$user_name = $_SESSION ['user_name'];
 
-$log->debug("User id=".$user_id);
+$log->debug("User name=".$user_name);
 
 $T = new Template();
 $ts = $T->getAllTemplates();
 
 $P = new Page();
-$ps = $P->getPages($user_id);
+$ps = $P->getPages($user_name);
 ?>
 
 <link rel="stylesheet" href="/css/thumbnail.css">
