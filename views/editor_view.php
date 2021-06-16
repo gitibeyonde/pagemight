@@ -16,8 +16,6 @@ $submit = isset($_GET['submit']) ? $_GET['submit'] : $_POST['submit'];
 $template_name = isset($_GET['template']) ? $_GET['template'] : $_POST['template'];
 $page_name = isset($_GET['page']) ? $_GET['page'] : $_POST['page'];
 $page_id = null;
-$public = null;
-$comment = null;
 
 $log->debug("User name=".$user_name." submit=".$submit." template=".$template_name." page=".$page_name);
 
@@ -45,15 +43,15 @@ else if (isset($template_name)){
     }
 }
 
-error_log("Page id = ".$page_id)
+$this_page = $P->getPage($user_name, $page_id);
+$public = $this_page['public'];
+$comment = $this_page['comment'];;
+error_log("Page id = ".$page_id." comment=".$comment." public=".$public);
 ?>
 <link rel="stylesheet" href="/css/editor.css">
 <link rel="stylesheet" href="/css/thumbnail.css">
 <script src="/js/editor.js"></script>
 <script src="/js/tidy.js"></script>
-<link href="/css/toggle.min.css" rel="stylesheet">
-<script src="/js/toggle.min.js"></script>
-
 <div class='container-fluid'>
 <body onload="initDoc();">
 

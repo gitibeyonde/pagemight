@@ -2,7 +2,7 @@
 include (__ROOT__ . '/views/_header.php');
 include_once(__ROOT__ . '/classes/pm/Images.php');
 
-$user_id = $_SESSION['user_id'];
+$user_name = $_SESSION['user_name'];
 $SU = new Images();
 $page_name = $_GET['page'];
 
@@ -31,7 +31,7 @@ if (isset($_POST['submit'])){
             $msg=$msg." File size of less than 2MB is allowed ";
             $error = true;
         }
-        if ($user_id == null){
+        if ($user_name == null){
             $msg=$msg." Authorization error ";
             $error = true;
         }
@@ -42,7 +42,7 @@ if (isset($_POST['submit'])){
             $filename = $_FILES["fileToUpload"]["tmp_name"];
             $log->debug("Upload file=".$_FILES["fileToUpload"]["name"]);
             $ext = pathinfo($_FILES["fileToUpload"]["name"], PATHINFO_EXTENSION);
-            $SU->uploadFilePageMight($user_id."/img/".$name.".".$ext, $filename);
+            $SU->uploadFilePageMight($user_name."/img/".$name.".".$ext, $filename);
         }
 
     }
@@ -50,12 +50,12 @@ if (isset($_POST['submit'])){
 
 if ($submit == "delete"){
     $basename = $_GET['basename'];
-    $SU->deleteImage($user_id."/img/".$basename);
-    $log->debug("Deleting".$user_id."/img/".$basename);
+    $SU->deleteImage($user_name."/img/".$basename);
+    $log->debug("Deleting".$user_name."/img/".$basename);
 }
 
-$images = $SU->listImages($user_id);
-$count = $SU->imageCount($user_id);
+$images = $SU->listImages($user_name);
+$count = $SU->imageCount($user_name);
 ?>
 
 

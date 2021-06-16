@@ -62,11 +62,11 @@ class Images
         return $totalCount;
     }
 
-    public function listImages($bot_id) // format 2016/06/02
+    public function listImages($user_name) // format 2016/06/02
     {
         $images=array();
         $iterator = self::$s3->getIterator('ListObjects', array(
-                'Bucket' => self::bucket, 'Delimiter' => '/', 'Prefix' => $bot_id.'/img/'
+            'Bucket' => self::bucket, 'Delimiter' => '/', 'Prefix' => $user_name.'/img/'
         ));
         foreach ($iterator as $object) {
             $images[] = "https://s3.ap-south-1.amazonaws.com/data.pagemight/".$object['Key'];

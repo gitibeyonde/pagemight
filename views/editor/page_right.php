@@ -1,43 +1,46 @@
 
 <div class="container">
 
-   <a class="btn btn-link" href="https://1do.in/<?php echo $P->getPageUrlCode($user_name, $page_id); ?>" target="_blank">Preview&nbsp;&nbsp;&nbsp;&nbsp;<i class="ti-new-window"></i></a>
+   &nbsp;&nbsp;Preview<a class="btn btn-link" href="https://1do.in/<?php echo $P->getPageUrlCode($user_name, $page_id); ?>" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;<i class="ti-new-window"></i></a>
    <hr/>
 
 
-	&nbsp;&nbsp;<label id="console-event1">Private</label>
+	&nbsp;&nbsp;<label id="console-event1">Visibility</label>&nbsp;&nbsp;
 	<input type="checkbox" id="toggle-event1" data-toggle="toggle" data-on="<i class='ti-world'></i>"
-			data-off="<i class='ti-na'></i>" size="small" onstyle="warning" offstyle="info" >
+			data-off="<i class='ti-na'></i>" <?php echo ($public == 1 ?  "checked" :  ""); ?> >
+
    <hr/>
 
 
-	&nbsp;&nbsp;<label id="console-event2">Comments</label>
-	<input type="checkbox" id="toggle-event2" data-toggle="toggle" size="small" onstyle="warning" offstyle="info" data-on="<i class='ti-check'></i>"
-			data-off="<i class='ti-close'></i>">
+	&nbsp;&nbsp;<label id="console-event2">Comments</label>&nbsp;&nbsp;
+	<input type="checkbox" id="toggle-event2" data-toggle="toggle" data-on="<i class='ti-check'></i>"
+			data-off="<i class='ti-close'></i>" <?php echo ($comment == 1 ? "checked" : ""); ?>>
    <hr/>
 
     <form action="/redirect.php"  method="get">
     <input type=hidden name=view value="<?php echo UPLOAD_IMAGES; ?>">
     <input type=hidden name=page value="<?php echo $page_name; ?>">
-    <button type="submit" name="submit" value="toimages" class="btn btn-link">Images&nbsp;&nbsp;&nbsp;&nbsp;<i class="ti-plus"></i></button>
+    &nbsp;&nbsp;<label>Images</label>
+    <button type="submit" name="submit" value="toimages" class="btn btn-link">&nbsp;&nbsp;&nbsp;&nbsp;<i class="ti-plus"></i></button>
     </form>
-    <hr/>
 
     <div class="row">
-        <?php $Limges = PageUtils::getImageList($bot_id);
+        <?php $Limges = PageUtils::getImageList($user_name);
         foreach($Limges as $imgurl){
             $name = basename($imgurl);
             $jsname = preg_replace("/[^A-Za-z0-9]/", '', $name);;
-            echo "<img id='".$jsname."' src='".$imgurl."' width='25%' height='25%'  style='padding: 5px;'>";
+            echo "<img class='img-box' id='".$jsname."' src='".$imgurl."' width='25%' height='25%'  style='padding: 5px;'>";
         }
         ?>
     </div>
 
+    <hr/>
 
     <form action="/redirect.php"  method="get">
     <input type=hidden name=view value="<?php echo CREATE_FORMS; ?>">
     <input type=hidden name=page value="<?php echo $page_name; ?>">
-    <button type="submit" name="submit" value="toimages" class="btn btn-link">Forms&nbsp;&nbsp;&nbsp;&nbsp;<i class="ti-plus"></i></button>
+    &nbsp;&nbsp;<label>Forms</label>
+    <button type="submit" name="submit" value="toimages" class="btn btn-link">&nbsp;&nbsp;&nbsp;&nbsp;<i class="ti-plus"></i></button>
     </form>
     <hr/>
 
@@ -52,7 +55,7 @@
 
 </div>
  <script>
- <?php $Limges = PageUtils::getImageList($bot_id);
+ <?php $Limges = PageUtils::getImageList($user_name);
  foreach($Limges as $imgurl){
      $name = basename($imgurl);
      $jsname = preg_replace("/[^A-Za-z0-9]/", '', $name);;
@@ -93,11 +96,29 @@
         xmlhttp.onreadystatechange = function() {
           if (this.readyState == 4 && this.status == 200) {
               if (this.responseText == 1){
-             		$('#console-event1').html( $public == 1 ? "Public" : "Private" )
+           		$('#console-event1').html( $public == 1 ? $(this).prop('checked') : $(this).prop('unchecked') )
               }
           }
         };
         xmlhttp.open("GET", "/views/editor/api_update_page.php?uid=<?php echo $user_name; ?>&pid=<?php echo $page_id; ?>&a=u&public=" + $public, true);
+        xmlhttp.send();
+
+    })
+  })
+
+  $(function() {
+    $('#toggle-event2').change(function() {
+		$comment = $(this).prop('checked') ? 1 : 0;
+
+    	var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
+              if (this.responseText == 1){
+             		$('#console-event2').html( $comment == 1 ? $(this).prop('checked') : $(this).prop('unchecked') )
+              }
+          }
+        };
+        xmlhttp.open("GET", "/views/editor/api_update_page.php?uid=<?php echo $user_name; ?>&pid=<?php echo $page_id; ?>&a=u&comment=" + $comment, true);
         xmlhttp.send();
 
     })

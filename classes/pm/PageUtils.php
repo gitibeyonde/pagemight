@@ -7,9 +7,9 @@ class PageUtils {
     public function __construct() {
     }
 
-    public static function getImageList($bid){
+    public static function getImageList($user_name){
         $Im = new Images();
-        return $Im->listImages($bid);
+        return $Im->listImages($user_name);
     }
 
     public static function getForms($user_name){

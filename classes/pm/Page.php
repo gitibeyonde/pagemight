@@ -25,7 +25,7 @@ class Page extends Mysql {
     }
 
     public function getPage($user_name, $id) {
-        return $this->selectRows( sprintf ( "select * from page where user_name=%s and id=%s;",  $this->quote($user_name), $id) );
+        return $this->selectRow( sprintf ( "select * from page where user_name=%s and id=%s;",  $this->quote($user_name), $id) );
     }
     public function getPageForUser($user_name, $page_name) {
         $page_name = $this->quote($page_name);
@@ -45,6 +45,7 @@ class Page extends Mysql {
     }
     public function updatePageComment($user_name, $page_id, $comment){
         $user_name = $this->quote($user_name);
+        error_log(" updatePagePublic=".$comment);
         if ($comment == 0 || $comment == 1){
             $r = $this->changeRow ( sprintf ( "update page set comment=%d where user_name=%s and id=%d;", $comment, $user_name, $page_id) );
             return $r;

@@ -341,3 +341,9 @@ color: var(--blue7);
 .overlay-image .hover {
   background-color: var(--blue2);
 }
+
+
+.img-box {
+   box-shadow: 2px 2px 10px lightblue;
+   text-align: center;
+}

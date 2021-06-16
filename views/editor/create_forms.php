@@ -8,6 +8,9 @@ require_once (__ROOT__ . '/classes/core/Utils.php');
 
 $_SESSION['log'] = new Log ("info");
 $_SESSION['message'] = "";
+$user_name = $_SESSION['user_name'];
+$page_name = $_GET['page'];
+
 
 $user_id = $_SESSION['user_id'];;
 $submit = isset($_GET['submit']) ? $_GET['submit'] : null;
