@@ -38,21 +38,20 @@ for ($i=0; $i < $iCaptchaLength; $i++) {
 $_SESSION['captcha'] = $str_captcha;
 
 // begin to create the image with PHP's GD tools
-$im = imagecreatetruecolor(150, 70);
+$im = imagecreatetruecolor(180, 80);
 
-//#BCC6CC
-$bg = imagecolorallocate($im, 250, 249, 255);
+$bg = imagecolorallocate($im, 255, 255, 255);
 imagefill($im, 0, 0, $bg);
 
 // create background with 1000 short lines
-/*for($i=0;$i<1000;$i++) {
+for($i=0;$i<1000;$i++) {
     $lines = imagecolorallocate($im, rand(200, 220), rand(200, 220), rand(200, 220));
-    $start_x = rand(0,150);
-    $start_y = rand(0,70);
+    $start_x = rand(0,190);
+    $start_y = rand(0,80);
     $end_x = $start_x + rand(0,5);
     $end_y = $start_y + rand(0,5);
     imageline($im, $start_x, $start_y, $end_x, $end_y, $lines);
-}*/
+}
 
 // create letters. for more info on how this works, please
 // @see php.net/manual/en/function.imagefttext.php

@@ -47,7 +47,7 @@ class Registration
         session_start();
 
         if (isset($_POST["register"])) {
-            $this->registerNewUser($_POST['user_email'], $_POST['user_phone'],
+            $this->registerNewUser($_POST['user_email'], "+000000000000",
                     $_POST['user_password_new'], $_POST['user_password_repeat'], $_POST["captcha"]);
             // if we have such a GET request, call the verifyNewUser() method
         }
@@ -114,8 +114,8 @@ class Registration
             $this->errors[] = MESSAGE_USERNAME_INVALID;
         } elseif (empty($user_email)) {
             $this->errors[] = MESSAGE_EMAIL_EMPTY;
-        } elseif ($user_phone != "" && ! preg_match("/^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[789]\d{9}$/", $user_phone)) {
-            $this->errors[] = MESSAGE_PHONE_INVALID;
+        //} elseif ($user_phone != "" && ! preg_match("/^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[789]\d{9}$/", $user_phone)) {
+        //   $this->errors[] = MESSAGE_PHONE_INVALID;
         } elseif (strlen($user_email) > 64) {
             $this->errors[] = MESSAGE_EMAIL_TOO_LONG;
         } elseif (!filter_var($user_email, FILTER_VALIDATE_EMAIL)) {

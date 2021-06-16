@@ -28,11 +28,11 @@ $registration = new Registration();
 
 if ($registration->registration_successful) {
     // showing the register view (with the registration form, and messages/errors)
-    include(__ROOT__.'/login.php');
+    include(__ROOT__.'/index.php');
 }
 else if ($registration->verification_successful) {
     // showing the register view (with the registration form, and messages/errors)
-    include(__ROOT__.'/login.php');
+    include(__ROOT__.'/index.php');
     $all_messages="";
     if ($registration->errors) {
         foreach ( $registration->errors as $error ) {
