@@ -27,6 +27,9 @@ class Page extends Mysql {
     public function getPage($user_name, $id) {
         return $this->selectRow( sprintf ( "select * from page where user_name=%s and id=%s;",  $this->quote($user_name), $id) );
     }
+    public function deletePage($user_name, $page_name) {
+        return $this->changeRow( sprintf ( "delete from page where user_name=%s and name=%s;",  $this->quote($user_name), $this->quote($page_name)) );
+    }
     public function getPageForUser($user_name, $page_name) {
         $page_name = $this->quote($page_name);
         return $this->selectRow( sprintf ( "select * from page where user_name=%s and name=%s;", $this->quote($user_name) , $page_name) );

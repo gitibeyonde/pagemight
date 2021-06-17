@@ -9,7 +9,18 @@ require_once (__ROOT__ . '/classes/pm/Page.php');
 $log = $_SESSION['log'];
 $user_name = $_SESSION ['user_name'];
 
+$submit = isset($_GET['submit']) ? $_GET['submit'] : $_POST['submit'];
+$template_id = isset($_GET['template']) ? $_GET['template'] : $_POST['template'];
+$page_name = isset($_GET['page']) ? $_GET['page'] : $_POST['page'];
+
 $log->debug("User name=".$user_name);
+
+if ($submit == "delete"){
+    if (isset($page_name)){
+        $P = new Page();
+        $P->deletePage($user_name, $page_name);
+    }
+}
 
 $T = new Template();
 $ts = $T->getAllTemplates();
