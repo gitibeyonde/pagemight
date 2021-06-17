@@ -55,8 +55,6 @@ error_log("Page id = ".$page_id." comment=".$comment." public=".$public);
 <div class='container-fluid'>
 <body onload="initDoc();">
 
-    <?php //include_once(__ROOT__.'/views/sms/wiz/wiz_wf_node_menu.php'); ?>
-
     <div class="row">
     	<div class="col-lg-1 d-lg-block d-md-none d-sm-none d-none">
     	</div>

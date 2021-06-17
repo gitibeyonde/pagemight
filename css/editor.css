@@ -20,7 +20,7 @@ img.intLink {
 
 #htmlEditorPane {
     position: relative;
-    height: 78vh;
+    height: calc(100vh - 280px);
     padding-left: 5px;
     padding-bottom: 18px;
     padding-right: 18px;
@@ -68,27 +68,35 @@ img.intLink {
 
 
 #htmlEditorPane > *  {
-  border: 1px dotted grey;
+  border: 1px dotted lightgrey;
 }
 
 
 #htmlEditorPane > * > * {
-  border: 1px dotted grey;
+  border: 1px dotted lightgrey;
 }
 
 
 #htmlEditorPane > * > * > * {
-  border: 1px dotted grey;
+  border: 1px dotted lightgrey;
 }
 
 
 #htmlEditorPane > * > * > * > * {
-  border: 1px dotted grey;
+  border: 1px dotted lightgrey;
 }
 
 
 #htmlEditorPane > * > * > * > * > * {
-  border: 1px dotted grey;
+  border: 1px dotted lightgrey;
+}
+
+#htmlEditorPane > * > * > * > * > * > * {
+  border: 1px dotted lightgrey;
+}
+
+#htmlEditorPane > * > * > * > * > * > * > * {
+  border: 1px dotted lightgrey;
 }
 
 .text-center {

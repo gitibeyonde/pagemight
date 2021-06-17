@@ -5,9 +5,9 @@
    <hr/>
 
 
-	&nbsp;&nbsp;<label id="console-event1">Public</label>&nbsp;&nbsp;
+	&nbsp;&nbsp;<label id="console-event1">Public</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 	<input type="checkbox" id="toggle-event1" data-toggle="toggle" data-on="<i class='ti-world'></i>"
-			data-off="<i class='ti-na'></i>" <?php echo ($public == 1 ?  "checked" :  ""); ?> >
+			data-off="<i class='ti-na'></i>" style="width: 26px; height: 26px;" <?php echo ($public == 1 ?  "checked" :  ""); ?> >
 
    <hr/>
 

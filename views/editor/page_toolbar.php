@@ -1,7 +1,11 @@
 
-		<br/>
       <div class="row">
         <div class="col-2">
+            <form action="/redirect.php"  method="get">
+            <input type=hidden name=view value="<?php echo MAIN_VIEW; ?>">
+            <button type="submit" name="submit" value="toimages" class="btn btn-link">
+            	<i class="ti-control-backward"  style="color: blue;font-size: 26px;"></i>&nbsp;&nbsp;</button>
+            </form>
         </div>
         <div class="col-4">
                   <?php if ($submit == "add") {?>
@@ -18,9 +22,9 @@
                 <input type="checkbox" name="switchMode" onchange="setDocMode(this.checked);" /> <label for="switchBox">HTML</label>
         </div>
       </div>
+
       <div class="row">
 		<div class="col-12" id="toolBar1">
-
 
             <button type="submit" id="save_content" name="submit" value="update" class="btn btn-link"
             					onclick="return onClickSubmitButton('<?php echo EDITOR_VIEW; ?>');">
