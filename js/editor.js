@@ -67,6 +67,27 @@ function formatDoc(sCmd, sValue) {
             document.execCommand("bold", false, null);
             document.execCommand(sCmd, false, sValue);
             document.execCommand("undo", false, null);
+            if (sValue == "h1" ){
+            	 document.execCommand("fontsize", false, "7");
+            }
+            else if (sValue == "h2" ){
+            	 document.execCommand("fontsize", false, "6");
+            }
+            else if (sValue == "h3" ){
+            	 document.execCommand("fontsize", false, "5");
+            }
+            else if (sValue == "h4" ){
+            	 document.execCommand("fontsize", false, "4");
+            }
+            else if (sValue == "h5" ){
+            	 document.execCommand("fontsize", false, "3");
+            }
+            else if (sValue == "h6" ){
+            	 document.execCommand("fontsize", false, "2");
+            }
+            else if (sValue == "h7" ){
+            	 document.execCommand("fontsize", false, "1");
+            }
         }
         else {
             document.execCommand(sCmd, false, sValue);

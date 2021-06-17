@@ -35,6 +35,7 @@
 				<option value="h4">Title 4 &lt;h4&gt;</option>
 				<option value="h5">Title 5 &lt;h5&gt;</option>
 				<option value="h6">Title 6 &lt;h6&gt;</option>
+				<option value="h7">Title 7 &lt;h7&gt;</option>
 				<option value="p">Para &lt;p&gt;</option>
 				<option value="pre">Pre &lt;pre&gt;</option>
                 <option value="div">Tidy</option>

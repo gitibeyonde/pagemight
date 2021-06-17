@@ -35,9 +35,9 @@ else if (isset($template_name)){
     $T = new Template();
     $P = new Page();
     $t = $T->getTemplate($template_name);
-    $page_id  = $P->createPageFromTemplate($user_name, $t);
+    $page_name = Utils::rand10();
+    $page_id  = $P->createPageFromTemplate($user_name, $t, $page_name);
     if ($page_id){
-        $page_name = $template_name;
         $content = $t['content'];
     }
 }

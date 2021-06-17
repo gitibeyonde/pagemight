@@ -81,7 +81,7 @@ $ps = $P->getPages($user_name);
             	  	  <a href="/redirect.php?view=editor_view&page=<?php echo $t['name']; ?>">
                 	  	   <div class="thumbnail-container">
                             <div class="thumbnail">
-                              <iframe src="/views/editor/display.php?m=<?php echo urlencode(base64_encode($t['content'])); ?>"
+                              <iframe src="/views/editor/display.php?m=<?php echo urlencode(base64_encode(gzcompress($t['content'], 9))); ?>"
                                            onload="this.style.opacity = 1" style="opacity: 1;border: 10px #007c76 solid;" > </iframe>
                             </div>
                           </div>

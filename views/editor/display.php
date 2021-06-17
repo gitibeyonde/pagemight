@@ -4,7 +4,7 @@
 <html>
 <body>
 	<div class="container">
-  		<?php echo urldecode(base64_decode($_GET['m'])); ?>
+  		<?php echo urldecode(gzuncompress(base64_decode($_GET['m']))); ?>
   	</div>
 </body>
 </html>

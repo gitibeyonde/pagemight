@@ -25,7 +25,7 @@ class Page extends Mysql {
     }
 
     public function getPage($user_name, $id) {
-        return $this->selectRow( sprintf ( "select * from page where user_name=%s and id=%s;",  $this->quote($user_name), $id) );
+        return $this->selectRow( sprintf ( "select * from page where user_name=%s and id=%s;",  $this->quote($user_name), $this->quote($id)) );
     }
     public function deletePage($user_name, $page_name) {
         return $this->changeRow( sprintf ( "delete from page where user_name=%s and name=%s;",  $this->quote($user_name), $this->quote($page_name)) );
@@ -43,8 +43,8 @@ class Page extends Mysql {
         }
         return $url_code;
     }
-    public function createPageFromTemplate($user_name, $template){
-        return $this->savePage($user_name, $template['name'], $template['content']);
+    public function createPageFromTemplate($user_name, $template, $name){
+        return $this->savePage($user_name, $name, $template['content']);
     }
     public function updatePageComment($user_name, $page_id, $comment){
         $user_name = $this->quote($user_name);

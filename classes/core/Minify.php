@@ -28,11 +28,11 @@ class Minify
         return false;
     }
     public function getUrlContent($url_id){
-        error_log("Id=".$url_id);
+        error_log("getUrlContent Id=".$url_id);
         if ($this->databaseConnection()) {
             // database query, getting all the info of the selected user
             $sth = $this->db_connection->prepare('select * from url_map where id=:id;');
-            $sth->bindValue(':id',  $url_id, PDO::PARAM_INT);
+            $sth->bindValue(':id',  $url_id, PDO::PARAM_STR);
             $sth->execute();
             $map = $sth->fetch();
             error_log("getUrl Error=".implode(",", $sth->errorInfo()));
@@ -43,6 +43,7 @@ class Minify
             //get page
             $P = new Page();
             $page = $P->getPage($map['user_name'], $map['page_id']);
+            error_log("getUrlContent content=".$page['content']);
             return $page['content'];
         }
         else return null;

@@ -13,7 +13,7 @@ class Mysql {
     {
         $this->log  = isset($_SESSION['log']) ? $_SESSION['log'] : (isset($GLOBALS['log']) ? $GLOBALS['log'] : null);
         if ($this->log == null){
-            $this->log = new Log('warn');
+            $this->log = new Log('trace');
         }
     }
 
