@@ -28,17 +28,19 @@
 
 			Text:<select
 				onchange="formatDoc('formatBlock',this[this.selectedIndex].value);this.selectedIndex=0;">
-				<option selected>&nbsp;&nbsp; Format </option>
+				<option selected>Format</option>
 				<option value="h1">Title 1 &lt;h1&gt;</option>
 				<option value="h2">Title 2 &lt;h2&gt;</option>
 				<option value="h3">Title 3 &lt;h3&gt;</option>
 				<option value="h4">Title 4 &lt;h4&gt;</option>
 				<option value="h5">Title 5 &lt;h5&gt;</option>
-				<option value="h6">Subtitle &lt;h6&gt;</option>
-				<option value="p">Paragraph &lt;p&gt;</option>
+				<option value="h6">Title 6 &lt;h6&gt;</option>
+				<option value="p">Para &lt;p&gt;</option>
 				<option value="pre">Pre &lt;pre&gt;</option>
                 <option value="div">Tidy</option>
 			</select>
+
+
 
             <!-- <select
 				onchange="formatDoc('fontname',this[this.selectedIndex].value);this.selectedIndex=0;">
@@ -49,20 +51,18 @@
 				<option>Times New Roman</option>
 
 			</select>
-
+-->
            <select
 				onchange="formatDoc('fontsize',this[this.selectedIndex].value);this.selectedIndex=0;">
-				<option class="heading" selected>- size -</option>
+				<option class="heading" selected>Font Size</option>
 				<option value="1">Very small</option>
-				<option value="2">A bit small</option>
+				<option value="2">Small</option>
 				<option value="3">Normal</option>
-				<option value="4">Medium-large</option>
-				<option value="5">Big</option>
+				<option value="4">Big</option>
+				<option value="5">Bigger</option>
 				<option value="6">Very big</option>
-				<option value="7">Maximum</option>
-			</select>  -->
-            <!--  <input type="color" name="forecolor"
-                onchange="formatDoc('forecolor',this.value);" onkeyup="formatDoc('forecolor',this.value);">  -->
+				<option value="7">Huge</option>
+			</select>
 
 			Foreground:<input type="color" class="form-control-color" value="#000000" size="20px" title="Choose text color"
 						onchange="formatDoc('forecolor',this.value);this.value='#000000';">

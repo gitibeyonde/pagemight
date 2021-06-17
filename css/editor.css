@@ -68,37 +68,72 @@ img.intLink {
 
 
 #htmlEditorPane > *  {
-  border: 1px dotted lightgrey;
+  border: 1px dotted #fafafa;
 }
 
 
 #htmlEditorPane > * > * {
-  border: 1px dotted lightgrey;
+  border: 1px dotted #f0f0f0;
 }
 
 
 #htmlEditorPane > * > * > * {
-  border: 1px dotted lightgrey;
+  border: 1px dotted #e7e7e7;
 }
 
 
 #htmlEditorPane > * > * > * > * {
-  border: 1px dotted lightgrey;
+  border: 1px dotted #dddddd;
 }
 
 
 #htmlEditorPane > * > * > * > * > * {
-  border: 1px dotted lightgrey;
+  border: 1px dotted #d3d3d3;
 }
 
 #htmlEditorPane > * > * > * > * > * > * {
-  border: 1px dotted lightgrey;
+  border: 1px dotted #c9c9c9;
 }
 
 #htmlEditorPane > * > * > * > * > * > * > * {
-  border: 1px dotted lightgrey;
+  border: 1px dotted #bfbfbf;
 }
 
+#htmlEditorPane > * > * > * > * > * > * > * > * {
+  border: 1px dotted #b6b6b6;
+}
+
+#htmlEditorPane > * > * > * > * > * > * > * > * > *  {
+  border: 1px dotted #acacac;
+}
+
+#htmlEditorPane > * > * > * > * > * > * > * > * > * > * {
+  border: 1px dotted #a2a2a2;
+}
+
+#htmlEditorPane > * > * > * > * > * > * > * > * > * > * > * {
+  border: 1px dotted #989898;
+}
+
+#htmlEditorPane > * > * > * > * > * > * > * > * > * > * > * > * {
+  border: 1px dotted #8e8e8e;
+}
+
+#htmlEditorPane > * > * > * > * > * > * > * > * > * > * > * > * > * {
+  border: 1px dotted #858585;
+}
+
+#htmlEditorPane > * > * > * > * > * > * > * > * > * > * > * > * > * > * {
+  border: 1px dotted black;
+}
+
+#htmlEditorPane > * > * > * > * > * > * > * > * > * > * > * > * > * > * > * {
+  border: 1px dotted black;
+}
+
+#htmlEditorPane > * > * > * > * > * > * > * > * > * > * > * > * > * > * > * >*  {
+  border: 1px dotted black;
+}
 .text-center {
 	text-align: center;
 }
