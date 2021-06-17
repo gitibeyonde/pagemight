@@ -12,13 +12,12 @@ $user_name = $_SESSION['user_name'];
 $page_name = $_GET['page'];
 
 
-$user_id = $_SESSION['user_id'];;
 $submit = isset($_GET['submit']) ? $_GET['submit'] : null;
 $count = isset($_GET['count']) ? $_GET['count'] : 0;
 $tabella = isset($_GET['tabella']) ? $_GET['tabella'] : null;
 $page_name = isset($_GET['page']) ? $_GET['page'] : null;
 
-$kb = new UserForm($user_id);
+$kb = new UserForm($user_name);
 
 $col = array();
 $input = array();
@@ -79,10 +78,8 @@ else if ($submit == "delete"){
             <p>Create form by creating the input fields you want to be captured by the form.
             Provide name of the form field, and type of the form field.</p>
 
-          	<form action="/index.php?"  method="get">
+          	<form action="/redirect.php?"  method="get">
                 <input type=hidden name=view value="<?php echo CREATE_FORMS; ?>">
-                <input type=hidden name=user_id value="<?php echo $user_id; ?>">
-                <input type=hidden name=bot_id value="<?php echo $bot_id; ?>">
 
                 <div class="form-group">
                     <label>Form Name</label>
@@ -151,12 +148,6 @@ else if ($submit == "delete"){
         Columns
     </div>
     <div class="col">
-        Type Value
-    </div>
-    <div class="col">
-        Change Type
-    </div>
-    <div class="col">
         Delete
     </div>
   </div>
@@ -173,21 +164,13 @@ else if ($submit == "delete"){
              <?php echo $kb->row_count($tn); ?>
         </div>
         <div class="col">
-             <?php echo SmsWfUtils::flatten($kb->t_columns($tn)); ?>
+             <?php echo Utils::flatten($kb->t_columns($tn)); ?>
         </div>
         <div class="col">
             <?php echo $kb->getFormType($tn); ?>
         </div>
         <div class="col">
-            <form action="/index.php"  method="get" style="float: left;" >
-                <input type=hidden name=view value="<?php echo CREATE_FORMS; ?>">
-                <input type=hidden name=tabella value="<?php echo $tn; ?>">
-                <input type=hidden name=bot_id value="<?php echo $bot_id; ?>">
-                <button class="btn btn-sim1" type="submit" name="submit" value="arrange_form">Customize</button>
-            </form>
-        </div>
-        <div class="col">
-            <form action="/index.php"  method="get" style="float: left;" >
+            <form action="/redirect.php?"  method="get" style="float: left;" >
                 <input type=hidden name=view value="<?php echo CREATE_FORMS ?>">
                 <input type=hidden name=tabella value="<?php echo $tn; ?>">
                 <input type=hidden name=bot_id value="<?php echo $bot_id; ?>">

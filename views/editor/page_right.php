@@ -1,5 +1,5 @@
 
-<div class="container">
+<div id="no_select" class="container">
 
    &nbsp;&nbsp;Preview<a class="btn btn-link" href="https://1do.in/<?php echo $P->getPageUrlCode($user_name, $page_id); ?>" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;<i class="ti-new-window"></i></a>
    <hr/>
@@ -32,7 +32,7 @@
         foreach($Limges as $imgurl){
             $name = basename($imgurl);
             $jsname = preg_replace("/[^A-Za-z0-9]/", '', $name);;
-            echo "<img class='img-box' id='".$jsname."' src='".$imgurl."' width='25%' height='25%'  style='padding: 5px;'>";
+            echo "<img class='img-box' id='image-".$jsname."' src='".$imgurl."' width='25%' height='25%'  style='padding: 5px;'>";
         }
         ?>
     </div>
@@ -51,7 +51,7 @@
         <?php $forms = PageUtils::getForms($user_name);
         foreach($forms as $f){
             if ($f == "form_metadata")continue;
-            echo "<h1 id=".$f." class='img-box'>".$f."</h1>";
+            echo "<p id=form-".$f." class='img-box'>".$f."</p>";
         }
         ?>
     </div>
@@ -63,7 +63,7 @@
      $name = basename($imgurl);
      $jsname = preg_replace("/[^A-Za-z0-9]/", '', $name);;
      ?>
- $("#<?php echo $jsname; ?>").click(function(){
+ $("#<?php echo "image-".$jsname; ?>").click(function(){
      var src = '<img class="img-fluid" src="<?php echo $imgurl; ?>">\n' ;
      console.log("Img URL=" + src);
      insertAtCursor(src);
@@ -71,11 +71,14 @@
  <?php } ?>
 
  <?php $forms = PageUtils::getForms($user_name);
- foreach($forms as $f){ ?>
- $("#<?php echo $f; ?>").click(function(){
-     var form_name = '<?php echo $f; ?>' ;
+ foreach($forms as $f){
+    if ($f == "form_metadata")continue;
+     ?>
+ $("#<?php echo "form-".$f; ?>").click(function(){
+     var form_name = '<?php echo "form-".$f; ?>' ;
      console.log("Form name=" + form_name);
-     insertAtCursor("<div class=form>" + form_name + "</div>");
+     insertAtCursor("<div class='form'><div class='overlay-image'><img class='image' src='/img/fph.png'/><div class='normal'> <div class='text'>" + form_name +
+    	      "</div></div></div>");
   });
  <?php } ?>
 
