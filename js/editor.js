@@ -338,16 +338,20 @@ function enableImageResizeInDiv(id) { // id = htmlEditorPane
             currentImage.click();
         };
         editor.onmouseup = () => {
+    		//console.log("onmouseup ");
             if (resizing) {
                 currentImage.style.width = document.querySelector('.top-border').offsetWidth + 'px';
                 currentImage.style.height = document.querySelector('.left-border').offsetHeight + 'px';
                 refresh();
                 currentImage.click();
                 resizing = false;
+                return false;
             }
+            return true;
         };
 
         editor.onmousemove = (e) => {
+    		//console.log("onmousemove ");
             if (currentImage && resizing) {
                 let height = e.pageY - offset(currentImage).top;
                 let width = e.pageX - offset(currentImage).left;
@@ -375,11 +379,13 @@ function enableImageResizeInDiv(id) { // id = htmlEditorPane
                     top: (top + height) + 'px',
                     width: width + "px"
                 });
-            }
             return false;
+            }
+            return true;
         };
     };
     var bindClickListener = function () {
+    	console.log("bindClickListener ");
         editor.querySelectorAll('img').forEach((img, i) => {
             img.onclick = (e) => {
                 if (e.target === img) {
@@ -443,6 +449,7 @@ function enableImageResizeInDiv(id) { // id = htmlEditorPane
         }));
     };
     var reset = function () {
+    	console.log("Reset ");
         if (currentImage != null) {
             currentImage = null;
             resizing = false;
@@ -451,6 +458,7 @@ function enableImageResizeInDiv(id) { // id = htmlEditorPane
         bindClickListener();
     };
     editor.addEventListener('scroll', function () {
+    	console.log("Scroll ");
         reset();
     }, false);
     editor.addEventListener('mouseup', function (e) {

@@ -5,17 +5,20 @@
    <hr/>
 
 
-	&nbsp;&nbsp;<label id="console-event1">Visibility</label>&nbsp;&nbsp;
+	&nbsp;&nbsp;<label id="console-event1">Public</label>&nbsp;&nbsp;
 	<input type="checkbox" id="toggle-event1" data-toggle="toggle" data-on="<i class='ti-world'></i>"
 			data-off="<i class='ti-na'></i>" <?php echo ($public == 1 ?  "checked" :  ""); ?> >
 
    <hr/>
 
+<!--
 
 	&nbsp;&nbsp;<label id="console-event2">Comments</label>&nbsp;&nbsp;
 	<input type="checkbox" id="toggle-event2" data-toggle="toggle" data-on="<i class='ti-check'></i>"
 			data-off="<i class='ti-close'></i>" <?php echo ($comment == 1 ? "checked" : ""); ?>>
    <hr/>
+ -->
+
 
     <form action="/redirect.php"  method="get">
     <input type=hidden name=view value="<?php echo UPLOAD_IMAGES; ?>">

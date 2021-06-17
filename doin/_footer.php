@@ -5,7 +5,7 @@
         <div class="col-md-6 col-sm-none">
         </div>
         <div class="col-md-6 col-sm-12 footer-social">
-        		<font size=2></font>@powered by pagemight.com</size>
+        		<i class="ti-write"></i>
         </div>
     </div>
   </div>
