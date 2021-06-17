@@ -11,7 +11,7 @@ class Mysql {
 
     public function __construct()
     {
-        $this->log  = isset($_SESSION['log']) ? $_SESSION['log'] : $GLOBALS['log'];
+        $this->log  = isset($_SESSION['log']) ? $_SESSION['log'] : (isset($GLOBALS['log']) ? $GLOBALS['log'] : null);
         if ($this->log == null){
             $this->log = new Log('warn');
         }

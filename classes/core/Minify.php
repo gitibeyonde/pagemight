@@ -38,10 +38,14 @@ class Minify
             error_log("getUrl Error=".implode(",", $sth->errorInfo()));
             error_log("Result=".print_r($map, true));
         }
-        //get page
-        $P = new Page();
-        $page = $P->getPage($map['user_name'], $map['page_id']);
-        return $page['content'];
+
+        if (isset($map['user_name']) && isset($map['page_id'])){
+            //get page
+            $P = new Page();
+            $page = $P->getPage($map['user_name'], $map['page_id']);
+            return $page['content'];
+        }
+        else return null;
     }
 
     public function logAccess($id){

@@ -22,7 +22,10 @@ if (isset($_GET['id'])){
     }
     $ag = $_SERVER['HTTP_USER_AGENT'];
     if ($content==null){
-        header("Location: /removed.html", true, 301);
+        include(__ROOT__.'/doin/_header.php');
+        echo "<div class='row' style='padding-top: 10vh;'><i style='padding-top: 10vh;'>This page does not exists, forwarding to www.pagemight.com</i></div>";
+        echo "<meta http-equiv='refresh' content='5; url=https://www.pagemight.com/' />";
+        include(__ROOT__.'/doin/_footer.php');
     }
     else {
         $od->logAccess($id, $ip, $ag);
