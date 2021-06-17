@@ -48,6 +48,18 @@ include (__ROOT__ . '/views/_header.php');
             </div>
 
 
+			<!-- -
+			Create Pages online
+
+Create online pages using html editor
+Many bootstrap html5 templates to choose from
+Make them available on minified link
+Manage images in online image store
+Create and embed forms
+Check form submission data in your dashboard
+
+			 -->
+
         </div>
 
 
@@ -73,3 +85,5 @@ typewriter.typeString('Create online html pages')
 .deleteAll()
 .start();
 </script>
+</body>
+</html>

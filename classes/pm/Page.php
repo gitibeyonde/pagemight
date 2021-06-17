@@ -36,7 +36,7 @@ class Page extends Mysql {
         $url_code=  $this->selectOne( sprintf ( "select id from url_map where user_name=%s and page_id=%d;", $this->quote($user_name) , $page_id) );
         error_log("createUrlCode=".$url_code);
         if ($url_code == null){
-            $url_code = $this->quote($this->createUrlCode($user_name, $page_id));
+            $url_code = $this->createUrlCode($user_name, $page_id);
         }
         return $url_code;
     }
@@ -124,12 +124,12 @@ class Page extends Mysql {
             // database query, getting all the info of the selected user
             $sth = $this->db_connection->prepare('insert into url_map(id, user_name, page_id, createdOn) values(:id, :user_name, :page_id, now())');
             $sth->bindValue(':id',  $id, PDO::PARAM_STR);
-            $sth->bindValue(':user_id', $user_id, PDO::PARAM_STR);
+            $sth->bindValue(':user_name', $user_name, PDO::PARAM_STR);
             $sth->bindValue(':page_id', $page_id, PDO::PARAM_STR);
             $sth->execute();
             error_log("createUrlCode Error=".implode(",", $sth->errorInfo()));
         }
-        return $url_id;
+        return $id;
     }
 
 }

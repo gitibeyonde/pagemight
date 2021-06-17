@@ -11,7 +11,6 @@ include_once(__ROOT__ . '/classes/pm/UserForm.php');
 $log = $_SESSION['log'];
 $user_name=$_SESSION['user_name'];
 
-
 $submit = isset($_GET['submit']) ? $_GET['submit'] : $_POST['submit'];
 $template_name = isset($_GET['template']) ? $_GET['template'] : $_POST['template'];
 $page_name = isset($_GET['page']) ? $_GET['page'] : $_POST['page'];
@@ -37,7 +36,7 @@ else if (isset($template_name)){
     $P = new Page();
     $t = $T->getTemplate($template_name);
     $page_id  = $P->createPageFromTemplate($user_name, $t);
-    if ($r){
+    if ($page_id){
         $page_name = $template_name;
         $content = $t['content'];
     }
@@ -69,7 +68,6 @@ error_log("Page id = ".$page_id." comment=".$comment." public=".$public);
 
                   <input id="content_input" type="hidden" name="content" value="">
                   <input type="hidden" id="viewname" name="view" value="">
-                  <input type="hidden" name="page" value="<?php echo $page_name; ?>">
 
              </form>
       </div> <!-- End second Column -->

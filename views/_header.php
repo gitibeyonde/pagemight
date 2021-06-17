@@ -24,7 +24,6 @@ else {
         <link href="/css/styles.css" rel="stylesheet" />
         <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" href="/themify-icons/themify-icons.css">
-        <link href="/css/blinking_cursor.css" rel="stylesheet" />
         <!-- Bootstrap core JS-->
         <script src="/jquery/jquery-3.6.0.min.js"></script>
         <script src="/bootstrap/js/bootstrap.bundle.min.js"></script>

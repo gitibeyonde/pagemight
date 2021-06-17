@@ -1,20 +1,13 @@
 
       <div class="row">
         <div class="col-2">
-            <form action="/redirect.php"  method="get">
-            <input type=hidden name=view value="<?php echo MAIN_VIEW; ?>">
-            <button type="submit" name="submit" value="toimages" class="btn btn-link">
+            <button type="submit" name="submit" value="toimages" class="btn btn-link"
+							   onclick="return onClickSubmitButton('<?php echo MAIN_VIEW; ?>');">
             	<i class="ti-control-backward"  style="color: blue;font-size: 26px;"></i>&nbsp;&nbsp;</button>
-            </form>
         </div>
         <div class="col-4">
-                  <?php if ($submit == "add") {?>
-                    <label for="page_name">Page Name:</label>
-                     <input type="text" name="page_name" placeholder="state" size="16" value="<?php echo $state; ?>" required>
-                  <?php } else { ?>
-                    <label for="page_name">Page Name :&nbsp;&nbsp;&nbsp;<b><?php echo $page_name; ?></b></label>
-                    <input type="hidden" name="page_name" value="<?php echo $page_name; ?>">
-                  <?php } ?>
+            <label for="page_name">Page Name:</label>
+            <input type="text" name="page" placeholder="page name" size="16" value="<?php echo $page_name; ?>" required>
         </div>
         <div class="col-2">
         </div>
@@ -27,15 +20,15 @@
 		<div class="col-12" id="toolBar1">
 
             <button type="submit" id="save_content" name="submit" value="update" class="btn btn-link"
-            					onclick="return onClickSubmitButton('<?php echo EDITOR_VIEW; ?>');">
-            <i class="ti-save" style="color: green;font-size: 26px;"></i></button>
+								onclick="return onClickSubmitButton('<?php echo EDITOR_VIEW; ?>');">
+            									<i class="ti-save" style="color: green;font-size: 26px;"></i></button>
 
             <button type="submit" name="submit" value="delete"  class="btn btn-link"  onclick="return onClickDel('<?php echo MAIN_VIEW; ?>');">
-            <i class="ti-trash" style="color: red;font-size: 26px;"></i></button>
+            					<i class="ti-trash" style="color: red;font-size: 26px;"></i></button>
 
 			Text:<select
 				onchange="formatDoc('formatBlock',this[this.selectedIndex].value);this.selectedIndex=0;">
-				<option selected>&nbsp;&nbsp;- formatting -</option>
+				<option selected>&nbsp;&nbsp; Format </option>
 				<option value="h1">Title 1 &lt;h1&gt;</option>
 				<option value="h2">Title 2 &lt;h2&gt;</option>
 				<option value="h3">Title 3 &lt;h3&gt;</option>
@@ -71,16 +64,14 @@
             <!--  <input type="color" name="forecolor"
                 onchange="formatDoc('forecolor',this.value);" onkeyup="formatDoc('forecolor',this.value);">  -->
 
-            Text:<select
-				onchange="formatDoc('forecolor',this[this.selectedIndex].value);this.selectedIndex=0;">
-                     <?php include __ROOT__.'/views/utils/colors.php'; ?>
-			</select> Background:<select
-				onchange="formatDoc('backcolor',this[this.selectedIndex].value);this.selectedIndex=0;">
-                     <?php include __ROOT__.'/views/utils/colors.php'; ?>
-			</select>
+			Foreground:<input type="color" class="form-control-color" value="#000000" size="20px" title="Choose text color"
+						onchange="formatDoc('forecolor',this.value);this.value='#000000';">
+		    Background:<input type="color" class="form-control-color" value="#ffffff" size="20px" title="Choose text color"
+						onchange="formatDoc('backcolor',this.value);this.value='#ffffff';">
+
             Insert:<select
                     onchange="formatDoc('insertHtml',this[this.selectedIndex].value + '\n');this.selectedIndex=0;">
-                    <option class="heading" selected>-row-</option>
+                    <option class="heading" selected>Row</option>
                      <option value='<br/><div class="row"><div class="col">col-1</div><div class="col">col-2</div><br/>'>2 Col</option>
                      <option value='<br/><div class="row"><div class="col">col-1</div><div class="col">col-2</div><div class="col">col-3</div></div><br/>'>3 Col</option>
                      <option value='<br/><div class="row"><div class="col">col-1</div><div class="col">col-2</div><div class="col">col-3</div><div class="col">col-4</div></div><br/>'>4 Col</option>
