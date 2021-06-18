@@ -1,4 +1,9 @@
 <?php
+
+require_once (__ROOT__ . '/config/config.php');
+require_once(__ROOT__.'/classes/core/Log.php');
+require_once(__ROOT__.'/classes/core/Utils.php');
+
 class Sqlite  {
 
     const ROW_HTML_SEPARATOR="<br/>";

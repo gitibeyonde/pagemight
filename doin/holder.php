@@ -17,8 +17,14 @@ include(__ROOT__.'/doin/_footer.php');
 foreach( $kb->ls() as $tn){
    if ($tn == "form_metadata")continue;
     ?>
-    $("#<?php echo "form-".$tn; ?>").html('<?php echo $kb->getUserForm($tn); ?>');
+    $("#<?php echo "form-".$tn; ?>").html('<?php echo $kb->getUserForm($user_name, $tn); ?>');
 
+<?php } ?>
+
+</script>
+
+
+    <!--
     $("#<?php echo "action-".$tn; ?>").on("submit", function (e) {
         var dataString = $(this).serialize();
 
@@ -35,8 +41,4 @@ foreach( $kb->ls() as $tn){
         e.preventDefault();
 
   	  	$(this).find(':input[type=submit]').prop('disabled', true);
-    });
-<?php } ?>
-
-</script>
-
+    }); -->
