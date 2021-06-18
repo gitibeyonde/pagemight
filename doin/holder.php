@@ -19,7 +19,24 @@ foreach( $kb->ls() as $tn){
     ?>
     $("#<?php echo "form-".$tn; ?>").html('<?php echo $kb->getUserForm($tn); ?>');
 
+    $("#<?php echo "action-".$tn; ?>").on("submit", function (e) {
+        var dataString = $(this).serialize();
 
+        $.ajax({
+          type: "POST",
+          url: "/doin/form_submit.php",
+          data: dataString,
+          success: function () {
+        	  $("#<?php echo "message-".$tn; ?>")
+              .html("<i>Form Submitted!</i>");
+          }
+        });
+
+        e.preventDefault();
+
+  	  	$(this).find(':input[type=submit]').prop('disabled', true);
+    });
 <?php } ?>
+
 </script>
 

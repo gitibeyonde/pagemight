@@ -45,16 +45,16 @@
     &nbsp;&nbsp;<label>Forms</label>
     <button type="submit" name="submit" value="toimages" class="btn btn-link">&nbsp;&nbsp;&nbsp;&nbsp;<i class="ti-plus"></i></button>
     </form>
-    <hr/>
 
     <div class="row">
         <?php $forms = PageUtils::getForms($user_name);
         foreach($forms as $f){
             if ($f == "form_metadata")continue;
-            echo "<p id=form-".$f." class='img-box'>".$f."</p>";
+            echo "<p id='form-".$f."' class='img-box'>".$f."</p>";
         }
         ?>
     </div>
+    <hr/>
 
 </div>
  <script>
@@ -77,7 +77,7 @@
  $("#<?php echo "form-".$f; ?>").click(function(){
      var form_name = '<?php echo "form-".$f; ?>' ;
      console.log("Form name=" + form_name);
-     insertAtCursor("<div id='<?php echo "form-".$f; ?>' class='col no_select' style='border: 3px silver solid;text-align: center;padding: 60px 0 59px 0px;background: #f6f6f6;'>"
+     insertAtCursor("<div id='<?php echo "form-".$f; ?>' class='col no_select' style='border: 3px silver solid;text-align: center;padding: 30px 20px 30px 20px;background: #f6f6f6;'>"
     	     + form_name + " will be substituted when page is rendered</div></div>");
   });
  <?php } ?>

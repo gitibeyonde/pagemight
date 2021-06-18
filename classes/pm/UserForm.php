@@ -34,16 +34,18 @@ class UserForm extends Sqlite {
     }
 
     public function getUserForm($tabella){
-        $html = '<form id="targetForm" onsubmit="return false;">';
+        $html = '<form id=action-'.$tabella.' action="/doin/form_submit.php" method="post">';
         foreach($this->t_columns_types($tabella) as $col_type=>$type){
             list($col, $type) = explode("->", $col_type);
+            $html .= '<input type="hidden" name="table" value="'.$tabella.'">';
             $html .= '<div class="form-group">';
             $html .= '<label id="label" style="display: none;">'.ucfirst($col).'</label>';
-            $html .= '<input class="form-control" type="<?php echo $type; ?>" name="'.$col.'" placeholder="'.$col.'">';
+            $html .= '<input class="form-control" type="'.$type.'" name="'.$col.'" placeholder="'.$col.'" required>';
             $html .= '</div>';
         }
         $html .= '<div class="form-group">';
-      	$html .= '<button type="submit" name="submit" value="customise_add" class="btn">Submit</button>';
+        $html .= '<button type="submit" name="submit" value="customise_add" class="btn btn-info">Submit</button>';
+        $html .= '<p id=message-'.$tabella.' ></p>';
         $html .= '</div>';
         $html .= '</form>';
         return $html;
