@@ -78,7 +78,7 @@ else if ($submit == "delete"){
             Provide name of the form field, and type of the form field.</p>
 
           	<form action="/redirect.php?"  method="get">
-                <input type=hidden name=view value="<?php echo CREATE_FORMS; ?>">
+                <input type=hidden name=view value="<?php echo FORM_CREATE; ?>">
     			<input type=hidden name=page value="<?php echo $page_name; ?>">
 
                 <div class="form-group">
@@ -171,7 +171,7 @@ else if ($submit == "delete"){
         </div>
         <div class="col">
             <form action="/redirect.php?"  method="get" style="float: left;" >
-                <input type=hidden name=view value="<?php echo CREATE_FORMS ?>">
+                <input type=hidden name=view value="<?php echo FORM_CREATE ?>">
                 <input type=hidden name=tabella value="<?php echo $tn; ?>">
     			<input type=hidden name=page value="<?php echo $page_name; ?>">
                 <button class="btn btn-sim2" type="submit" name="submit" value="delete">Delete</button>

@@ -28,7 +28,7 @@
     </form>
 
     <div class="row">
-        <?php $Limges = PageUtils::getImageList($user_name);
+        <?php $Limges = $imgs->listImages($user_name);
         foreach($Limges as $imgurl){
             $name = basename($imgurl);
             $jsname = preg_replace("/[^A-Za-z0-9]/", '', $name);;
@@ -40,14 +40,14 @@
     <hr/>
 
     <form action="/redirect.php"  method="get">
-    <input type=hidden name=view value="<?php echo CREATE_FORMS; ?>">
+    <input type=hidden name=view value="<?php echo FORM_CREATE; ?>">
     <input type=hidden name=page value="<?php echo $page_name; ?>">
     &nbsp;&nbsp;<label>Forms</label>
     <button type="submit" name="submit" value="toimages" class="btn btn-link">&nbsp;&nbsp;&nbsp;&nbsp;<i class="ti-plus"></i></button>
     </form>
 
     <div class="row">
-        <?php $forms = PageUtils::getForms($user_name);
+        <?php $forms = $kb->getForms();
         foreach($forms as $f){
             if ($f == "form_metadata")continue;
             echo "<p id='form-".$f."' class='img-box'>".$f."</p>";
@@ -58,7 +58,7 @@
 
 </div>
  <script>
- <?php $Limges = PageUtils::getImageList($user_name);
+ <?php $Limges = $imgs->listImages($user_name);
  foreach($Limges as $imgurl){
      $name = basename($imgurl);
      $jsname = preg_replace("/[^A-Za-z0-9]/", '', $name);;
@@ -70,7 +70,7 @@
   });
  <?php } ?>
 
- <?php $forms = PageUtils::getForms($user_name);
+ <?php $forms = $kb->getForms();
  foreach($forms as $f){
     if ($f == "form_metadata")continue;
      ?>

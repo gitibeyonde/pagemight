@@ -61,9 +61,17 @@ else if  ($login->getView() == UPLOAD_IMAGES){
         include("index.php");
     }
 }
-else if  ($login->getView() == CREATE_FORMS){
+else if  ($login->getView() == FORM_CREATE){
     if (isset( $_SESSION ['user_id']) && isset( $_SESSION ['user_name'])){
-        include("views/editor/create_forms.php");
+        include("views/editor/form_create.php");
+    }
+    else {
+        include("index.php");
+    }
+}
+else if  ($login->getView() == FORM_DATA){
+    if (isset( $_SESSION ['user_id']) && isset( $_SESSION ['user_name'])){
+        include("views/editor/form_data.php");
     }
     else {
         include("index.php");

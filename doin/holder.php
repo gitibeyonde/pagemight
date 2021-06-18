@@ -1,7 +1,6 @@
  <?php
  // $content will be defined where the file is included
  define('__ROOT__', dirname(dirname(__FILE__)));
- include_once(__ROOT__ . '/classes/pm/PageUtils.php');
  include_once(__ROOT__ . '/classes/pm/UserForm.php');
 
 include(__ROOT__.'/doin/_header.php');
@@ -19,12 +18,6 @@ foreach( $kb->ls() as $tn){
     ?>
     $("#<?php echo "form-".$tn; ?>").html('<?php echo $kb->getUserForm($user_name, $tn); ?>');
 
-<?php } ?>
-
-</script>
-
-
-    <!--
     $("#<?php echo "action-".$tn; ?>").on("submit", function (e) {
         var dataString = $(this).serialize();
 
@@ -32,13 +25,17 @@ foreach( $kb->ls() as $tn){
           type: "POST",
           url: "/doin/form_submit.php",
           data: dataString,
-          success: function () {
+          success: function (data) {
         	  $("#<?php echo "message-".$tn; ?>")
-              .html("<i>Form Submitted!</i>");
+              .html("<i>Submission Id = #" + data + "</i>");
           }
         });
 
         e.preventDefault();
 
   	  	$(this).find(':input[type=submit]').prop('disabled', true);
-    }); -->
+    });
+<?php } ?>
+
+</script>
+

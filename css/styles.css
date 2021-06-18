@@ -262,9 +262,7 @@ color: var(--blue7);
 /* Sticky footer styles
 -------------------------------------------------- */
 
-.footer {
-  position: absolute;
-  bottom: 0;
+.fixed-bottom {
   width: 100%;
   max-height: 100px; /* Set the fixed height of the footer here */
   line-height: 50px; /* Vertically center the text there */

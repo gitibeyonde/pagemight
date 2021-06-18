@@ -4,7 +4,6 @@ include (__ROOT__ . '/views/_header.php');
 include_once(__ROOT__ . '/classes/core/Log.php');
 include_once(__ROOT__ . '/classes/pm/Page.php');
 include_once(__ROOT__ . '/classes/pm/Template.php');
-include_once(__ROOT__ . '/classes/pm/PageUtils.php');
 include_once(__ROOT__ . '/classes/pm/Images.php');
 include_once(__ROOT__ . '/classes/pm/UserForm.php');
 
@@ -46,6 +45,9 @@ $this_page = $P->getPage($user_name, $page_id);
 $public = $this_page['public'];
 $comment = $this_page['comment'];;
 error_log("Page id = ".$page_id." comment=".$comment." public=".$public);
+
+$kb = new UserForm($user_name);
+$imgs = new Images();
 ?>
 <link rel="stylesheet" href="/css/editor.css">
 <link rel="stylesheet" href="/css/thumbnail.css">

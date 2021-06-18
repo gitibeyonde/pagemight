@@ -13,9 +13,11 @@ unset($_POST['table']);
 
 $kb = new UserForm($uname);
 
-$kb->insertFormData($tabella, $_POST);
+$result = $kb->insertFormData($tabella, $_POST);
 
+error_log("Last row id = ".print_r($result, true));
 //[table] => contact_from\n    [name] => Abhinandan Prateek\n    [email] => agneya2001@gmail.com\n)\n, referer: http://127.0.0.1/doin/lkp.php?id=2
 
+echo $result[0]['last_insert_rowid()'];
 
 ?>

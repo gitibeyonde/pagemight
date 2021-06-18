@@ -1,5 +1,5 @@
 
-<footer class="footer">
+<footer class="fixed-bottom">
   <div class="container">
   <div class="row">
 <?php

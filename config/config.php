@@ -10,9 +10,8 @@ define("MAIN_VIEW", "main_view");
 define("LOGOUT_VIEW", "logout_view");
 define("EDITOR_VIEW", "editor_view");
 define("UPLOAD_IMAGES", "upload_images");
-define("CREATE_FORMS", "create_forms");
-
-
+define("FORM_CREATE", "form_create");
+define("FORM_DATA", "form_data");
 
 
 define("RZRID","rzp_live_y7DZ0tpYujza3v");

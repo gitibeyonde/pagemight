@@ -5,6 +5,7 @@ include (__ROOT__ . '/views/_header.php');
 require_once (__ROOT__ . '/classes/core/Log.php');
 require_once (__ROOT__ . '/classes/pm/Template.php');
 require_once (__ROOT__ . '/classes/pm/Page.php');
+include_once(__ROOT__ . '/classes/pm/UserForm.php');
 
 $log = $_SESSION['log'];
 $user_name = $_SESSION ['user_name'];
@@ -98,6 +99,45 @@ $ps = $P->getPages($user_name);
 		</div>
     </div>
 
+
+   <div class="card card-feature">
+
+       <div class="row">
+       		<b class="card-feature__title">My Forms</b>
+       </div>
+
+ 		<div class="card card-feature text-lg-left mb-4 mb-lg-0">
+           <div class="row">
+            <?php $kb = new UserForm($user_name);
+            foreach( $kb->ls() as $tn){
+               if ($tn == "form_metadata")continue;
+                ?>
+            	  <div class="col">
+            	  			<div class="overlay-image" style="width: 150px;">
+            	  	  			<a href="/redirect.php?view=form_data&tabella=<?php echo $tn; ?>">
+                	  	   		<div class="thumbnail-container"  style="border: 3px #007c76 solid;">
+                            		<div class="thumbnail">
+                            		   <div class="container" style="padding: 10vh 10px 10px 0px;">
+                            		   		<h1><?php echo $tn; ?></h1>
+                                    		<?php echo $kb->getUserForm($user_name, $tn); ?>;
+                            		   		<h1>Check Submissions</h1>
+                                    	</div>
+                                	</div>
+                            	</div>
+                          		<div class="hover">
+                                	<div class="text">
+                                		<h6><?php echo $tn; ?></h6>
+                                		<h6>Data Submission</h6>
+                                	</div>
+                          		</div>
+                          		</a>
+            	  			</div>
+           			</div>
+        	   <?php } ?>
+       		</div>
+
+		</div>
+    </div>
 </div>
 
 

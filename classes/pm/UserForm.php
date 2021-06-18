@@ -27,6 +27,9 @@ class UserForm extends Sqlite {
         $this->t_delete($table);
     }
 
+    public function getForms(){
+        return $this->ls();
+    }
     public function saveFormType($table, $type){
         $this->query(sprintf ("replace into form_metadata values ('%s', '%s', '%s');", $table, $type, strtotime ( 'now' )));
     }
@@ -54,9 +57,9 @@ class UserForm extends Sqlite {
             }
             $q = sprintf ( self::$qpool ['p_insert'], $tname, implode ( ',', $paramname ), implode ( ',', $paramvalues ));
             $this->log->trace ( "Query=".$q);
-            return $this->query($q);
+            return $this->query($q) ? $this->query('select last_insert_rowid()') : false;
         }
-        return null;
+        return false;
 
     }
 
