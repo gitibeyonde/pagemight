@@ -79,10 +79,9 @@ $ps = $P->getPages($user_name);
             	  <div class="col">
             	  	<div class="overlay-image" style="width: 150px;">
             	  	  <a href="/redirect.php?view=editor_view&page=<?php echo $t['name']; ?>">
-                	  	   <div class="thumbnail-container">
+                	  	   <div class="thumbnail-container"  style="border: 3px #007c76 solid;">
                             <div class="thumbnail">
-                              <iframe src="/views/editor/display.php?m=<?php echo urlencode(base64_encode(gzcompress($t['content'], 9))); ?>"
-                                           onload="this.style.opacity = 1" style="opacity: 1;border: 10px #007c76 solid;" > </iframe>
+                				<?php echo $t['content']; ?>
                             </div>
                           </div>
                           <div class="hover">

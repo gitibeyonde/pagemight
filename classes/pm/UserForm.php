@@ -32,5 +32,23 @@ class UserForm extends Sqlite {
     public function getFormType($table){
         return $this->single_value(sprintf ("select metadata from form_metadata where name='%s';", $table));
     }
+
+    public function getUserForm($tabella){
+        $html = '<form id="targetForm" onsubmit="return false;">';
+        foreach($this->t_columns_types($tabella) as $col_type=>$type){
+            list($col, $type) = explode("->", $col_type);
+            $html .= '<div class="form-group">';
+            $html .= '<label id="label" style="display: none;">'.ucfirst($col).'</label>';
+            $html .= '<input class="form-control" type="<?php echo $type; ?>" name="'.$col.'" placeholder="'.$col.'">';
+            $html .= '</div>';
+        }
+        $html .= '<div class="form-group">';
+      	$html .= '<button type="submit" name="submit" value="customise_add" class="btn">Submit</button>';
+        $html .= '</div>';
+        $html .= '</form>';
+        return $html;
+
+    }
+
 }
 ?>

@@ -44,7 +44,7 @@ class Minify
             $P = new Page();
             $page = $P->getPage($map['user_name'], $map['page_id']);
             error_log("getUrlContent content=".$page['content']);
-            return $page['content'];
+            return array($page['content'], $map['user_name']) ;
         }
         else return null;
     }

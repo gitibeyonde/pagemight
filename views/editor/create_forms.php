@@ -9,7 +9,6 @@ require_once (__ROOT__ . '/classes/core/Utils.php');
 $_SESSION['log'] = new Log ("info");
 $_SESSION['message'] = "";
 $user_name = $_SESSION['user_name'];
-$page_name = $_GET['page'];
 
 
 $submit = isset($_GET['submit']) ? $_GET['submit'] : null;
@@ -80,6 +79,7 @@ else if ($submit == "delete"){
 
           	<form action="/redirect.php?"  method="get">
                 <input type=hidden name=view value="<?php echo CREATE_FORMS; ?>">
+    			<input type=hidden name=page value="<?php echo $page_name; ?>">
 
                 <div class="form-group">
                     <label>Form Name</label>
@@ -173,7 +173,7 @@ else if ($submit == "delete"){
             <form action="/redirect.php?"  method="get" style="float: left;" >
                 <input type=hidden name=view value="<?php echo CREATE_FORMS ?>">
                 <input type=hidden name=tabella value="<?php echo $tn; ?>">
-                <input type=hidden name=bot_id value="<?php echo $bot_id; ?>">
+    			<input type=hidden name=page value="<?php echo $page_name; ?>">
                 <button class="btn btn-sim2" type="submit" name="submit" value="delete">Delete</button>
             </form>
         </div>

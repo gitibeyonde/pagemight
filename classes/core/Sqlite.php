@@ -34,6 +34,9 @@ class Sqlite  {
     // User id is the first param
     function __construct($uname, $bid, $ext){
         $this->log = isset($_SESSION['log']) ? $_SESSION['log'] : $GLOBALS['log'];
+        if ($this->log == null){
+            $this->log = new Log('trace');
+        }
         $dir =  __ROOT__.'/data/'.$uname;
         if (!file_exists($dir)) {
             mkdir($dir, 0777, true);

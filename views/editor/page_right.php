@@ -1,5 +1,5 @@
 
-<div id="no_select" class="container">
+<div class="container no_select">
 
    &nbsp;&nbsp;Preview<a class="btn btn-link" href="https://1do.in/<?php echo $P->getPageUrlCode($user_name, $page_id); ?>" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;<i class="ti-new-window"></i></a>
    <hr/>
@@ -77,8 +77,8 @@
  $("#<?php echo "form-".$f; ?>").click(function(){
      var form_name = '<?php echo "form-".$f; ?>' ;
      console.log("Form name=" + form_name);
-     insertAtCursor("<div class='form'><div class='overlay-image'><img class='image' src='/img/fph.png'/><div class='normal'> <div class='text'>" + form_name +
-    	      "</div></div></div>");
+     insertAtCursor("<div id='<?php echo "form-".$f; ?>' class='col no_select' style='border: 3px silver solid;text-align: center;padding: 60px 0 59px 0px;background: #f6f6f6;'>"
+    	     + form_name + " will be substituted when page is rendered</div></div>");
   });
  <?php } ?>
 

@@ -8,7 +8,7 @@ if (isset($_GET['id'])){
     $id=$_GET['id'];
     //error_log("Id id=".$id." p=".$p);
     $od = new Minify();
-    $content =  $od->getUrlContent($id);
+    list($content, $user_name) =  $od->getUrlContent($id);
     error_log("Content=".$content);
     $ip = getenv('HTTP_CLIENT_IP')?:
     getenv('HTTP_X_FORWARDED_FOR')?:
@@ -29,9 +29,7 @@ if (isset($_GET['id'])){
     }
     else {
         $od->logAccess($id, $ip, $ag);
-        include(__ROOT__.'/doin/_header.php');
-        echo $content;
-        include(__ROOT__.'/doin/_footer.php');
+        include(__ROOT__.'/doin/holder.php');
     }
 }
 else {
