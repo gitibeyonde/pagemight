@@ -32,7 +32,7 @@ $ps = $P->getPages($user_name);
 
 <link rel="stylesheet" href="/css/thumbnail.css">
 <!-- Page content-->
-<div class="container" style="padding: 5vh 0 0 0;">
+<div class="container" style="padding: 2vh 0 0 0;">
 
 
    <div class="card card-feature">

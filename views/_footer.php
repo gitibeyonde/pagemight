@@ -51,10 +51,10 @@ if (isset ( $_SESSION ['message'] ) && $_SESSION ['message'] != "") {
              <?php } ?>
         </div>
         <div class="col-md-4 col-6 footer-social">
-            <a href="https://twitter.com/agneya2001" class="footer-text"><i class="ti-twitter-alt"></i></a>
-            <a href="https://fb.me/ibeyonde" class="footer-text"><i class="ti-facebook"></i></a>
-            <a href="https://github.com/gitibeyonde" class="footer-text"><i class="ti-github"></i></a>
-            <a href="https://www.linkedin.com/company/ibeyonde-cloud/" class="footer-text"><i class="ti-linkedin"></i></a>
+            <a href="https://twitter.com/agneya2001" target="_blank" class="footer-text"><i class="ti-twitter-alt"></i></a>
+            <a href="https://fb.me/ibeyonde" target="_blank" class="footer-text"><i class="ti-facebook"></i></a>
+            <a href="https://github.com/gitibeyonde" target="_blank" class="footer-text"><i class="ti-github"></i></a>
+            <a href="https://www.linkedin.com/company/ibeyonde-cloud/" target="_blank" class="footer-text"><i class="ti-linkedin"></i></a>
         </div>
     </div>
   </div>
