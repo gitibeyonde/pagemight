@@ -32,7 +32,9 @@ else {
         <!-- Responsive navbar-->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#"><i class="ti-write">&nbsp;&nbsp;</i>PageMight</a>
+
+                <a class="navbar-brand btn btn-sim4" href="/index.php">
+                <i class="ti-write card-feature__icon">&nbsp;</i>&nbsp;&nbsp;PageMight</a>
                  <ul class="nav navbar-nav menu_nav justify-content-end">
                     <?php if (isset($_SESSION['user_logged_in']) && $_SESSION['user_logged_in'] == 1){ ?>
                  	<li class="nav-item"><a class="nav-link" href="/redirect.php?view=<?php echo LOGOUT_VIEW ?>">

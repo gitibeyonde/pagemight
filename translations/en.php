@@ -60,7 +60,7 @@ define("WORDING_EDIT_USER_DATA", "Profile");
 define("WORDING_EDIT_YOUR_CREDENTIALS", "You are logged in and can edit your credentials here");
 define("WORDING_FORGOT_MY_PASSWORD", "Forgot Password");
 define("WORDING_USER_PORTAL", "User Portal");
-define("WORDING_LOGIN", "Login");
+define("WORDING_LOGIN", "Sign In");
 define("WORDING_LOGOUT", "Logout");
 define("WORDING_NEW_EMAIL", "New email");
 define("WORDING_NEW_PASSWORD", "New password");

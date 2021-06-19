@@ -40,28 +40,24 @@ include ('_header.php');
 
                 <form class="form" role="form" method="post" action="/password_reset.php" name="password-reset_form">
                     <div class="input-group mb-3">
-                        <div class="input-group-prepend"></div>
+                        <div class="input-group-prepend"><i class="ti ti-email card-feature__icon"></i></div>
                         <input type="text" name="user_email" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="basic-addon1" required>
                     </div>
-                    <div class="row">
-                        <div class="col-md-6 col-xs-12 col-sm-12">
-                            <button type="submit" name="request_password_reset" class="btn btn-sim4 btn-block">
-                                <h7>Send Reset Link</h7>
-                            </button>
-                        </div>
-                        <div class="col-md-6 col-xs-12 col-sm-12">
-                            <a href="/login.php"><small style="color: white; margin-left: 5px;" class="pull-right"><h7><?php echo WORDING_BACK_TO_LOGIN; ?></h7></small></a>
-                        </div>
+                	<div class="row" style="padding: 0vh 6vh 0vh 6vh;">
+                        <button type="submit" name="request_password_reset" class="btn btn-sim4 btn-block">
+                            <h7>Send Reset Link</h7>
+                        </button>
+                    </div>
+                    <div class="col-md-6 col-xs-12 col-sm-12">
+                        <a href="/login.php"><small style="color: white; margin-left: 5px;" class="pull-right"><h7><?php echo WORDING_BACK_TO_LOGIN; ?></h7></small></a>
                     </div>
                 </form>
                 <?php } ?>
 
-                <div class="row" style="padding: 3vh 0vh 0vh 5vh;">
-                    <div class="col-md-12 align-self-md-end col-xs-12 col-sm-12">
+		        <div class="row"  style="padding: 3vh 0vh 0vh 5vh;">
                 		<h7> <a href="/index.php">Sign In</a>
         		                    &nbsp;|&nbsp;
         		           <a href="/register.php">Sign Up</a> </h7>
-                    </div>
                  </div>
             </div>
         </div>
