@@ -18,7 +18,7 @@ if($submit == "saverow"){
     $sql = "update ".$tabella." set ";
     $headers = $kb->t_columns($tabella);
     foreach($headers as $head){
-        $sql.= $head."='".$_GET[$head]."', ";
+        $sql.= "`".$head."`='".$_GET[$head]."', ";
     }
     $sql = substr($sql, 0, strlen($sql)-2);
     $sql .= " where rowid = ".$rowid;
@@ -76,7 +76,7 @@ else if ($submit == "addrow"){
     </thead>
     <tbody>
     <?php
-    $rows = $kb->multiple_rows_cols("select rowid, * from ".$tabella.";");
+    $rows = $kb->multiple_rows_cols("select rowid, * from ".$tabella." order by rowid desc;");
     foreach($rows as $row){
 
         echo "<tr>";
@@ -89,7 +89,7 @@ else if ($submit == "addrow"){
                 }
                 else {
                     echo "<td>";
-                    echo '<input type=text name='.$key.' value="'.$val.'">';
+                    echo '<input type=text name="'.$key.'" value="'.$val.'">';
                     echo "</td>";
                 }
             }
@@ -114,7 +114,7 @@ else if ($submit == "addrow"){
         echo '</form>';
         echo "</td>";
         echo "<td>";
-        echo '<form action="/index.php"  method="get" style="float: left;" onsubmit="return confirm(\'Do you really want delete this row ?\');">';
+        echo '<form action="/redirect.php"  method="get" style="float: left;" onsubmit="return confirm(\'Do you really want delete this row ?\');">';
         echo '<input type=hidden name=view value="form_data">';
         echo '<input type=hidden name=number value="'.$row['number'].'">';
         echo '<input type=hidden name=tabella value="'.$tabella.'">';
@@ -127,7 +127,7 @@ else if ($submit == "addrow"){
     }
 
     echo "<tr><td></td>";
-    echo '<form action="/index.php"  method="get" style="float: left;">';
+    echo '<form action="/redirect.php"  method="get" style="float: left;">';
     echo '<input type=hidden name=view value="form_data">';
     echo '<input type=hidden name=tabella value="'.$tabella.'">';
     $headers = $kb->t_columns($tabella);

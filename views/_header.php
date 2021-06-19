@@ -16,8 +16,8 @@ else {
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
+        <meta name="description" content="build online html pages with embedded forms and images" />
+        <meta name="author" content="Abhinandan Prateek" />
         <title>PageMight - Online Page builder</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="/img/write48x48.ico" />
@@ -33,8 +33,7 @@ else {
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
 
-                <a class="navbar-brand btn btn-sim4" href="/index.php">
-                <i class="ti-write card-feature__icon">&nbsp;</i>&nbsp;&nbsp;PageMight</a>
+                <a class="navbar-brand" href="/index.php" style="color: #3a57af;font-weight: 900;font-size: 2rem;">PageMight</a>
                  <ul class="nav navbar-nav menu_nav justify-content-end">
                     <?php if (isset($_SESSION['user_logged_in']) && $_SESSION['user_logged_in'] == 1){ ?>
                  	<li class="nav-item"><a class="nav-link" href="/redirect.php?view=<?php echo LOGOUT_VIEW ?>">
