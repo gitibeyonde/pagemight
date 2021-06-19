@@ -45,18 +45,19 @@ include('_header.php');
                     <button name="register" type="submit" class="btn btn-block btn-sim4"><h7><?php echo WORDING_REGISTER; ?></h7></button>
                 </div>
 
-                <div class="row" style="padding: 3vh 0vh 0vh 5vh;">
-                    <div class="col-md-12 align-self-md-end col-xs-12 col-sm-12">
-                        <h7>
-                            <a href="/reset_pass.php">Forgot Password</a>
-        		                    &nbsp;|&nbsp;
-                            <a href="/index.php">Sign In</a>
-                         </h7>
-                        <br/>
-                        <br/>
-                    </div>
-                </div>
             </form>
+        </div>
+
+        <div class="row">
+           <div class="col center-block text-center">
+                    <h7>
+                        <a href="/reset_pass.php">Forgot Password</a>
+    		                    &nbsp;|&nbsp;
+                        <a href="/index.php">Sign In</a>
+                     </h7>
+                    <br/>
+                    <br/>
+            </div>
         </div>
     </div>
     <div class="col-lg-3 col-md-2 d-lg-block d-md-block d-sm-none d-none">

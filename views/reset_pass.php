@@ -54,11 +54,13 @@ include ('_header.php');
                 </form>
                 <?php } ?>
 
-		        <div class="row"  style="padding: 3vh 0vh 0vh 5vh;">
-                		<h7> <a href="/index.php">Sign In</a>
-        		                    &nbsp;|&nbsp;
-        		           <a href="/register.php">Sign Up</a> </h7>
-                 </div>
+            </div>
+	        <div class="row">
+               <div class="col center-block text-center">
+            		<h7> <a href="/index.php">Sign In</a>
+    		                    &nbsp;|&nbsp;
+    		           <a href="/register.php">Sign Up</a> </h7>
+    		   </div>
             </div>
         </div>
         <div class="col-lg-3 col-md-2 d-lg-block d-md-block d-sm-none d-none">
