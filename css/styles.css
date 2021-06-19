@@ -364,3 +364,8 @@ color: var(--blue7);
 }
 
 
+.form-fields {
+	padding: 9px 1px 9px 12px;
+   	box-shadow: 1px 1px 1px grey;
+    background: #eeeeee;
+}

@@ -6,10 +6,13 @@ include (__ROOT__ . '/views/_header.php');
 
         <!-- Page content-->
         <div class="container">
+            <div class="row" style="padding: 5vh 0 5vh 0;">
+              <div class="col" style="text-align: center;">
+        	  </div>
+            </div>
 
-            <div class="row" style="padding-top: 10vh;">
-             	<div class="col-lg-1 d-lg-block d-md-none d-sm-none d-none"></div>
-        		<div class="col-lg-5 col-md-6 col-12 col-sm-12">
+            <div class="row">
+        		<div class="col-md-6 col-12 col-sm-12">
             		<form role="form" method="post" action="/redirect.php?<?php echo $_SERVER['QUERY_STRING'] == "view=logout_view" ? "" : $_SERVER['QUERY_STRING']; ?>" name="loginform">
 		               <div class="card card-feature text-center text-lg-left mb-4 mb-lg-0">
 		                    <h3 class="card-feature__title"  style="padding: 0vh 4vh 2vh 4vh;">Sign In</h3>
@@ -37,8 +40,10 @@ include (__ROOT__ . '/views/_header.php');
                        </div>
                     </div>
             	</div>
-            	<div class="col-lg-1 d-lg-block d-md-none d-sm-none d-none"></div>
-        		<div class="col-lg-5 col-md-6 d-lg-block d-md-block d-sm-none d-none">
+        		<div class="col-md-6 d-lg-block d-md-block d-sm-none d-none m-auto" style="text-align: center;">
+            		<h5>build forms pages</h5>
+            		<h5>share minified link</h5>
+            		<h5>check form submissions</h5>
             	</div>
             </div>
 

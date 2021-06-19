@@ -65,19 +65,24 @@ class UserForm extends Sqlite {
 
     public function getUserForm($user_name, $tabella){
         $crypt = new Encryption();
-
-        $html = '<form id=action-'.$tabella.' action="/doin/form_submit.php" method="post">';
+        $html = '<h3>'.$tabella.'</h3><hr/><br/>';
+        $html .= '<form id=action-'.$tabella.' action="/doin/form_submit.php" method="post">';
         foreach($this->t_columns_types($tabella) as $col_type=>$type){
             list($col, $type) = explode("->", $col_type);
             $html .= '<input type="hidden" name="table" value="'.$crypt->encrypt($tabella).'">';
             $html .= '<input type="hidden" name="user_name" value="'.$crypt->encrypt($user_name).'">';
             $html .= '<div class="form-group">';
             $html .= '<label id="label" style="display: none;">'.ucfirst($col).'</label>';
-            $html .= '<input class="form-control" type="'.$type.'" name="'.$col.'" placeholder="'.$col.'" required>';
+            if ($type == "textarea") {
+                $html .= '<textarea class="form-control" type="'.$type.'" name="'.$col.'" placeholder="'.ucfirst($col).'" required></textarea>';
+            }
+            else {
+                $html .= '<input class="form-control" type="'.$type.'" name="'.$col.'" placeholder="'.ucfirst($col).'" required>';
+            }
             $html .= '</div>';
         }
         $html .= '<div class="form-group">';
-        $html .= '<button id=message-'.$tabella.' type="submit" name="submit" value="customise_add" class="btn btn-info">Submit</button>';
+        $html .= '<button id=message-'.$tabella.' type="submit" name="submit" value="customise_add" class="btn btn-info"> Submit </button>';
         $html .= '</div>';
         $html .= '</form>';
         return $html;

@@ -73,8 +73,8 @@
             Insert:<select
                     onchange="formatDoc('insertHtml',this[this.selectedIndex].value + '\n');this.selectedIndex=0;">
                     <option class="heading" selected>Row</option>
-                     <option value="<br/><div class="row"><div class="col">col-1</div><div class="col">col-2</div><br/>'>2 Col</option>
-                     <option value='<br/><div class="row"><div class="col">col-1</div><div class="col">col-2</div><div class="col">col-3</div></div><br/>">3 Col</option>
+                     <option value='<br/><div class="row"><div class="col">col-1</div><div class="col">col-2</div><br/>'>2 Col</option>
+                     <option value='<br/><div class="row"><div class="col">col-1</div><div class="col">col-2</div><div class="col">col-3</div></div><br/>'>3 Col</option>
                      <option value='<br/><div class="row"><div class="col">col-1</div><div class="col">col-2</div><div class="col">col-3</div><div class="col">col-4</div></div><br/>'>4 Col</option>
                      <option value='<br/><div class="row"><div class="col">col-1</div><div class="col">col-2</div><div class="col">col-3</div><div class="col">col-4</div><div class="col">col-5</div></div><br/>'>5 Col</option>
                      <option value='<br/><div class="row"><div class="col">col-1</div><div class="col">col-2</div><div class="col">col-3</div><div class="col">col-4</div><div class="col">col-5</div><div class="col">col-6</div></div><br/>'>6 Col</option>

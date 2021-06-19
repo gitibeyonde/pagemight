@@ -33,7 +33,7 @@ else {
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
 
-                <a class="navbar-brand" href="/index.php" style="color: #3a57af;font-weight: 900;font-size: 2rem;">PageMight</a>
+                <a class="navbar-brand" href="/index.php" style="font-weight: 900;font-size: 2rem;">PageMight</a>
                  <ul class="nav navbar-nav menu_nav justify-content-end">
                     <?php if (isset($_SESSION['user_logged_in']) && $_SESSION['user_logged_in'] == 1){ ?>
                  	<li class="nav-item"><a class="nav-link" href="/redirect.php?view=<?php echo LOGOUT_VIEW ?>">

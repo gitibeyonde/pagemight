@@ -81,17 +81,17 @@ else if ($submit == "delete"){
                 <input type=hidden name=view value="<?php echo FORM_CREATE; ?>">
     			<input type=hidden name=page value="<?php echo $page_name; ?>">
 
-                <div class="form-group">
+                <div class="form-group form-fields">
                     <label>Form Name</label>
                 	<input type="text" name="tabella" value="<?php echo $tabella; ?>" Placeholder="Form Name" required>
                	</div>
 
                 <?php for ($i=0;$i<$count; $i++) {
-                    echo '<div class="form-group">';
+                    echo '<div class="form-group form-fields">';
                     echo '<input type=text name=col'.$i.' value="'.$col[$i].'" readonly>';
                     echo '<input type=text name=input'.$i.' value="'.$input[$i].'" readonly>';
                     if ($i == $count -1){
-                        echo '<button class="btn btn-sim3" type="submit" name="submit" value="removecolumn">X</button>';
+                        echo '<button class="btn btn-sim3" type="submit" name="submit" value="removecolumn"><i class="ti-trash btn btn-sim1"></i></button>';
                     }
                     echo '</div>';
 
@@ -118,7 +118,7 @@ else if ($submit == "delete"){
                     <option value="range">range</option>
                     </select>
                     <input type=hidden name=count value="<?php echo $count; ?>">
-                	<button class="btn btn-sim3" type="submit" name="submit" value="addcolumn">+</button>
+                	<button class="btn btn-sim3" type="submit" name="submit" value="addcolumn"><i class="ti-plus btn btn-sim2"></i></button>
                 </div>
 
 

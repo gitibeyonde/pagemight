@@ -1,7 +1,7 @@
 
 <footer class="fixed-bottom">
   <div class="container">
-  <div class="row">
+  <div id="error" class="row">
 <?php
 // show potential errors / feedback (from login object)
 if (isset ( $login )) {
@@ -59,3 +59,8 @@ if (isset ( $_SESSION ['message'] ) && $_SESSION ['message'] != "") {
     </div>
   </div>
 </footer>
+<script>
+setTimeout(function(){
+    $('#error').hide()
+}, 5000) // time in millisecond for as long as you like
+</script>

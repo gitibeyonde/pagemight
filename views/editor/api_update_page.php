@@ -2,6 +2,7 @@
 define('__ROOT__', dirname(dirname(dirname(__FILE__))));
 include_once(__ROOT__ . '/classes/core/Log.php');
 include_once(__ROOT__ . '/classes/pm/Page.php');
+include_once(__ROOT__ . '/classes/pm/UserForm.php');
 
 $log = new Log("trace");
 
@@ -13,9 +14,9 @@ $public = isset($_GET['public']) ? $_GET['public'] : $_POST['public'];
 
 error_log("User name=".$user_name." submit=".$submit." page=".$page_id);
 
-$P = new Page();
 
 if ($submit == "u"){
+    $P = new Page();
     if (isset($comment)){
         echo $P->updatePageComment($user_name, $page_id, $comment);
     }
@@ -25,6 +26,12 @@ if ($submit == "u"){
     else {
         echo "0";
     }
+}
+else if (submit == "ufn"){
+    $F = new UserForm($user_name);
+    $old_name = isset($_GET['on']) ? $_GET['on'] : $_POST['on'];
+    $new_name = isset($_GET['nn']) ? $_GET['nn'] : $_POST['nn'];
+    $F->changeName($old_name, $new_name);
 }
 else {
     echo "0";
