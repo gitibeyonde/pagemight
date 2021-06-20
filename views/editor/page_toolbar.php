@@ -1,5 +1,5 @@
-<div class="container no_select">
-      <div class="row">
+<div class="container-fluid no_select">
+      <div class="row header-toolbar">
         <div class="col-2">
             <button type="submit" name="submit" value="toimages" class="btn btn-link"
 							   onclick="return onClickSubmitButton('<?php echo MAIN_VIEW; ?>');">
@@ -17,7 +17,7 @@
       </div>
 
       <div class="row">
-		<div class="col-12" id="toolBar1">
+		<div class="col-12 toolbar" id="toolBar1">
 
             <button type="submit" id="save_content" name="submit" value="update" class="btn btn-link"
 								onclick="return onClickSubmitButton('<?php echo EDITOR_VIEW; ?>');">
@@ -86,7 +86,7 @@
 
      <div class="row">
 
-		<div class="col-12" id="toolBar2">
+		<div class="col-12 toolbar" id="toolBar2">
 			<img class="intLink" title="Clean"
 				onclick="if(validateMode()&&confirm('Are you sure?')){oDoc.innerHTML=sDefTxt};"
 				src="data:image/gif;base64,R0lGODlhFgAWAIQbAD04KTRLYzFRjlldZl9vj1dusY14WYODhpWIbbSVFY6O7IOXw5qbms+wUbCztca0ccS4kdDQjdTLtMrL1O3YitHa7OPcsd/f4PfvrvDv8Pv5xv///////////////////yH5BAEKAB8ALAAAAAAWABYAAAV84CeOZGmeaKqubMteyzK547QoBcFWTm/jgsHq4rhMLoxFIehQQSAWR+Z4IAyaJ0kEgtFoLIzLwRE4oCQWrxoTOTAIhMCZ0tVgMBQKZHAYyFEWEV14eQ8IflhnEHmFDQkAiSkQCI2PDC4QBg+OAJc0ewadNCOgo6anqKkoIQA7" />

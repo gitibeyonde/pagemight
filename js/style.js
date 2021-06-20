@@ -9,7 +9,7 @@
 
 $(function() {
 
-	var author = 'Abhinandan Prateek';
+	var author = '<div style="position: fixed;bottom: 0;right: 20px;background-color: #fff;box-shadow: 0 4px 8px rgba(0,0,0,.05);border-radius: 3px 3px 0 0;font-size: 12px;padding: 5px 10px;">Abhinandan Prateek</div>';
 	$("body").append(author);
 
 	$("input[type='password'][data-eye]").each(function(i) {
@@ -26,15 +26,15 @@ $(function() {
 			paddingRight: 60
 		});
 		$this.after($("<div/>", {
-			html: 'Show',
-			class: 'btn btn-primary btn-sm',
+			html: '',
+			class: 'ti ti-eye',
 			id: 'passeye-toggle-'+i,
 		}).css({
 				position: 'absolute',
 				right: 10,
 				top: ($this.outerHeight() / 2) - 12,
 				padding: '2px 7px',
-				fontSize: 12,
+				fontSize: 20,
 				cursor: 'pointer',
 		}));
 

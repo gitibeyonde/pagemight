@@ -9,6 +9,13 @@ img.intLink {
     height: 32px;
 }
 
+.header-toolbar {
+	background: #fdfdfd;
+}
+.toolbar {
+	background: #fafafa;
+}
+
 #toolBar1 select {
     font-size: calc(.6vh + .6vw);
 }
@@ -19,6 +26,7 @@ img.intLink {
 
 
 #htmlEditorPane {
+	width: 100%;
     position: relative;
     height: calc(100vh - 280px);
     padding-left: 5px;
@@ -30,31 +38,6 @@ img.intLink {
     -webkit-user-select: text;
     user-select: text;
 }
-
-@media (min-width: 576px) { 
-	#htmlEditorPane {
-    	width: 95vw;
-	}
-}
-
-@media (min-width: 768px) { 
-	#htmlEditorPane {
-    	width: 80vw;
-	}
-}
-
-@media (min-width: 992px) { 
-	#htmlEditorPane {
-    	width: 72vw;
-	}
-}
-
-@media (min-width: 1200px) { 
-	#htmlEditorPane {
-    	width: 72vw;
-	}
-}
-
 
 #textBox #sourceText {
     padding: 0;

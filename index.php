@@ -27,7 +27,8 @@ include (__ROOT__ . '/views/_header.php');
 										Forgot Password?
 									</a>
 								</label>
-                               <input id="password" type="password" name="user_password" class="form-control" placeholder="Password" aria-label="Recipient's username" aria-describedby="basic-addon2" data-eye autocomplete>
+                               <input type="password" name="user_password" class="form-control" placeholder="Password" aria-label="Recipient's username"
+                               			aria-describedby="basic-addon2" required data-eye="" autocomplete>
 							    <div class="invalid-feedback">
 							    	Password is required
 						    	</div>

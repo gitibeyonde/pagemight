@@ -1,15 +1,5 @@
 <?php
 require_once(__ROOT__.'/config/config.php');
-
-require_once(__ROOT__.'/classes/Mobile_detect.php');
-$Md = new Mobile_Detect();
-if ($Md->isMobile()){
-    $_SESSION["mobile"] = true;
-}
-else {
-    $_SESSION["mobile"] = false;
-}
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,6 +17,8 @@ else {
         <!-- Bootstrap core JS-->
         <script src="/jquery/jquery-3.6.0.min.js"></script>
         <script src="/bootstrap/js/bootstrap.bundle.min.js"></script>
+		<script src="/js/scripts.js"></script>
+		<script src="/js/style.js"></script>
     </head>
     <body>
         <!-- Responsive navbar-->
