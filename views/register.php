@@ -31,7 +31,7 @@ include('_header.php');
 
 							<div class="form-group">
 								<label for="password">Password</label>
-								<input id="password" type="password" name="user_password_repeat" pattern=".{6,}" class="form-control" placeholder="Repeat Password" aria-label="Repeat Password" aria-describedby="basic-addon3" autocomplete="off" required>
+								<input id="repeat_password" type="password" name="user_password_repeat" pattern=".{6,}" class="form-control" placeholder="Repeat Password" aria-label="Repeat Password" aria-describedby="basic-addon3" autocomplete="off" required>
 								<div class="invalid-feedback">
 									Password is required
 								</div>

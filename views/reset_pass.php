@@ -58,7 +58,7 @@ include ('_header.php');
 								Email is invalid
 							</div>
 							<div class="form-text text-muted">
-								By clicking "Reset Password" we will send a password reset link
+								By clicking "Reset Password" we will email a password reset link
 							</div>
 						</div>
 

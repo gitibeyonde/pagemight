@@ -330,15 +330,51 @@ color: var(--blue7);
 }
 
 .my-login-page .brand {
-	width: 90px;
-	height: 90px;
 	overflow: hidden;
 	border-radius: 50%;
 	margin: 40px auto;
 	box-shadow: 0 4px 8px rgba(0,0,0,.05);
 	position: relative;
 	z-index: 1;
-	background: linear-gradient(45deg, lightskyblue, transparent);
+	background: linear-gradient(45deg, #fefefe, #007bff);
+	display: block;
+}
+
+@media (max-width: 575px) { 
+	.my-login-page .brand {
+		display: none;
+	}
+}
+@media (min-width: 576px) { 
+	.my-login-page .brand {
+		width: 30px;
+		height: 30px;
+		margin: 30px auto;
+	}
+}
+
+@media (min-width: 768px) {
+	.my-login-page .brand {
+		width: 50px;
+		height: 50px;
+		margin: 35px auto;
+	} 
+}
+
+@media (min-width: 992px) { 
+	.my-login-page .brand {
+		width: 70px;
+		height: 70px;
+		margin: 40px auto;
+	}
+}
+
+@media (min-width: 1200px) {
+	.my-login-page .brand {
+		width: 90px;
+		height: 90px;
+		margin: 50px auto;
+	}
 }
 
 .my-login-page .brand img {
@@ -368,6 +404,7 @@ color: var(--blue7);
 
 .my-login-page .form-group label {
 	width: 100%;
+	padding-top: 5px;
 }
 
 .my-login-page .btn.btn-block {
