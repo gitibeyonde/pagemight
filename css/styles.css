@@ -25,6 +25,9 @@
   --orange8: #f37121;
 }
 
+body {
+	background: ivory;
+}
 
 /* Tab CSS */
 
@@ -225,56 +228,6 @@ color: var(--blue7);
 	font-size: 0.8rem;
 }
 
-.card-feature {
-	background: #fafafa ! important;
-	padding: 30px 35px;
-	border: 0;
-	border-radius: 0;
-	background: #faf9ff;
-	-webkit-transition: all 0.3s ease 0s;
-	-moz-transition: all 0.3s ease 0s;
-	-o-transition: all 0.3s ease 0s;
-	transition: all 0.3s ease 0s
-}
-
-.card-feature__icon {
-  font-size: 20px;
-  font-weight: bold ! important;
-  display: inline-block;
-  width: 55px;
-  background-color: #3a57af;
-  padding: 12px 0px 8px 15px;
-  margin-left: 15px;
-  -webkit-border-radius: 4px 0px 0px 4px; 
-  -moz-border-radius: 4px 0px 0px 4px; 
-  border-radius: 4px 0px 0px 4px;
-  color: white;
-  -webkit-box-shadow: 1px 2px 5px rgba(0,0,0,.09);
-  -moz-box-shadow: 1px 2px 5px rgba(0,0,0,.09); 
-  box-shadow: 1px 2px 5px rgba(0,0,0,.09); 
-  border: solid 0px #cbc9c9;
-}
-
-
-.card-feature__icon i, .card-feature__icon span {
-	font-size: 30px;
-	color: #21146a
-}
-
-.card-feature__title {
-	padding: 10px;
-	font-size: 22px;
-	font-weight: 600
-}
-
-.card-feature__subtitle {
-	margin-bottom: 0
-}
-
-.card-feature:hover {
-	background: #fff;
-	box-shadow: 0px 10px 20px 0px rgba(33, 20, 106, 0.1)
-}
 
 /* Sticky footer styles
 -------------------------------------------------- */
@@ -369,3 +322,78 @@ color: var(--blue7);
    	box-shadow: 1px 1px 1px grey;
     background: #eeeeee;
 }
+
+/** LOGIN SIGN UP RESET ****/
+
+.my-login-page {
+	font-size: 14px;
+}
+
+.my-login-page .brand {
+	width: 90px;
+	height: 90px;
+	overflow: hidden;
+	border-radius: 50%;
+	margin: 40px auto;
+	box-shadow: 0 4px 8px rgba(0,0,0,.05);
+	position: relative;
+	z-index: 1;
+	background: linear-gradient(45deg, lightskyblue, transparent);
+}
+
+.my-login-page .brand img {
+	width: 100%;
+}
+
+.my-login-page .card-wrapper {
+	width: 400px;
+}
+
+.my-login-page .card {
+	border-color: transparent;
+	box-shadow: 0 4px 8px rgba(0,0,0,.05);
+}
+
+.my-login-page .card.fat {
+	padding: 10px;
+}
+
+.my-login-page .card .card-title {
+	margin-bottom: 30px;
+}
+
+.my-login-page .form-control {
+	border-width: 2.3px;
+}
+
+.my-login-page .form-group label {
+	width: 100%;
+}
+
+.my-login-page .btn.btn-block {
+	padding: 12px 10px;
+}
+
+.my-login-page .footer {
+	margin: 40px 0;
+	color: #888;
+	text-align: center;
+}
+
+@media screen and (max-width: 425px) {
+	.my-login-page .card-wrapper {
+		width: 90%;
+		margin: 0 auto;
+	}
+}
+
+@media screen and (max-width: 320px) {
+	.my-login-page .card.fat {
+		padding: 0;
+	}
+
+	.my-login-page .card.fat .card-body {
+		padding: 15px;
+	}
+}
+   

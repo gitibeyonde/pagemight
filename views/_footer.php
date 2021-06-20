@@ -64,3 +64,5 @@ setTimeout(function(){
     $('#error').hide()
 }, 5000) // time in millisecond for as long as you like
 </script>
+</body>
+</html>
