@@ -13,6 +13,20 @@
         <!-- Bootstrap core JS-->
         <script src="/jquery/jquery-3.6.0.min.js"></script>
         <script src="/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <style type="text/css">
+        .pagemight {
+            position:fixed;
+            bottom:5px;
+            right:0px;
+            height:26px;
+            width:150px;
+            background-color:gold;
+        }
+        .pagemight a {
+            color: green;
+            padding: 0 5px 5px 10px;
+            }
+        </style>
     </head>
     <body>
 	<div class="container">

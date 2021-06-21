@@ -14,6 +14,9 @@ include(__ROOT__.'/doin/_footer.php');
 
 $user_name = $p['user_name'];
 ?>
+<div class="pagemight">
+ <a href="https://pagemight.com" target="_blank">©&nbsp;PageMight</a>
+</div>
 <script>
 
 <?php $kb = new UserForm($user_name);
