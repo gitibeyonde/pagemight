@@ -1,15 +1,23 @@
 <div class="container-fluid no_select">
       <div class="row header-toolbar">
-        <div class="col-4">
-            <button type="submit" name="submit" value="toimages" class="btn btn-link"
+        <div class="col-1">
+            <button type="submit" name="submit" value="back" class="btn btn-link"
 							   onclick="return onClickSubmitButton('<?php echo MAIN_VIEW; ?>');">
             	<i class="ti-control-backward"  style="color: blue;font-size: 26px;"></i>&nbsp;&nbsp;</button>
         </div>
-        <div class="col-6">
-            <input type="text" name="page" placeholder="page name" size="16" value="<?php echo $page_name; ?>" style="border: 0px;text-decoration: underline;" required>
+        <div class="col-4">
+            <input type="text" name="page_name" placeholder="page name" size="16" value="<?php echo $page_name; ?>"
+            		style="border: 0px;text-decoration: underline;" required>
         </div>
         <div class="col-2">
             <input type="checkbox" name="switchMode" onchange="setDocMode(this.checked);" /> <label for="switchBox">HTML</label>
+        </div>
+        <div class="col-2">
+        </div>
+        <div class="col-3" style="text-align: right;background: red;">
+			<a class="btn btn-sim0" href="/redirect.php?view=editor_view&page_code=<?php echo $page_code; ?>"><b style="color: pink;">HTML</b></a>
+			<a class="btn btn-sim0" href="/redirect.php?view=editor_css&page_code=<?php echo $page_code; ?>"><b style="color: white;">CSS</b></a>
+			<a class="btn btn-sim0" href="/redirect.php?view=editor_js&page_code=<?php echo $page_code; ?>"><b style="color: white;">JS</b></a>
         </div>
       </div>
 

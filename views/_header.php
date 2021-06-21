@@ -6,7 +6,7 @@ require_once(__ROOT__.'/config/config.php');
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="build online html pages with embedded forms and images" />
+        <meta name="description" content="Create Landing Pages, Catalogs and Flyers, Share minified links and measure performance." />
         <meta name="author" content="Abhinandan Prateek" />
         <title>PageMight - Online Page builder</title>
         <!-- Favicon-->
@@ -18,7 +18,6 @@ require_once(__ROOT__.'/config/config.php');
         <script src="/jquery/jquery-3.6.0.min.js"></script>
         <script src="/bootstrap/js/bootstrap.bundle.min.js"></script>
 		<script src="/js/scripts.js"></script>
-		<script src="/js/style.js"></script>
     </head>
     <body>
         <!-- Responsive navbar-->

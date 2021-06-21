@@ -46,8 +46,24 @@ if  ($login->getView() == MAIN_VIEW){
     }
 }
 else if  ($login->getView() == EDITOR_VIEW){
+    if (isset( $_SESSION ['user_id']) && isset( $_SESSION ['user_name'])){
+        include("views/editor_view.php");
+    }
+    else {
+        include("index.php");
+    }
+}
+else if  ($login->getView() == EDITOR_CSS){
+    if (isset( $_SESSION ['user_id']) && isset( $_SESSION ['user_name'])){
+        include("views/editor/editor_css.php");
+    }
+    else {
+        include("index.php");
+    }
+}
+else if  ($login->getView() == EDITOR_JS){
         if (isset( $_SESSION ['user_id']) && isset( $_SESSION ['user_name'])){
-            include("views/editor_view.php");
+            include("views/editor/editor_js.php");
         }
         else {
             include("index.php");

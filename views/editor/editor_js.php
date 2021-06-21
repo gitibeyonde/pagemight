@@ -1,27 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="build online html pages with embedded forms and images" />
-        <meta name="author" content="Abhinandan Prateek" />
-        <title>PageMight - Online Page builder</title>
-        <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="/img/write48x48.ico" />
-        <link href="/css/styles.css" rel="stylesheet" />
-        <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
-        <link rel="stylesheet" href="/themify-icons/themify-icons.css">
-        <link rel="stylesheet" href="/css/editor.css">
-        <link rel="stylesheet" href="/css/thumbnail.css">
-        <link rel="stylesheet" href="/css/styles.css">
-        <!-- Bootstrap core JS-->
-        <script src="/jquery/jquery-3.6.0.min.js"></script>
-        <script src="/bootstrap/js/bootstrap.bundle.min.js"></script>
-		<script src="/js/scripts.js"></script>
-        <script src="/js/editor.js"></script>
-        <script src="/js/tidy.js"></script>
-    </head>
 <?php
+include (__ROOT__ . '/views/_header.php');
+
 require_once(__ROOT__.'/config/config.php');
 include_once(__ROOT__ . '/classes/core/Log.php');
 include_once(__ROOT__ . '/classes/pm/Page.php');
@@ -35,37 +14,31 @@ $user_name=$_SESSION['user_name'];
 $submit = isset($_GET['submit']) ? $_GET['submit'] : $_POST['submit'];
 $template_name = isset($_GET['template']) ? $_GET['template'] : $_POST['template'];
 $page_code = isset($_GET['page_code']) ? $_GET['page_code'] : $_POST['page_code'];
-$page_name = isset($_GET['page_name']) ? $_GET['page_name'] : $_POST['page_name'];
+$page_id = null;
 
-$log->debug("User name=".$user_name." submit=".$submit." template=".$template_name." page code=".$page_code);
+$log->debug("User name=".$user_name." submit=".$submit." template=".$template_name." page=".$page_code);
 
 $P = new Page();
-if (isset($page_code)){
-    if ($submit == "update"){
-        //editing an existing page
-        $p = $P->savePageContent($user_name, $page_code, $page_name, $content = $_POST['content']);
-    }
-    else {
-        $p = $P->getPageForUser($user_name, $page_code);
-    }
+if ($submit == "update"){
+    //editing an existing page
+    $p = $P->savePageCss($user_name, $page_code, $content = $_POST['content']);
 }
-else if (isset($template_name)){
-    //create page from template and start
-    $T = new Template();
-    $P = new Page();
-    $t = $T->getTemplate($template_name);
-    $p  = $P->createPageFromTemplate($user_name, $t, Utils::rand10());
+else {
+    $p = $P->getPageForUser($user_name, $page_code);
 }
+
 $page_name = $p['name'];
 $page_code = $p['code'];
-$content = $p['content'];
+$content = $p['js'];
 $public = $p['public'];
 $comment = $p['comment'];;
-error_log("Page code = ".$page_code." comment=".$comment." public=".$public);
+error_log("Page id = ".$page_id." comment=".$comment." public=".$public);
 
 $kb = new UserForm($user_name);
 $imgs = new Images();
 ?>
+<link rel="stylesheet" href="/css/editor.css">
+<script src="/js/editor.js"></script>
 <link rel="stylesheet" href="/css/login.css">
 <body onload="initDoc();">
 	<div class='container-fluid'>
@@ -77,24 +50,48 @@ $imgs = new Images();
 			</div>
     	</div>
     	<div class="col-lg-9 col-md-10 d-lg-block d-md-block col-12 col-sm-12">
-                <form id="nodeform" name="nodeform" action="/redirect.php" method="post" onsubmit="return doSubmitNodeForm();">
 
-                  <?php include_once(__ROOT__ . '/views/editor/page_toolbar.php'); ?>
+           <form id="nodeform" name="nodeform" action="/redirect.php" method="post" onsubmit="return doSubmitNodeForm();">
+
+
+        	  <div class="row header-toolbar">
+                <div class="col-1">
+                    <button type="submit" name="submit" value="toimages" class="btn btn-link"
+        							   onclick="return onClickSubmitButton('<?php echo MAIN_VIEW; ?>');">
+                    	<i class="ti-control-backward"  style="color: blue;font-size: 26px;"></i>&nbsp;&nbsp;</button>
+                </div>
+                <div class="col-2">
+                    <input type="hidden" name="switchMode" onchange="setDocMode(this.checked);" />
+                    <button type="submit" id="save_content" name="submit" value="update" class="btn btn-link"
+        								onclick="return onClickSubmitButton('<?php echo EDITOR_CSS; ?>');">
+                    									<i class="ti-save" style="color: green;font-size: 26px;"></i></button>
+                </div>
+                <div class="col-4">
+                    <input type="text" name="page" placeholder="page name" size="16" value="<?php echo $page_code; ?>" style="border: 0px;text-decoration: underline;" required>
+                </div>
+                <div class="col-2">
+                </div>
+                <div class="col-3" style="text-align: right;background: red;">
+        			<a class="btn btn-sim0" href="/redirect.php?view=editor_view&page_code=<?php echo $page_code; ?>"><b style="color: white;">HTML</b></a>
+        			<a class="btn btn-sim0" href="/redirect.php?view=editor_css&page_code=<?php echo $page_code; ?>"><b style="color: white;">CSS</b></a>
+        			<a class="btn btn-sim0" href="/redirect.php?view=editor_js&page_code=<?php echo $page_code; ?>"><b style="color: pink;">JS</b></a>
+                </div>
+              </div>
 
                   <div class="form-group" id="html_content">
-                   		<div id="htmlEditorPane" contenteditable="true" onscroll="setScrollPosition();"><?php echo $page_code==null ? "": $content; ?></div>
+                   		<pre id="display"><div id="htmlEditorPane" contenteditable="true" onscroll="setScrollPosition();">
+                   		<?php echo $page_code==null ? "": $content; ?></div></pre>
                   </div>
 
                   <input id="content_input" type="hidden" name="content" value="">
                   <input type="hidden" id="viewname" name="view" value="">
                   <input type="hidden" name="page_code" value="<?php echo $page_code; ?>">
-
              </form>
+
       </div> <!-- End second Column -->
 
 
 	<div class="col-lg-2 col-md-2 d-lg-block d-md-block d-sm-none d-none  sel0">
-       <?php include_once(__ROOT__.'/views/editor/page_right.php'); ?><!-- End third Column -->
 	</div>
   </div> <!-- End Big Row -->
 
@@ -144,8 +141,6 @@ function doSubmitNodeForm(){
     return true;
 }
 
-
-enableImageResizeInDiv("htmlEditorPane");
 </script>
 
 

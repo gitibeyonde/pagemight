@@ -7,7 +7,7 @@
 	</div>
 	<hr/>
 
-   &nbsp;&nbsp;Preview<a class="btn btn-link" href="https://1do.in/<?php echo $P->getPageUrlCode($user_name, $page_id); ?>" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;<i class="ti-new-window"></i></a>
+   &nbsp;&nbsp;Preview<a class="btn btn-link" href="/views/editor/page_view.php?uid=<?php echo $user_name; ?>&pcode=<?php echo $page_code; ?>" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;<i class="ti-new-window"></i></a>
    <hr/>
 
 

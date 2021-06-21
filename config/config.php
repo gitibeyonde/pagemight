@@ -9,6 +9,8 @@ require_once(__ROOT__.'/translations/en.php');
 define("MAIN_VIEW", "main_view");
 define("LOGOUT_VIEW", "logout_view");
 define("EDITOR_VIEW", "editor_view");
+define("EDITOR_CSS", "editor_css");
+define("EDITOR_JS", "editor_js");
 define("UPLOAD_IMAGES", "upload_images");
 define("FORM_CREATE", "form_create");
 define("FORM_DATA", "form_data");

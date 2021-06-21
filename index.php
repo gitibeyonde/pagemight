@@ -60,6 +60,25 @@ include (__ROOT__ . '/views/_header.php');
 		</div>
 	</div>
 </section>
+
+<section class="container">
+<br/>
+<hr/>
+<ul style="list-style-type:none;text-align: center;">
+<li>
+<h1>Create Landing Pages, Catalogs and Flyers</h1>
+</li>
+<li><h1>Embed Images and Forms</h1>
+</li>
+<li><h1>Share minified links and measure performance</h1>
+</li>
+<li><h1>Browse form submissions</h1>
+</li>
+</ul>
+
+</section>
+
+
 <script src="/js/login.js"></script>
 
 <?php

@@ -10,29 +10,45 @@ class Page extends Mysql {
         Page::$dv = str_split('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ');
     }
 
-    public function savePage($user_name, $page_name, $content) {
+    public function savePageContent($user_name, $code, $name, $content) {
         $user_name = $this->quote($user_name);
-        $page_name = $this->quote($page_name);
+        $code = $this->quote($code);
+        $name = $this->quote($name);
         $content = $this->quote($content);
-        $r = $this->changeRow ( sprintf ( "insert into page (user_name, name, content, changedOn)  values( %s, %s, %s, now()) ".
-            "on duplicate key update user_name=%s, name=%s, content=%s",
-            $user_name, $page_name, $content,  $user_name, $page_name, $content ) );
-        return $this->selectOne(sprintf ("select id from page where user_name=%s and name=%s;", $user_name , $page_name));
+        $r = $this->changeRow ( sprintf ( "insert into page (user_name, code, name, content, changedOn)  values( %s, %s, %s, %s, now()) ".
+            "on duplicate key update user_name=%s, code=%s, name=%s, content=%s",
+            $user_name, $code, $name, $content,  $user_name, $code, $name, $content ) );
+        return $this->selectRow(sprintf ("select * from page where user_name=%s and code=%s;", $user_name , $code));
     }
 
+    public function savePageCss($user_name, $page_code, $css) {
+        $user_name = $this->quote($user_name);
+        $page_code = $this->quote($page_code);
+        $css = $this->quote($css);
+        $r = $this->changeRow ( sprintf ( "update page set css=%s where user_name=%s and code=%s;", $css, $user_name, $page_code) );
+        return $this->selectRow(sprintf ("select * from page where user_name=%s and code=%s;", $user_name , $page_code));
+    }
+
+    public function savePageJs($user_name, $page_code, $js) {
+        $user_name = $this->quote($user_name);
+        $page_code = $this->quote($page_code);
+        $js = $this->quote($js);
+        $r = $this->changeRow ( sprintf ( "update page set js=%s where user_name=%s and code=%s;", $js, $user_name, $page_code) );
+        return $this->selectRow(sprintf ("select * from page where user_name=%s and code=%s;", $user_name , $page_code));
+    }
     public function getPages($user_name) {
         return $this->selectRows( sprintf ( "select * from page where user_name=%s;", $this->quote($user_name)) );
     }
 
-    public function getPage($user_name, $id) {
-        return $this->selectRow( sprintf ( "select * from page where user_name=%s and id=%s;",  $this->quote($user_name), $this->quote($id)) );
+    public function getPage($user_name, $page_code) {
+        return $this->selectRow( sprintf ( "select * from page where user_name=%s and code=%s;",  $this->quote($user_name), $this->quote($page_code)) );
     }
     public function deletePage($user_name, $page_name) {
         return $this->changeRow( sprintf ( "delete from page where user_name=%s and name=%s;",  $this->quote($user_name), $this->quote($page_name)) );
     }
-    public function getPageForUser($user_name, $page_name) {
-        $page_name = $this->quote($page_name);
-        return $this->selectRow( sprintf ( "select * from page where user_name=%s and name=%s;", $this->quote($user_name) , $page_name) );
+    public function getPageForUser($user_name, $page_code) {
+        $page_code = $this->quote($page_code);
+        return $this->selectRow( sprintf ( "select * from page where user_name=%s and code=%s;", $this->quote($user_name) , $page_code) );
     }
 
     public function getPageUrlCode($user_name, $page_id) {
@@ -44,7 +60,11 @@ class Page extends Mysql {
         return $url_code;
     }
     public function createPageFromTemplate($user_name, $template, $name){
-        return $this->savePage($user_name, $name, $template['content']);
+        $code = Utils::rand36();
+        $this->savePageContent($user_name, $code, $name, $template['content']);
+        $this->savePageCss($user_name, $code, $template['css']);
+        $this->savePageJs($user_name, $code, $template['js']);
+        return $code;
     }
     public function updatePageComment($user_name, $page_id, $comment){
         $user_name = $this->quote($user_name);

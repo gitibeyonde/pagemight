@@ -247,6 +247,11 @@ class Utils {
         $data = random_bytes(32);
         return substr(bin2hex($data), 0, 32);
     }
+    public static function rand36()
+    {
+        $data = random_bytes(36);
+        return substr(bin2hex($data), 0, 36);
+    }
 }
 
 ?>
