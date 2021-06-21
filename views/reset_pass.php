@@ -1,7 +1,7 @@
 <?php
 include ('_header.php');
 ?>
-
+<link rel="stylesheet" href="/css/login.css">
 <section class="container-fluid h-100 my-login-page">
 	<div class="container h-100">
 		<div class="row justify-content-md-center align-items-center h-100">
@@ -86,7 +86,7 @@ include ('_header.php');
 		</div>
 	</div>
 </section>
-
+<script src="/js/login.js"></script>
 <?php
 include ('_footer.php');
 ?>

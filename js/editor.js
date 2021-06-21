@@ -41,7 +41,7 @@ options = {
   "break-before-br":true,
   "uppercase-tags":false,
   "uppercase-attributes":false,
-  "drop-font-tags":true,
+  "drop-font-tags":false,
   "tidy-mark":false
 }
 

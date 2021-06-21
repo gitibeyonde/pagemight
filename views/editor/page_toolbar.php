@@ -1,18 +1,15 @@
 <div class="container-fluid no_select">
       <div class="row header-toolbar">
-        <div class="col-2">
+        <div class="col-4">
             <button type="submit" name="submit" value="toimages" class="btn btn-link"
 							   onclick="return onClickSubmitButton('<?php echo MAIN_VIEW; ?>');">
             	<i class="ti-control-backward"  style="color: blue;font-size: 26px;"></i>&nbsp;&nbsp;</button>
         </div>
-        <div class="col-4">
-            <label for="page_name">Page Name:</label>
-            <input type="text" name="page" placeholder="page name" size="16" value="<?php echo $page_name; ?>" required>
+        <div class="col-6">
+            <input type="text" name="page" placeholder="page name" size="16" value="<?php echo $page_name; ?>" style="border: 0px;text-decoration: underline;" required>
         </div>
         <div class="col-2">
-        </div>
-        <div class="col-4">
-                <input type="checkbox" name="switchMode" onchange="setDocMode(this.checked);" /> <label for="switchBox">HTML</label>
+            <input type="checkbox" name="switchMode" onchange="setDocMode(this.checked);" /> <label for="switchBox">HTML</label>
         </div>
       </div>
 

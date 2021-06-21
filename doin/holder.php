@@ -5,6 +5,9 @@
 
 include(__ROOT__.'/doin/_header.php');
 
+echo "<style>".$css."</style>";
+echo "<script>".$js."</script>";
+
 echo $content;
 
 include(__ROOT__.'/doin/_footer.php');

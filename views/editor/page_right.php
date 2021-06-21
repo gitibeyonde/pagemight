@@ -1,5 +1,11 @@
 
 <div class="container no_select">
+	<div class="row">
+	  <div class="col" style="text-align: right;">
+		<a class="btn btn-link" href="/redirect.php?view=<?php echo LOGOUT_VIEW ?>"><i class="ti-power-off btn-logout"></i></a>
+	  </div>
+	</div>
+	<hr/>
 
    &nbsp;&nbsp;Preview<a class="btn btn-link" href="https://1do.in/<?php echo $P->getPageUrlCode($user_name, $page_id); ?>" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;<i class="ti-new-window"></i></a>
    <hr/>

@@ -8,7 +8,7 @@ if (isset($_GET['id'])){
     $id=$_GET['id'];
     //error_log("Id id=".$id." p=".$p);
     $od = new Minify();
-    list($content, $user_name) =  $od->getUrlContent($id);
+    list($content, $css, $js, $user_name) =  $od->getUrlContent($id);
     error_log("Content=".$content);
     $ip = getenv('HTTP_CLIENT_IP')?:
     getenv('HTTP_X_FORWARDED_FOR')?:

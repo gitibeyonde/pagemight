@@ -26,7 +26,7 @@
 }
 
 body {
-	background: ivory;
+	background: #fafafa;
 }
 
 /* Tab CSS */
@@ -255,62 +255,6 @@ color: var(--blue7);
 }
 
 
-/********* Simple or original overlay *******/
-
-/* Main container */
-.overlay-image {
-  position: relative;
-  width: 100%;
-}
-
-/* Original image */
-.overlay-image .image {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-
-/* Original text overlay */
-.overlay-image .text {
-  color: #008f51;
-  font-size: 30px;
-  line-height: 1.5em;
-  /*text-shadow: 2px 2px 2px #000;*/
-  text-align: center;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100%;
-}
-
-
-/* New overlay on hover */
-.overlay-image .hover {
-  position: absolute;
-  top: 0;
-  height: 100%;
-  width: 100%;
-  opacity: 0;
-  transition: .5s ease;
-}
-
-/* New overlay appearance on hover */
-.overlay-image:hover .hover {
-  opacity: 1;
-}
-
-.overlay-image .normal {
-  transition: .5s ease;
-}
-.overlay-image:hover .normal {
-  opacity: 0;
-}
-.overlay-image .hover {
-  background-color: var(--blue2);
-}
-
-
 .img-box {
    box-shadow: 2px 2px 10px lightblue;
    text-align: center;
@@ -322,115 +266,3 @@ color: var(--blue7);
    	box-shadow: 1px 1px 1px grey;
     background: #eeeeee;
 }
-
-/** LOGIN SIGN UP RESET ****/
-
-.my-login-page {
-	font-size: 14px;
-}
-
-.my-login-page .brand {
-	overflow: hidden;
-	border-radius: 50%;
-	margin: 40px auto;
-	box-shadow: 0 4px 8px #007bff;
-	position: relative;
-	z-index: 1;
-	background: linear-gradient(45deg, rgb(234, 234, 234), #c0c0c0);
-	display: block;
-}
-
-@media (max-width: 575px) { 
-	.my-login-page .brand {
-		display: none;
-	}
-}
-@media (min-width: 576px) { 
-	.my-login-page .brand {
-		width: 30px;
-		height: 30px;
-		margin: 30px auto;
-	}
-}
-
-@media (min-width: 768px) {
-	.my-login-page .brand {
-		width: 50px;
-		height: 50px;
-		margin: 35px auto;
-	} 
-}
-
-@media (min-width: 992px) { 
-	.my-login-page .brand {
-		width: 70px;
-		height: 70px;
-		margin: 40px auto;
-	}
-}
-
-@media (min-width: 1200px) {
-	.my-login-page .brand {
-		width: 90px;
-		height: 90px;
-		margin: 50px auto;
-	}
-}
-
-.my-login-page .brand img {
-	width: 100%;
-}
-
-.my-login-page .card-wrapper {
-	width: 400px;
-}
-
-.my-login-page .card {
-	border-color: transparent;
-	box-shadow: 0 4px 8px rgba(0,0,0,.05);
-}
-
-.my-login-page .card.fat {
-	padding: 10px;
-}
-
-.my-login-page .card .card-title {
-	margin-bottom: 30px;
-}
-
-.my-login-page .form-control {
-	border-width: 2.3px;
-}
-
-.my-login-page .form-group label {
-	width: 100%;
-	padding-top: 5px;
-}
-
-.my-login-page .btn.btn-block {
-	padding: 12px 10px;
-}
-
-.my-login-page .footer {
-	margin: 40px 0;
-	color: #888;
-	text-align: center;
-}
-
-@media screen and (max-width: 425px) {
-	.my-login-page .card-wrapper {
-		width: 90%;
-		margin: 0 auto;
-	}
-}
-
-@media screen and (max-width: 320px) {
-	.my-login-page .card.fat {
-		padding: 0;
-	}
-
-	.my-login-page .card.fat .card-body {
-		padding: 15px;
-	}
-}
-   

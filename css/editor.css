@@ -28,7 +28,7 @@ img.intLink {
 #htmlEditorPane {
 	width: 100%;
     position: relative;
-    height: calc(100vh - 280px);
+    height: calc(100vh - 200px);
     padding-left: 5px;
     padding-bottom: 18px;
     padding-right: 18px;

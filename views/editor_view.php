@@ -1,6 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="build online html pages with embedded forms and images" />
+        <meta name="author" content="Abhinandan Prateek" />
+        <title>PageMight - Online Page builder</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="/img/write48x48.ico" />
+        <link href="/css/styles.css" rel="stylesheet" />
+        <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/themify-icons/themify-icons.css">
+        <link rel="stylesheet" href="/css/editor.css">
+        <link rel="stylesheet" href="/css/thumbnail.css">
+        <link rel="stylesheet" href="/css/style.css">
+        <!-- Bootstrap core JS-->
+        <script src="/jquery/jquery-3.6.0.min.js"></script>
+        <script src="/bootstrap/js/bootstrap.bundle.min.js"></script>
+		<script src="/js/scripts.js"></script>
+		<script src="/js/style.js"></script>
+        <script src="/js/editor.js"></script>
+        <script src="/js/tidy.js"></script>
+    </head>
 <?php
-include (__ROOT__ . '/views/_header.php');
-
+require_once(__ROOT__.'/config/config.php');
 include_once(__ROOT__ . '/classes/core/Log.php');
 include_once(__ROOT__ . '/classes/pm/Page.php');
 include_once(__ROOT__ . '/classes/pm/Template.php');
@@ -49,15 +72,15 @@ error_log("Page id = ".$page_id." comment=".$comment." public=".$public);
 $kb = new UserForm($user_name);
 $imgs = new Images();
 ?>
-<link rel="stylesheet" href="/css/editor.css">
-<link rel="stylesheet" href="/css/thumbnail.css">
-<script src="/js/editor.js"></script>
-<script src="/js/tidy.js"></script>
-<div class='container-fluid'>
+<link rel="stylesheet" href="/css/login.css">
 <body onload="initDoc();">
+	<div class='container-fluid'>
 
     <div class="row">
-    	<div class="col-lg-1 d-lg-block d-md-none d-sm-none d-none">
+    	<div class="col-lg-1 d-lg-block d-md-none d-sm-none d-none my-login-page">
+    		<div class="brand">
+					<img src="/img/html.png" alt="pagemight html builder login page">
+			</div>
     	</div>
     	<div class="col-lg-9 col-md-10 d-lg-block d-md-block col-12 col-sm-12">
                 <form id="nodeform" name="nodeform" action="/redirect.php" method="post" onsubmit="return doSubmitNodeForm();">
