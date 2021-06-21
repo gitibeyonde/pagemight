@@ -4,7 +4,7 @@ include_once(__ROOT__ . '/classes/pm/Images.php');
 
 $user_name = $_SESSION['user_name'];
 $SU = new Images();
-$page_name = isset($_GET['page']) ? $_GET['page'] : $_POST['page'];
+$page_code = isset($_GET['page']) ? $_GET['page'] : $_POST['page'];
 
 $msg="";
 if (isset($_POST['submit'])){
@@ -62,7 +62,7 @@ $count = $SU->imageCount($user_name);
 <div class=container" style="padding: 4vh 20vh 0vh 15vh;">
     <form action="/redirect.php"  method="get">
     <input type=hidden name=view value="<?php echo EDITOR_VIEW; ?>">
-    <input type=hidden name=page value="<?php echo $page_name; ?>">
+    <input type=hidden name=page value="<?php echo $page_code; ?>">
     	<button type="submit" name="submit" value="editor" class="btn btn-link">Back&nbsp;&nbsp;&nbsp;&nbsp;<i class="ti-control-backward"></i></button>
     </form>
 </div>
@@ -73,7 +73,7 @@ $count = $SU->imageCount($user_name);
                 echo "<b> You have exceeded the quota of 100 images, delete some to upload</b>";
          } else { ?>
               <form action="/redirect.php?view=<?php echo UPLOAD_IMAGES; ?>"  method="post" enctype="multipart/form-data">
-    			<input type=hidden name=page value="<?php echo $page_name; ?>">
+    			<input type=hidden name=page value="<?php echo $page_code; ?>">
                 <div class="mb-3">
                   <label for="textInput">Image Name:</label>
                   <input id="textInput" type="text" class="form-control" id="name" placeholder="Enter Image Name" name="name" required>
@@ -102,7 +102,7 @@ $count = $SU->imageCount($user_name);
                 <button onclick="copyToClipboard('<?php echo $img; ?>')" class="btn btn-sim1">
                             <i class="ti-layers"></i></button>
                 <form action="/redirect.php"  method="get" style="float: left;" onsubmit="return confirm('Do you want delete this Image ?');">
-    			<input type=hidden name=page value="<?php echo $page_name; ?>">
+    			<input type=hidden name=page value="<?php echo $page_code; ?>">
                 <input type=hidden name=view value="<?php echo UPLOAD_IMAGES; ?>">
                 <input type=hidden name=basename value="<?php echo basename($img); ?>">
                 <button type="submit" name="submit" value="delete" class="btn btn-sim2">

@@ -55,8 +55,9 @@
     <div class="row">
         <?php $forms = $kb->getForms();
         foreach($forms as $f){
+            $meta = $kb->getFormMetadata($f);
             if ($f == "form_metadata")continue;
-            echo "<p id='form-".$f."' class='img-box'>".$f."</p>";
+            echo "<p id='form-".$f."' class='img-box'>".$meta['form_name']."</p>";
         }
         ?>
     </div>
@@ -79,9 +80,10 @@
  <?php $forms = $kb->getForms();
  foreach($forms as $f){
     if ($f == "form_metadata")continue;
+        $meta = $kb->getFormMetadata($f);
      ?>
  $("#<?php echo "form-".$f; ?>").click(function(){
-     var form_name = '<?php echo "form-".$f; ?>' ;
+     var form_name = '<?php echo $meta['form_name']; ?>' ;
      console.log("Form name=" + form_name);
      insertAtCursor("<div id='<?php echo "form-".$f; ?>' class='col no_select' style='border: 3px silver solid;text-align: center;padding: 30px 20px 30px 20px;background: #f6f6f6;'>"
     	     + form_name + " will be substituted when page is rendered</div></div>");

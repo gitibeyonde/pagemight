@@ -27,7 +27,7 @@ else {
     $p = $P->getPageForUser($user_name, $page_code);
 }
 
-$page_name = $p['name'];
+$page_code = $p['name'];
 $page_code = $p['code'];
 $content = $p['css'];
 $public = $p['public'];

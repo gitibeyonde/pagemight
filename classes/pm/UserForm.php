@@ -30,11 +30,16 @@ class UserForm extends Sqlite {
     public function getForms(){
         return $this->ls();
     }
-    public function saveFormType($table, $type){
-        $this->query(sprintf ("replace into form_metadata values ('%s', '%s', '%s');", $table, $type, strtotime ( 'now' )));
+
+    public function getFormColumns($tabella){
+        return $this->t_columns_types($tabella);
     }
-    public function getFormType($table){
-        return $this->single_value(sprintf ("select metadata from form_metadata where name='%s';", $table));
+
+    public function saveFormMetadata($table, $nv_dict){
+        $this->query(sprintf ("replace into form_metadata values ('%s', '%s', '%s');", $table, serialize($nv_dict), strtotime ( 'now' )));
+    }
+    public function getFormMetadata($table){
+        return unserialize($this->single_value(sprintf ("select metadata from form_metadata where name='%s';", $table)));
     }
 
     public function insertFormData($tname, $nv_pairs){
@@ -65,7 +70,8 @@ class UserForm extends Sqlite {
 
     public function getUserForm($user_name, $tabella){
         $crypt = new Encryption();
-        $html = '<h3>'.$tabella.'</h3><hr/><br/>';
+        $meta = $this->getFormMetadata($tabella);
+        $html = '<h3>'.$meta['form_name'].'</h3><hr/><br/>';
         $html .= '<form id=action-'.$tabella.' action="/doin/form_submit.php" method="post">';
         foreach($this->t_columns_types($tabella) as $col_type=>$type){
             list($col, $type) = explode("->", $col_type);

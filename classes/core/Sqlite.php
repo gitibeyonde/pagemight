@@ -338,10 +338,10 @@ class Sqlite  {
     }
 
     public function createTable($table, $col, $type){
-
+        $table = $this->esc($table);
         try {
-            $this->t_crtinsupd("DROP TABLE IF EXISTS ".$table.";");
-            $create_stmt = "CREATE TABLE IF NOT EXISTS ".$table." (";
+            $this->t_crtinsupd("DROP TABLE IF EXISTS `".$table."`;");
+            $create_stmt = "CREATE TABLE IF NOT EXISTS `".$table."` (";
             for($i=0; $i<count($col); $i++){
                 $create_stmt .= "'".$col[$i]."' ". $type[$i] .", ";
             }

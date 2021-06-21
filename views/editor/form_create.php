@@ -14,7 +14,8 @@ $user_name = $_SESSION['user_name'];
 $submit = isset($_GET['submit']) ? $_GET['submit'] : null;
 $count = isset($_GET['count']) ? $_GET['count'] : 0;
 $tabella = isset($_GET['tabella']) ? $_GET['tabella'] : null;
-$page_name = isset($_GET['page']) ? $_GET['page'] : null;
+$form_name = isset($_GET['form_name']) ? $_GET['form_name'] : null;
+$page_code = isset($_GET['page_code']) ? $_GET['page_code'] : null;
 
 $kb = new UserForm($user_name);
 
@@ -30,12 +31,14 @@ if ($submit == "addtable"){
             array_push($input, $_GET["input".$i]);
         }
         $kb->createFormTable($tabella, $col, $input);
+        $kb->saveFormMetadata($tabella, ["form_name" => $form_name]);
     }
     //reset
     $col = array();
     $input = array();
     $count=0;
     $tabella = null;
+    $form_name = "";
 }
 else  if ($submit == "addcolumn"){
     $count = $count +1;
@@ -51,25 +54,36 @@ else  if ($submit == "removecolumn"){
         array_push($input, $_GET["input".$i]);
     }
 }
+else if ($submit == "edit"){
+    $meta = $kb->getFormMetadata($tabella);
+    $form_name = $meta['form_name'];
+    $cols = $kb->getFormColumns($tabella);
+    foreach($cols as $col_type=>$type){
+        list($c, $t) = explode("->", $col_type);
+        array_push($col, $c);
+        array_push($input, $t);
+        $count++;
+    }
+}
 else if ($submit == "delete"){
     try {
         $kb->deleteForm($tabella);
     }
     catch (Exception $e){
-        $_SESSION['message']  = "Delete Failed". $e->getMessage();
+        $_SESSION['message']  = "Delete Failed: ". $e->getMessage();
     }
 }
 
 ?>
 
-<div class=container" style="padding: 4vh 20vh 0vh 15vh;">
+<div class=container" style="padding: 4vh 15vh 0vh 10vh;">
     <form action="/redirect.php"  method="get">
     <input type=hidden name=view value="<?php echo EDITOR_VIEW; ?>">
-    <input type=hidden name=page value="<?php echo $page_name; ?>">
+    <input type=hidden name=page value="<?php echo $page_code; ?>">
     	<button type="submit" name="submit" value="editor" class="btn btn-link">Back&nbsp;&nbsp;&nbsp;&nbsp;<i class="ti-control-backward"></i></button>
     </form>
 </div>
- <div class=container" style="padding: 6vh 20vh 0vh 20vh;">
+ <div class=container" style="padding: 6vh 15vh 0vh 10vh;">
     <h3 class="sel0">Manage Forms</h3>
     <br/>
     <div class="row">
@@ -79,11 +93,12 @@ else if ($submit == "delete"){
 
           	<form action="/redirect.php?"  method="get">
                 <input type=hidden name=view value="<?php echo FORM_CREATE; ?>">
-    			<input type=hidden name=page value="<?php echo $page_name; ?>">
+    			<input type=hidden name="page_code" value="<?php echo $page_code; ?>">
 
                 <div class="form-group form-fields">
                     <label>Form Name</label>
-                	<input type="text" name="tabella" value="<?php echo $tabella; ?>" Placeholder="Form Name" required>
+                	<input type="text" name="form_name" value="<?php echo $form_name; ?>" Placeholder="Form Name" required>
+                	<input type="hidden" name="tabella" value="<?php echo (isset($tabella) ? $tabella : Utils::rand10()); ?>">
                	</div>
 
                 <?php for ($i=0;$i<$count; $i++) {
@@ -91,7 +106,7 @@ else if ($submit == "delete"){
                     echo '<input type=text name=col'.$i.' value="'.$col[$i].'" readonly>';
                     echo '<input type=text name=input'.$i.' value="'.$input[$i].'" readonly>';
                     if ($i == $count -1){
-                        echo '<button class="btn btn-sim3" type="submit" name="submit" value="removecolumn"><i class="ti-trash btn btn-sim1"></i></button>';
+                        echo '<button class="btn btn-sim3" type="submit" name="submit" value="removecolumn"><i class="ti-trash"></i></button>';
                     }
                     echo '</div>';
 
@@ -118,13 +133,14 @@ else if ($submit == "delete"){
                     <option value="range">range</option>
                     </select>
                     <input type=hidden name=count value="<?php echo $count; ?>">
-                	<button class="btn btn-sim3" type="submit" name="submit" value="addcolumn"><i class="ti-plus btn btn-sim2"></i></button>
+                	<button class="btn btn-sim3" type="submit" name="submit" value="addcolumn"><i class="ti-plus"></i></button>
                 </div>
 
 
                 <div class="row">
                      <div class="form-group col-6">
-                        	<button class="btn btn-sim1 btn-block" type="submit" name="submit" value="addtable">Create Form</button>
+                        	<button class="btn btn-sim1 btn-block" type="submit" name="submit" value="addtable">
+                        	    <?php echo ($submit == "edit" ? "Save Form" : "Create Form"); ?></button>
                 	 </div>
                 </div>
           </form>
@@ -148,7 +164,10 @@ else if ($submit == "delete"){
         Columns
     </div>
     <div class="col">
-        Delete
+        Metadata
+    </div>
+    <div class="col">
+        Edit Delete
     </div>
   </div>
   <hr/>
@@ -167,13 +186,14 @@ else if ($submit == "delete"){
              <?php echo Utils::flatten($kb->t_columns($tn)); ?>
         </div>
         <div class="col">
-            <?php echo $kb->getFormType($tn); ?>
+            <?php echo print_r($kb->getFormMetadata($tn), true); ?>
         </div>
         <div class="col">
             <form action="/redirect.php?"  method="get" style="float: left;" >
                 <input type=hidden name=view value="<?php echo FORM_CREATE ?>">
                 <input type=hidden name=tabella value="<?php echo $tn; ?>">
-    			<input type=hidden name=page value="<?php echo $page_name; ?>">
+    			<input type=hidden name=page_code value="<?php echo $page_code; ?>">
+                <button class="btn btn-sim2" type="submit" name="submit" value="edit">Edit</button>
                 <button class="btn btn-sim2" type="submit" name="submit" value="delete">Delete</button>
             </form>
         </div>
