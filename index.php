@@ -60,21 +60,52 @@ include (__ROOT__ . '/views/_header.php');
 		</div>
 	</div>
 </section>
-
-<section class="container">
 <br/>
-<hr/>
-<ul style="list-style-type:none;text-align: center;">
-<li>
-<h1>Create Landing Pages, Catalogs and Flyers</h1>
-</li>
-<li><h1>Embed Images and Forms</h1>
-</li>
-<li><h1>Share minified links and measure performance</h1>
-</li>
-<li><h1>Browse form submissions</h1>
-</li>
-</ul>
+<br/>
+<br/>
+<section class="container">
+<div class="row">
+	<div class="col-3">
+    	<div class="card"  style="height: 20vh;">
+          <div class="card-body">
+            <h5 class="card-title"><i class="ti-write"></i></h5>
+            <!-- h6 class="card-subtitle mb-2 text-muted">-</h6> -->
+            <p class="card-text">Create Landing Pages, Catalogs and Flyers.</p>
+            <a href="#" class="card-link">Know more</a>
+          </div>
+        </div>
+	</div>
+	<div class="col-3">
+    	<div class="card"  style="height: 20vh;">
+          <div class="card-body">
+            <h5 class="card-title"><i class="ti-share"></i></h5>
+            <!-- h6 class="card-subtitle mb-2 text-muted">-</h6> -->
+            <p class="card-text">Share minified links and measure performance.</p>
+            <a href="#" class="card-link">Know more</a>
+          </div>
+        </div>
+	</div>
+	<div class="col-3">
+    	<div class="card"  style="height: 20vh;">
+          <div class="card-body">
+            <h5 class="card-title"><i class="ti-cloud-up"></i></h5>
+            <!-- h6 class="card-subtitle mb-2 text-muted">-</h6> -->
+            <p class="card-text">Host and embed Images, css, js and forms.</p>
+            <a href="#" class="card-link">Know more</a>
+          </div>
+        </div>
+	</div>
+	<div class="col-3">
+    	<div class="card"  style="height: 20vh;">
+          <div class="card-body">
+            <h5 class="card-title"><i class="ti-server"></i></h5>
+            <!-- h6 class="card-subtitle mb-2 text-muted">-</h6> -->
+            <p class="card-text">Manage form submission data.</p>
+            <a href="#" class="card-link">Know more</a>
+          </div>
+        </div>
+	</div>
+</div>
 
 </section>
 

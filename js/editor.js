@@ -89,6 +89,15 @@ function formatDoc(sCmd, sValue) {
             	 document.execCommand("fontsize", false, "1");
             }
         }
+        else if (sCmd == "createlink"){
+            if (sValue == ""){
+            	//remove link
+            	document.execCommand("unlink", false, false);
+        	}
+        	else {
+        		document.execCommand(sCmd, false, sValue);
+        	}
+        }
         else {
             document.execCommand(sCmd, false, sValue);
         }

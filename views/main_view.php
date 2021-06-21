@@ -73,22 +73,22 @@ $ps = $P->getPages($user_name);
 
    <div class="row">
      <?php foreach ($ps as $t) { ?>
- 		<div class="col-sm-4 card" style="text-align: center;">
+ 		<div class="col-sm-4 card" style="padding: 1vh 1vh 1vh 1vh;">
         	<div class="thumbnail-container">
                 <div class="thumbnail">
     				<iframe src="/views/editor/page_view.php?uid=<?php echo $user_name; ?>&pcode=<?php echo $t['code']; ?>"
                            onload="this.style.opacity = 1" frameborder="0"> </iframe>
                 </div>
             </div>
-   			<div class="row" style="padding: 0px 20px 0 20px; transform: translate(10px, -15px);">
-   				<div class="col-2" style="transform: translate(0px, -50px);">
+   			<div class="row" style="padding: 0px 20px 0 20px;">
+   				<div class="col-2">
    					<a class="btn btn-sim0" href="/redirect.php?view=editor_view&page_code=<?php echo $t['code']; ?>">
    								<i class="ti-pencil-alt2" style="color: green;font-size: 36px;"></i> </a>
    				</div>
-   				<div class="col-8" style="transform: translate(0px, 10px);">
+   				<div class="col-8">
    					<?php echo $t['name']; ?>
    				</div>
-   				<div class="col-2" style="transform: translate(-50px, -15px);">
+   				<div class="col-2">
                     <form action="/redirect.php?view=main_view" method="post">
                       <input type="hidden" name="page_code" value="<?php echo $t['code']; ?>">
                       <button type="submit" name="submit" value="delete"  class="btn btn-sim0"  onclick="return onClickDel('<?php echo MAIN_VIEW; ?>');">
@@ -111,28 +111,26 @@ $ps = $P->getPages($user_name);
         foreach( $kb->ls() as $tn){
            if ($tn == "form_metadata")continue;
             ?>
- 			<div class="col-sm-3 card">
-	  			<div class="card-body overlay-image">
-	  	  			<a href="/redirect.php?view=form_data&tabella=<?php echo $tn; ?>">
-    	  	   		<div class="thumbnail-container">
-                		<div class="thumbnail">
-            		   		<h1><?php echo $tn; ?></h1>
+     		<div class="col-sm-4 card" style="padding: 1vh 1vh 1vh 1vh;">
+            	<div class="thumbnail-container">
+                    <div class="thumbnail">
+                       <div class="container" style="padding: 2vh 2vh 2vh 2vh;">
+        				<h1><?php echo $tn; ?></h1>
                     		<?php echo $kb->getUserForm($user_name, $tn); ?>;
-                    	</div>
-                	</div>
-                      <div class="normal">
-                        <div class="text">
-                    		<?php echo $tn; ?>
-                         </div>
-                      </div>
-              		<div class="hover">
-                    	<div class="text">
-                    		Data Submission
-                    	</div>
-              		</div>
-              		</a>
-	  			</div>
-       		</div>
+                       </div>
+                    </div>
+                </div>
+       			<div class="row" style="padding: 0px 20px 0 20px;">
+       				<div class="col-2">
+       					<a href="/redirect.php?view=form_data&tabella=<?php echo $tn; ?>"><i class="ti-server" style="color: green;font-size: 36px;"></i></a>
+       				</div>
+       				<div class="col-8 m-auto">
+       					<?php echo $tn; ?>
+       				</div>
+       				<div class="col-2">
+       				</div>
+       			</div>
+      		</div>
     	   <?php } ?>
    		</div>
   </span>
