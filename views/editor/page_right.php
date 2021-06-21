@@ -7,7 +7,7 @@
 	</div>
 	<hr/>
 
-   &nbsp;&nbsp;Preview<a class="btn btn-link" href="/views/editor/page_view.php?uid=<?php echo $user_name; ?>&pcode=<?php echo $page_code; ?>" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;<i class="ti-new-window"></i></a>
+   &nbsp;&nbsp;Preview<a class="btn btn-link" href="/doin/lkp.php?id=<?php echo $page_code; ?>" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;<i class="ti-new-window"></i></a>
    <hr/>
 
 

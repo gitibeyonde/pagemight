@@ -5,13 +5,14 @@
 
 include(__ROOT__.'/doin/_header.php');
 
-echo "<style>".$css."</style>";
-echo "<script>".$js."</script>";
+echo "<style>".$p['css']."</style>";
+echo "<script>".$p['js']."</script>";
 
-echo $content;
+echo $p['content'];
 
 include(__ROOT__.'/doin/_footer.php');
 
+$user_name = $p['user_name'];
 ?>
 <script>
 

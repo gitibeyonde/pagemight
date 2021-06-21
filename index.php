@@ -70,7 +70,7 @@ include (__ROOT__ . '/views/_header.php');
           <div class="card-body">
             <h5 class="card-title"><i class="ti-write"></i></h5>
             <!-- h6 class="card-subtitle mb-2 text-muted">-</h6> -->
-            <p class="card-text">Create Landing Pages, Catalogs and Flyers.</p>
+            <p class="card-text">Create Landing Pages, Catalogs and Flyers. Lightening fast load time !</p>
             <a href="#" class="card-link">Know more</a>
           </div>
         </div>
@@ -80,7 +80,7 @@ include (__ROOT__ . '/views/_header.php');
           <div class="card-body">
             <h5 class="card-title"><i class="ti-share"></i></h5>
             <!-- h6 class="card-subtitle mb-2 text-muted">-</h6> -->
-            <p class="card-text">Share minified links and measure performance.</p>
+            <p class="card-text">Share minified links. Gather page access analytics. Do A/B testing.</p>
             <a href="#" class="card-link">Know more</a>
           </div>
         </div>
@@ -90,7 +90,7 @@ include (__ROOT__ . '/views/_header.php');
           <div class="card-body">
             <h5 class="card-title"><i class="ti-cloud-up"></i></h5>
             <!-- h6 class="card-subtitle mb-2 text-muted">-</h6> -->
-            <p class="card-text">Host and embed Images, css, js and forms.</p>
+            <p class="card-text">Host and embed Images, css, js and forms. Flexible forms to capture information.</p>
             <a href="#" class="card-link">Know more</a>
           </div>
         </div>
@@ -100,7 +100,7 @@ include (__ROOT__ . '/views/_header.php');
           <div class="card-body">
             <h5 class="card-title"><i class="ti-server"></i></h5>
             <!-- h6 class="card-subtitle mb-2 text-muted">-</h6> -->
-            <p class="card-text">Manage form submission data.</p>
+            <p class="card-text">Manage form submission data. Get customer data and respond to them.</p>
             <a href="#" class="card-link">Know more</a>
           </div>
         </div>

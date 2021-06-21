@@ -76,7 +76,7 @@ $ps = $P->getPages($user_name);
  		<div class="col-sm-4 card" style="padding: 1vh 1vh 1vh 1vh;">
         	<div class="thumbnail-container">
                 <div class="thumbnail">
-    				<iframe src="/views/editor/page_view.php?uid=<?php echo $user_name; ?>&pcode=<?php echo $t['code']; ?>"
+    				<iframe src="/doin/lkp.php?id=<?php echo $t['code'];; ?>"
                            onload="this.style.opacity = 1" frameborder="0"> </iframe>
                 </div>
             </div>
@@ -85,8 +85,12 @@ $ps = $P->getPages($user_name);
    					<a class="btn btn-sim0" href="/redirect.php?view=editor_view&page_code=<?php echo $t['code']; ?>">
    								<i class="ti-pencil-alt2" style="color: green;font-size: 36px;"></i> </a>
    				</div>
-   				<div class="col-8">
+   				<div class="col-6">
    					<?php echo $t['name']; ?>
+   				</div>
+   				<div class="col-2">
+   					<a class="btn btn-sim0" href="http://pagemight.com/<?php echo $t['code']; ?>" target="_blank">
+   								<i class="ti-link" style="color: blue;font-size: 36px;"></i> </a>
    				</div>
    				<div class="col-2">
                     <form action="/redirect.php?view=main_view" method="post">

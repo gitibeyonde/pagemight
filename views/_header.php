@@ -8,7 +8,7 @@ require_once(__ROOT__.'/config/config.php');
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="Create Landing Pages, Catalogs and Flyers, Share minified links and measure performance." />
         <meta name="author" content="Abhinandan Prateek" />
-        <title>PageMight - Online Page builder</title>
+        <title>PageMight - Free Landing Page builder</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="/img/write48x48.ico" />
         <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">

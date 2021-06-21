@@ -1,15 +1,13 @@
 <?php
-
 define('__ROOT__', dirname(dirname(__FILE__)));
-require_once(__ROOT__.'/classes/core/Minify.php');
+include_once(__ROOT__ . '/classes/pm/Page.php');
 
 error_log("Id=".$_GET['id']);
 if (isset($_GET['id'])){
     $id=$_GET['id'];
-    //error_log("Id id=".$id." p=".$p);
-    $od = new Minify();
-    list($content, $css, $js, $user_name) =  $od->getUrlContent($id);
-    error_log("Content=".$content);
+    error_log("Id id=".$id);
+    $P = new Page();
+    $p =  $P->getPage($id);
     $ip = getenv('HTTP_CLIENT_IP')?:
     getenv('HTTP_X_FORWARDED_FOR')?:
     getenv('HTTP_X_FORWARDED')?:
@@ -21,14 +19,14 @@ if (isset($_GET['id'])){
         die;
     }
     $ag = $_SERVER['HTTP_USER_AGENT'];
-    if ($content==null){
+    if ($p==null){
         include(__ROOT__.'/doin/_header.php');
         echo "<div class='row' style='padding-top: 10vh;'><i style='padding-top: 10vh;'>This page does not exists, forwarding to www.pagemight.com</i></div>";
         echo "<meta http-equiv='refresh' content='5; url=https://www.pagemight.com/' />";
         include(__ROOT__.'/doin/_footer.php');
     }
     else {
-        $od->logAccess($id, $ip, $ag);
+        //$od->logAccess($id, $ip, $ag);
         include(__ROOT__.'/doin/holder.php');
     }
 }
