@@ -43,6 +43,9 @@ class Page extends Mysql {
     public function getPage($page_code) {
         return $this->selectRow( sprintf ( "select * from page where code=%s;", $this->quote($page_code)) );
     }
+    public function getTemplate($template_name) {
+        return $this->selectRow( sprintf ( "select * from template where name=%s;", $this->quote($template_name)) );
+    }
     public function deletePage($user_name, $page_code) {
         return $this->changeRow( sprintf ( "delete from page where user_name=%s and code=%s;",  $this->quote($user_name), $this->quote($page_code)) );
     }

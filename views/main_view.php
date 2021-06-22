@@ -59,7 +59,10 @@ $ps = $P->getPages($user_name);
 
           <img class="img-fluid card-img-top" src="/img/<?php echo $t['name']; ?>.png" alt="prebuilt templates"/>
           <h5><a href="/redirect.php?view=editor_view&template=<?php echo $t['name']; ?>">
-          	<i class="ti-cloud-down icon-green">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i></a><?php echo $t['name']; ?></h5>
+          	<i class="ti-cloud-down icon-green">&nbsp;&nbsp;&nbsp;</i></a><?php echo $t['name']; ?>
+          	&nbsp;&nbsp;&nbsp;&nbsp;
+          	<a href="/doin/lkt.php?id=<?php echo $t['name']; ?>" target="_blank">
+          	<i class="ti-link icon-blue"></i></a></h5>
 
    </div>
   <?php } ?>
