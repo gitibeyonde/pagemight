@@ -25,8 +25,7 @@
 		<div class="col-12 toolbar" id="toolBar1">
 
             <button type="submit" id="save_content" name="submit" value="update" class="btn btn-link"
-								onclick="return onClickSubmitButton('<?php echo EDITOR_VIEW; ?>');">
-            									<i class="ti-save icon-green"></i></button>
+								onclick="return onClickSubmitButton('<?php echo EDITOR_VIEW; ?>');"><i class="ti-save icon-green"></i></button>
 
             <button type="submit" name="submit" value="delete"  class="btn btn-link"  onclick="return onClickDel('<?php echo MAIN_VIEW; ?>');">
             					<i class="ti-trash icon-orange"></i></button>

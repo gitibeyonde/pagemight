@@ -26,8 +26,8 @@
 
 
     <form action="/redirect.php"  method="get">
-    <input type=hidden name=view value="<?php echo UPLOAD_IMAGES; ?>">
-    <input type=hidden name=page value="<?php echo $page_name; ?>">
+    <input type=hidden name="view" value="<?php echo UPLOAD_IMAGES; ?>">
+    <input type=hidden name="page_code" value="<?php echo $page_code; ?>">
     &nbsp;&nbsp;<label>Images</label>
     <button type="submit" name="submit" value="toimages" class="btn btn-link">&nbsp;&nbsp;&nbsp;&nbsp;<i class="ti-plus icon-green"></i></button>
     </form>
@@ -45,8 +45,8 @@
     <hr/>
 
     <form action="/redirect.php"  method="get">
-    <input type=hidden name=view value="<?php echo FORM_CREATE; ?>">
-    <input type=hidden name=page value="<?php echo $page_name; ?>">
+    <input type=hidden name="view" value="<?php echo FORM_CREATE; ?>">
+    <input type=hidden name="page_code" value="<?php echo $page_code; ?>">
     &nbsp;&nbsp;<label>Forms</label>
     <button type="submit" name="submit" value="toimages" class="btn btn-link">&nbsp;&nbsp;&nbsp;&nbsp;<i class="ti-plus icon-green"></i></button>
     </form>

@@ -43,7 +43,7 @@ $P = new Page();
 if (isset($page_code)){
     if ($submit == "update"){
         //editing an existing page
-        $p = $P->savePageContent($user_name, $page_code, $page_name, $content = $_POST['content']);
+        $p = $P->savePageContent($user_name, $page_code, $page_name, $_POST['content']);
     }
     else {
         $p = $P->getPageForUser($user_name, $page_code);
@@ -78,6 +78,8 @@ $imgs = new Images();
     	</div>
     	<div class="col-lg-9 col-md-10 d-lg-block d-md-block col-12 col-sm-12">
                 <form id="nodeform" name="nodeform" action="/redirect.php" method="post" onsubmit="return doSubmitNodeForm();">
+                  <input type="hidden" id="viewname" name="view" value="">
+                  <input type="hidden" name="page_code" value="<?php echo $page_code; ?>">
 
                   <?php include_once(__ROOT__ . '/views/editor/page_toolbar.php'); ?>
 
@@ -86,8 +88,6 @@ $imgs = new Images();
                   </div>
 
                   <input id="content_input" type="hidden" name="content" value="">
-                  <input type="hidden" id="viewname" name="view" value="">
-                  <input type="hidden" name="page_code" value="<?php echo $page_code; ?>">
 
              </form>
       </div> <!-- End second Column -->
@@ -134,7 +134,6 @@ function doSubmitNodeForm(){
     console.log(">>>> doSubmitNodeForm " + $("#viewname").val());
     if (document.nodeform.switchMode.checked) {
         document.nodeform.switchMode.checked = false;
-        //setDocMode(false);
 	}
     //remove resize frames added by image resizer
     document.querySelectorAll(".resize-frame,.resizer").forEach((item) => item.parentNode.removeChild(item));

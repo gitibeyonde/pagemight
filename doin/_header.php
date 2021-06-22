@@ -4,7 +4,7 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="Create Landing Pages, Catalogs and Flyers, Share minified links and measure performance." />
+        <meta name="description" content="Create Landing Pages, Catalogs and Flyers, Share minified links, QR-code and measure performance." />
         <meta name="author" content="Abhinandan Prateek" />
         <title>Free Landing Page builder</title>
         <!-- Favicon-->

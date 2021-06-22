@@ -33,7 +33,7 @@ $ps = $P->getPages($user_name);
 <link rel="stylesheet" href="/css/thumbnail.css">
 
 <!-- Page content-->
-<div class="container my-cards" style="padding: 2vh 1vh 50vh 1vh;">
+<div class="container" style="padding: 2vh 1vh 50vh 1vh;">
 
     <ul class="nav justify-content-end">
       <li class="nav-item">
@@ -57,7 +57,7 @@ $ps = $P->getPages($user_name);
      <?php foreach ($ts as $t) { ?>
 	<div class="col-sm-4 card">
 
-          <img class="img-fluid card-img-top" src="/img/<?php echo $t['name']; ?>.png" alt="Alt text"/>
+          <img class="img-fluid card-img-top" src="/img/<?php echo $t['name']; ?>.png" alt="prebuilt templates"/>
           <h5><a href="/redirect.php?view=editor_view&template=<?php echo $t['name']; ?>">
           	<i class="ti-cloud-down icon-green">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i></a><?php echo $t['name']; ?></h5>
 

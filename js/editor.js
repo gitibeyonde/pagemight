@@ -30,7 +30,7 @@ document.head.appendChild(imported);
 options = {
   "indent":"auto",
   "indent-spaces":2,
-  "wrap":80,
+  "wrap":120,
   "markup":true,
   "output-xml":false,
   "numeric-entities":true,
@@ -415,7 +415,6 @@ function enableImageResizeInDiv(id) { // id = htmlEditorPane
         };
     };
     var bindClickListener = function () {
-    	console.log("bindClickListener ");
         editor.querySelectorAll('img').forEach((img, i) => {
             img.onclick = (e) => {
                 if (e.target === img) {
@@ -479,7 +478,6 @@ function enableImageResizeInDiv(id) { // id = htmlEditorPane
         }));
     };
     var reset = function () {
-    	console.log("Reset ");
         if (currentImage != null) {
             currentImage = null;
             resizing = false;
@@ -488,7 +486,6 @@ function enableImageResizeInDiv(id) { // id = htmlEditorPane
         bindClickListener();
     };
     editor.addEventListener('scroll', function () {
-    	console.log("Scroll ");
         reset();
     }, false);
     editor.addEventListener('mouseup', function (e) {
