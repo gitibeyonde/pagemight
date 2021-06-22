@@ -3,7 +3,7 @@ define('__ROOT__', dirname(dirname(__FILE__)));
 include_once(__ROOT__ . '/classes/pm/Page.php');
 
 error_log("Id=".$_GET['id']);
-if (isset($_GET['id'])){
+if (isset($_GET['id']) && strlen($_GET['id']) > 30){
     $id=$_GET['id'];
     error_log("Id id=".$id);
     $P = new Page();

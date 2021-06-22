@@ -7,8 +7,8 @@ require_once (__ROOT__ . '/classes/core/Log.php');
 // load the login class
 require_once(__ROOT__.'/classes/Login.php');
 
-error_log("Redirect POST=" .print_r($_POST, true));
-error_log("Redirect GET=" .print_r($_GET, true));
+//error_log("Redirect POST=" .print_r($_POST, true));
+//error_log("Redirect GET=" .print_r($_GET, true));
 // create a login object. when this object is created, it will do all login/logout stuff automatically
 // so this single line handles the entire login process.
 $login = new Login();
