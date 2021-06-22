@@ -6,6 +6,9 @@ use Aws\Common\Enum\Region;
 use Aws\Ses\SesClient;
 
 require_once (__ROOT__ . '/classes/core/Log.php');
+require_once (__ROOT__ . '/classes/core/Utils.php');
+
+
 /**
  * handles the user login/logout/session
  * @author Panique
@@ -43,6 +46,10 @@ class Login
      * @var string user_otp
      */
     private $user_otp= "";
+    /**
+     * @var string user_otp
+     */
+    private $tpass64= "";
     /**
      * @var boolean $user_is_logged_in The user's login status
      */
@@ -85,7 +92,7 @@ class Login
             $_SESSION['log'] = new Log('debug');
         }
 
-        $this->log = $_SESSION['log'];
+        $this->log = $_SESSION['log'] == null ? new Log("trace")  : $_SESSION['log'];
         $this->log->trace("Logging on at trace");
         $this->log->trace("post=".print_r($_POST, true));
         $this->log->trace("get=".print_r($_GET, true));
@@ -677,6 +684,26 @@ class Login
             $_SESSION['user_phone'] = $user_phone;
         }
     }
+    public function getTPass64($user_name)
+    {
+        $tp = "";
+        // if database connection opened
+        if ($this->databaseConnection()) {
+            // database query, getting all the info of the selected user
+            $query_user = $this->db_connection->prepare('SELECT tpass64 FROM users WHERE user_name = :user_name');
+            $query_user->bindValue(':user_name', $user_name, PDO::PARAM_STR);
+            $query_user->execute();
+            // get result row (as an object)
+            $tp =  $query_user->fetchObject();
+            $tp = Utils::rand64();
+            $sth = $this->db_connection->prepare("UPDATE users SET tpass64 = :tp WHERE user_name = :user_name");
+            $sth->execute(array(':tp' => $tp, ':user_name' => $user_name));
+            return $tp;
+        } else {
+            return false;
+        }
+    }
+
     /**
      * Sends the password-reset-email.
      */
@@ -874,5 +901,24 @@ class Login
             $_SESSION['view']=LOGOUT_VIEW;
             return $_SESSION['view'];
         }
+    }
+
+    public function validateTpass($user_name, $user_tpass){
+        if ($this->databaseConnection()) {
+            // database query, getting all the info of the selected user
+            $query_user = $this->db_connection->prepare('SELECT * FROM users WHERE user_name = :user_name and tpass64 = :tpass');
+            $query_user->bindValue(':user_name', $user_name, PDO::PARAM_STR);
+            $query_user->bindValue(':tpass', $user_tpass, PDO::PARAM_STR);
+            $query_user->execute();
+            // get result row (as an object)
+            $result_row = $query_user->fetchObject();
+            if (isset($result_row->user_id)) {
+                return $result_row;
+            }
+            else {
+                return false;
+            }
+        }
+        return false;
     }
 }
