@@ -70,9 +70,9 @@
      $jsname = preg_replace("/[^A-Za-z0-9]/", '', $name);;
      ?>
  $("#<?php echo "image-".$jsname; ?>").click(function(){
-     var src = '<img class="img-fluid" src="<?php echo $imgurl; ?>">\n' ;
+     var src = '<?php echo $imgurl; ?>' ;
      console.log("Img URL=" + src);
-     insertAtCursor(src);
+     insertImageAtCursor(src);
   });
  <?php } ?>
 

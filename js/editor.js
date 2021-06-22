@@ -45,7 +45,8 @@ options = {
   "tidy-mark":false
 }
 
-
+// GLOBAL 
+var currentImage;
 var oDoc = null;
 var sDefTxt = null;
 var isHTML = true;
@@ -236,7 +237,15 @@ function insertHtmlAtCursor(html, selectPastedContent) {
     }
 }
 
-
+function insertImageAtCursor(src, selectPastedContent) {
+	if (currentImage != null ){
+    	currentImage.src = src;
+	}
+	else {
+		var img = '<img class="img-fluid" src="' + src + '">';
+		insertAtCursor(img);
+	}
+}
 
 $("#htmlEditorPane").on("DOMNodeInserted", $.proxy(function(e) {
     if (e.target.parentNode.getAttribute("contenteditable") === "true") {
@@ -269,7 +278,6 @@ function setScrollPosition(){
 
 function enableImageResizeInDiv(id) { // id = htmlEditorPane
     var resizing = false;
-    var currentImage;
     var editor = document.getElementById(id);
     var editorRect = editor.getBoundingClientRect();
     
