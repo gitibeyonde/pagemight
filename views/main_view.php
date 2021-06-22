@@ -33,7 +33,7 @@ $ps = $P->getPages($user_name);
 <link rel="stylesheet" href="/css/thumbnail.css">
 
 <!-- Page content-->
-<div class="container" style="padding: 2vh 1vh 50vh 1vh;">
+<div class="container my-cards" style="padding: 2vh 1vh 50vh 1vh;">
 
     <ul class="nav justify-content-end">
       <li class="nav-item">
@@ -56,10 +56,11 @@ $ps = $P->getPages($user_name);
    <div class="row">
      <?php foreach ($ts as $t) { ?>
 	<div class="col-sm-4 card">
-		<a href="/redirect.php?view=editor_view&template=<?php echo $t['name']; ?>">
+
           <img class="img-fluid card-img-top" src="/img/<?php echo $t['name']; ?>.png" alt="Alt text"/>
-          <h5><i class="ti-cloud-down" style="color: blue;font-size: 36px;transform: translate(-50px, -15px);">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i><?php echo $t['name']; ?></h5>
-        </a>
+          <h5><a href="/redirect.php?view=editor_view&template=<?php echo $t['name']; ?>">
+          	<i class="ti-cloud-down icon-green">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</i></a><?php echo $t['name']; ?></h5>
+
    </div>
   <?php } ?>
    </div>
@@ -83,20 +84,20 @@ $ps = $P->getPages($user_name);
    			<div class="row" style="padding: 0px 20px 0 20px;">
    				<div class="col-2">
    					<a class="btn btn-sim0" href="/redirect.php?view=editor_view&page_code=<?php echo $t['code']; ?>">
-   								<i class="ti-pencil-alt2" style="color: green;font-size: 36px;"></i> </a>
+   								<i class="ti-pencil-alt2 icon-green"></i> </a>
    				</div>
    				<div class="col-6">
    					<?php echo $t['name']; ?>
    				</div>
    				<div class="col-2">
    					<a class="btn btn-sim0" href="http://pagemight.com/<?php echo $t['code']; ?>" target="_blank">
-   								<i class="ti-link" style="color: blue;font-size: 36px;"></i> </a>
+   								<i class="ti-link icon-blue"></i> </a>
    				</div>
    				<div class="col-2">
                     <form action="/redirect.php?view=main_view" method="post">
                       <input type="hidden" name="page_code" value="<?php echo $t['code']; ?>">
                       <button type="submit" name="submit" value="delete"  class="btn btn-sim0"  onclick="return onClickDel('<?php echo MAIN_VIEW; ?>');">
-                    					<i class="ti-trash" style="color: red;font-size: 36px;"></i></button>
+                    					<i class="ti-trash icon-red"></i></button>
                    </form>
    				</div>
    			</div>
@@ -126,7 +127,7 @@ $ps = $P->getPages($user_name);
                 </div>
        			<div class="row" style="padding: 0px 20px 0 20px;">
        				<div class="col-2">
-       					<a href="/redirect.php?view=form_data&tabella=<?php echo $tn; ?>"><i class="ti-server" style="color: green;font-size: 36px;"></i></a>
+       					<a href="/redirect.php?view=form_data&tabella=<?php echo $tn; ?>"><i class="ti-server icon-green"></i></a>
        				</div>
        				<div class="col-8 m-auto">
        					<?php echo $tn; ?>

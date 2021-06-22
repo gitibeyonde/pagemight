@@ -7,13 +7,12 @@
 	</div>
 	<hr/>
 
-   &nbsp;&nbsp;Preview<a class="btn btn-link" href="/doin/lkp.php?id=<?php echo $page_code; ?>" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;<i class="ti-new-window"></i></a>
+   &nbsp;&nbsp;Preview<a class="btn btn-link" href="/doin/lkp.php?id=<?php echo $page_code; ?>" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;<i class="ti-new-window icon-green"></i></a>
    <hr/>
 
 
 	&nbsp;&nbsp;<label id="console-event1">Public</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	<input type="checkbox" id="toggle-event1" data-toggle="toggle" data-on="<i class='ti-world'></i>"
-			data-off="<i class='ti-na'></i>" style="width: 26px; height: 26px;" <?php echo ($public == 1 ?  "checked" :  ""); ?> >
+	<input type="checkbox" id="toggle-event1" data-toggle="toggle" class="icon-blue" style="width: 26px; height: 26px;" <?php echo ($public == 1 ?  "checked" :  ""); ?> >
 
    <hr/>
 
@@ -30,7 +29,7 @@
     <input type=hidden name=view value="<?php echo UPLOAD_IMAGES; ?>">
     <input type=hidden name=page value="<?php echo $page_name; ?>">
     &nbsp;&nbsp;<label>Images</label>
-    <button type="submit" name="submit" value="toimages" class="btn btn-link">&nbsp;&nbsp;&nbsp;&nbsp;<i class="ti-plus"></i></button>
+    <button type="submit" name="submit" value="toimages" class="btn btn-link">&nbsp;&nbsp;&nbsp;&nbsp;<i class="ti-plus icon-green"></i></button>
     </form>
 
     <div class="row">
@@ -49,7 +48,7 @@
     <input type=hidden name=view value="<?php echo FORM_CREATE; ?>">
     <input type=hidden name=page value="<?php echo $page_name; ?>">
     &nbsp;&nbsp;<label>Forms</label>
-    <button type="submit" name="submit" value="toimages" class="btn btn-link">&nbsp;&nbsp;&nbsp;&nbsp;<i class="ti-plus"></i></button>
+    <button type="submit" name="submit" value="toimages" class="btn btn-link">&nbsp;&nbsp;&nbsp;&nbsp;<i class="ti-plus icon-green"></i></button>
     </form>
 
     <div class="row">

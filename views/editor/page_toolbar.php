@@ -3,7 +3,7 @@
         <div class="col-1">
             <button type="submit" name="submit" value="back" class="btn btn-link"
 							   onclick="return onClickSubmitButton('<?php echo MAIN_VIEW; ?>');">
-            	<i class="ti-control-backward"  style="color: blue;font-size: 26px;"></i>&nbsp;&nbsp;</button>
+            	<i class="ti-control-backward icon-blue"></i>&nbsp;&nbsp;</button>
         </div>
         <div class="col-4">
             <input type="text" name="page_name" placeholder="page name" size="16" value="<?php echo $page_name; ?>"
@@ -26,10 +26,10 @@
 
             <button type="submit" id="save_content" name="submit" value="update" class="btn btn-link"
 								onclick="return onClickSubmitButton('<?php echo EDITOR_VIEW; ?>');">
-            									<i class="ti-save" style="color: green;font-size: 26px;"></i></button>
+            									<i class="ti-save icon-green"></i></button>
 
             <button type="submit" name="submit" value="delete"  class="btn btn-link"  onclick="return onClickDel('<?php echo MAIN_VIEW; ?>');">
-            					<i class="ti-trash" style="color: red;font-size: 26px;"></i></button>
+            					<i class="ti-trash icon-orange"></i></button>
 
 			Text:<select
 				onchange="formatDoc('formatBlock',this[this.selectedIndex].value);this.selectedIndex=0;">

@@ -2,12 +2,6 @@
 if (!defined('__ROOT__')) define ( '__ROOT__', dirname ( __FILE__ ) ) ;
 include (__ROOT__ . '/views/_header.php');
 ?>
-<style>
-.card {
-    height: 25vh;
-}
-
-</style>
 <link rel="stylesheet" href="/css/login.css">
 <section class="container-fluid h-100 my-login-page">
 	<div class="container h-100">
@@ -70,44 +64,44 @@ include (__ROOT__ . '/views/_header.php');
 <br/>
 <br/>
 <section class="container">
-<div class="row">
+<div class="row my-cards">
 	<div class="col-md-3 col-sm-12">
     	<div class="card">
           <div class="card-body">
-            <h5 class="card-title"><i class="ti-write"></i></h5>
+            <h5 class="card-title"><i class="ti-write icon-blue"></i></h5>
             <!-- h6 class="card-subtitle mb-2 text-muted">-</h6> -->
             <p class="card-text">Create Landing Pages, Catalogs and Flyers. Lightening fast load time !</p>
-            <a href="#" class="card-link">Know more</a>
+            <a href="#" class="card-link"></a>
           </div>
         </div>
 	</div>
 	<div class="col-md-3 col-sm-12">
     	<div class="card">
           <div class="card-body">
-            <h5 class="card-title"><i class="ti-share"></i></h5>
+            <h5 class="card-title"><i class="ti-share icon-blue"></i></h5>
             <!-- h6 class="card-subtitle mb-2 text-muted">-</h6> -->
             <p class="card-text">Gather page access analytics. Compare pages and find out what content does better.</p>
-            <a href="#" class="card-link">Know more</a>
+            <a href="#" class="card-link"></a>
           </div>
         </div>
 	</div>
 	<div class="col-md-3 col-sm-12">
     	<div class="card">
           <div class="card-body">
-            <h5 class="card-title"><i class="ti-cloud-up"></i></h5>
+            <h5 class="card-title"><i class="ti-cloud-up icon-blue"></i></h5>
             <!-- h6 class="card-subtitle mb-2 text-muted">-</h6> -->
             <p class="card-text">Host and embed Images, css, js and forms. Flexible forms to capture information.</p>
-            <a href="#" class="card-link">Know more</a>
+            <a href="#" class="card-link"></a>
           </div>
         </div>
 	</div>
 	<div class="col-md-3 col-sm-12">
     	<div class="card">
           <div class="card-body">
-            <h5 class="card-title"><i class="ti-server"></i></h5>
+            <h5 class="card-title"><i class="ti-server icon-blue"></i></h5>
             <!-- h6 class="card-subtitle mb-2 text-muted">-</h6> -->
             <p class="card-text">Manage form submission data. Get customer data and respond to them.</p>
-            <a href="#" class="card-link">Know more</a>
+            <a href="#" class="card-link"></a>
           </div>
         </div>
 	</div>
@@ -120,17 +114,17 @@ include (__ROOT__ . '/views/_header.php');
 <br/>
 <br/>
 <section class="container">
-<div class="row">
+<div class="row my-cards">
 	<div class="col-md-1 col-sm-none">
 	</div>
 	<div class="col-md-4 col-sm-12">
     	<div class="card">
           <div class="card-body">
-            <h5 class="card-title">Shorten url</h5>
+            <h5 class="card-title icon-info">Shorten url</h5>
             <img src="/img/tinyurl.png" height="100px">
             <!-- h6 class="card-subtitle mb-2 text-muted">-</h6> -->
             <p class="card-text">Create tiny URL from partner website. Tiny URL allows you to collect access stats.</p>
-            <a href="https://tiny.cc" class="card-link text-warning">Get me the tiny url</a>
+            <a href="https://tiny.cc" class="card-link">Get me the tiny url</a>
           </div>
         </div>
 	</div>
@@ -139,11 +133,11 @@ include (__ROOT__ . '/views/_header.php');
 	<div class="col-md-4 col-sm-12">
     	<div class="card">
           <div class="card-body">
-            <h5 class="card-title">Qr-code generator</h5>
+            <h5 class="card-title icon-info">Qr-code generator</h5>
             <img src="/img/qr-code.png" height="100px">
             <!-- h6 class="card-subtitle mb-2 text-muted">-</h6> -->
             <p class="card-text">Create custom QR code for your page - presented by our online partner.</p>
-            <a href="https://www.the-qrcode-generator.com" class="card-link text-warning">Get me the QR code</a>
+            <a href="https://www.the-qrcode-generator.com" class="card-link">Get me the QR code</a>
           </div>
         </div>
 	</div>

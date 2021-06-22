@@ -266,3 +266,39 @@ color: var(--blue7);
    	box-shadow: 1px 1px 1px grey;
     background: #eeeeee;
 }
+
+/*	Themify ICONS */
+.icon-blue {
+    font-size: 32px;
+    font-weight: 600;
+    color: var(--blue);
+}
+
+.icon-red {
+    font-size: 32px;
+    font-weight: 600;
+    color: var(--red);
+}
+
+.icon-green {
+    font-size: 32px;
+    font-weight: 600;
+    color: var(--green);
+}
+
+.icon-yellow {
+    font-size: 32px;
+    font-weight: 600;
+    color: var(--yellow);
+}
+
+.icon-orange {
+    font-size: 32px;
+    font-weight: 600;
+    color: var(--orange);
+}
+.my-cards .card {
+    height: 25vh;
+    background-image: linear-gradient(to bottom right, white, #f5f5f5);
+    border: 1px;
+}

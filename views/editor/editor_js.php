@@ -1,6 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="build online html pages with embedded forms and images" />
+        <meta name="author" content="Abhinandan Prateek" />
+        <title>PageMight - Online Page builder</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="/img/write48x48.ico" />
+        <link href="/css/styles.css" rel="stylesheet" />
+        <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/themify-icons/themify-icons.css">
+        <link rel="stylesheet" href="/css/editor.css">
+        <link rel="stylesheet" href="/css/thumbnail.css">
+        <link rel="stylesheet" href="/css/styles.css">
+        <!-- Bootstrap core JS-->
+        <script src="/jquery/jquery-3.6.0.min.js"></script>
+        <script src="/bootstrap/js/bootstrap.bundle.min.js"></script>
+		<script src="/js/scripts.js"></script>
+        <script src="/js/editor.js"></script>
+        <script src="/js/tidy.js"></script>
+    </head>
 <?php
-include (__ROOT__ . '/views/_header.php');
-
 require_once(__ROOT__.'/config/config.php');
 include_once(__ROOT__ . '/classes/core/Log.php');
 include_once(__ROOT__ . '/classes/pm/Page.php');
@@ -58,16 +79,17 @@ $imgs = new Images();
                 <div class="col-1">
                     <button type="submit" name="submit" value="toimages" class="btn btn-link"
         							   onclick="return onClickSubmitButton('<?php echo MAIN_VIEW; ?>');">
-                    	<i class="ti-control-backward"  style="color: blue;font-size: 26px;"></i>&nbsp;&nbsp;</button>
+                    	<i class="ti-control-backward icon-blue"></i>&nbsp;&nbsp;</button>
                 </div>
                 <div class="col-2">
                     <input type="hidden" name="switchMode" onchange="setDocMode(this.checked);" />
                     <button type="submit" id="save_content" name="submit" value="update" class="btn btn-link"
         								onclick="return onClickSubmitButton('<?php echo EDITOR_CSS; ?>');">
-                    									<i class="ti-save" style="color: green;font-size: 26px;"></i></button>
+                    									<i class="ti-save icon-green"></i></button>
                 </div>
                 <div class="col-4">
-                    <input type="text" name="page" placeholder="page name" size="16" value="<?php echo $page_code; ?>" style="border: 0px;text-decoration: underline;" required>
+                    <input type="text" name="page" placeholder="page name" size="16" value="<?php echo $page_code; ?>"
+                      			style="border: 0px;text-decoration: underline;" required>
                 </div>
                 <div class="col-2">
                 </div>
@@ -77,7 +99,9 @@ $imgs = new Images();
         			<a class="btn btn-sim0" href="/redirect.php?view=editor_js&page_code=<?php echo $page_code; ?>"><b style="color: pink;">JS</b></a>
                 </div>
               </div>
-
+              <div class="row header-toolbar">
+                <br/>
+			  </div>
                   <div class="form-group" id="html_content">
                    		<pre id="display"><div id="htmlEditorPane" contenteditable="true" onscroll="setScrollPosition();">
                    		<?php echo $page_code==null ? "": $content; ?></div></pre>
