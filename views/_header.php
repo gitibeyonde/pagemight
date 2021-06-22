@@ -8,7 +8,7 @@ require_once(__ROOT__.'/config/config.php');
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="Create Landing Pages, Catalogs and Flyers, Share minified links and measure performance." />
         <meta name="author" content="Abhinandan Prateek" />
-        <title>PageMight - Free Landing Page builder</title>
+        <title>Free Landing Page builder</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="/img/write48x48.ico" />
         <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
@@ -18,6 +18,17 @@ require_once(__ROOT__.'/config/config.php');
         <script src="/jquery/jquery-3.6.0.min.js"></script>
         <script src="/bootstrap/js/bootstrap.bundle.min.js"></script>
 		<script src="/js/scripts.js"></script>
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-GZM18BWQGY"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-GZM18BWQGY');
+        </script>
+
     </head>
     <body>
         <!-- Responsive navbar-->

@@ -4,9 +4,9 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>Powered by PageMight.com</title>
+        <meta name="description" content="Create Landing Pages, Catalogs and Flyers, Share minified links and measure performance." />
+        <meta name="author" content="Abhinandan Prateek" />
+        <title>Free Landing Page builder</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="/img/write48x48.ico" />
         <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
@@ -27,6 +27,17 @@
             padding: 0 5px 5px 10px;
             }
         </style>
+
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-GZM18BWQGY"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-GZM18BWQGY');
+        </script>
     </head>
     <body>
 	<div class="container">

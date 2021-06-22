@@ -2,6 +2,12 @@
 if (!defined('__ROOT__')) define ( '__ROOT__', dirname ( __FILE__ ) ) ;
 include (__ROOT__ . '/views/_header.php');
 ?>
+<style>
+.card {
+    height: 25vh;
+}
+
+</style>
 <link rel="stylesheet" href="/css/login.css">
 <section class="container-fluid h-100 my-login-page">
 	<div class="container h-100">
@@ -65,8 +71,8 @@ include (__ROOT__ . '/views/_header.php');
 <br/>
 <section class="container">
 <div class="row">
-	<div class="col-3">
-    	<div class="card"  style="height: 20vh;">
+	<div class="col-md-3 col-sm-12">
+    	<div class="card">
           <div class="card-body">
             <h5 class="card-title"><i class="ti-write"></i></h5>
             <!-- h6 class="card-subtitle mb-2 text-muted">-</h6> -->
@@ -75,18 +81,18 @@ include (__ROOT__ . '/views/_header.php');
           </div>
         </div>
 	</div>
-	<div class="col-3">
-    	<div class="card"  style="height: 20vh;">
+	<div class="col-md-3 col-sm-12">
+    	<div class="card">
           <div class="card-body">
             <h5 class="card-title"><i class="ti-share"></i></h5>
             <!-- h6 class="card-subtitle mb-2 text-muted">-</h6> -->
-            <p class="card-text">Share minified links. Gather page access analytics. Do A/B testing.</p>
+            <p class="card-text">Gather page access analytics. Compare pages and find out what content does better.</p>
             <a href="#" class="card-link">Know more</a>
           </div>
         </div>
 	</div>
-	<div class="col-3">
-    	<div class="card"  style="height: 20vh;">
+	<div class="col-md-3 col-sm-12">
+    	<div class="card">
           <div class="card-body">
             <h5 class="card-title"><i class="ti-cloud-up"></i></h5>
             <!-- h6 class="card-subtitle mb-2 text-muted">-</h6> -->
@@ -95,8 +101,8 @@ include (__ROOT__ . '/views/_header.php');
           </div>
         </div>
 	</div>
-	<div class="col-3">
-    	<div class="card"  style="height: 20vh;">
+	<div class="col-md-3 col-sm-12">
+    	<div class="card">
           <div class="card-body">
             <h5 class="card-title"><i class="ti-server"></i></h5>
             <!-- h6 class="card-subtitle mb-2 text-muted">-</h6> -->
@@ -110,6 +116,49 @@ include (__ROOT__ . '/views/_header.php');
 </section>
 
 
+<br/>
+<br/>
+<br/>
+<section class="container">
+<div class="row">
+	<div class="col-md-1 col-sm-none">
+	</div>
+	<div class="col-md-4 col-sm-12">
+    	<div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Shorten url</h5>
+            <img src="/img/tinyurl.png" height="100px">
+            <!-- h6 class="card-subtitle mb-2 text-muted">-</h6> -->
+            <p class="card-text">Create tiny URL from partner website. Tiny URL allows you to collect access stats.</p>
+            <a href="https://tiny.cc" class="card-link text-warning">Get me the tiny url</a>
+          </div>
+        </div>
+	</div>
+	<div class="col-md-2 col-sm-none">
+	</div>
+	<div class="col-md-4 col-sm-12">
+    	<div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Qr-code generator</h5>
+            <img src="/img/qr-code.png" height="100px">
+            <!-- h6 class="card-subtitle mb-2 text-muted">-</h6> -->
+            <p class="card-text">Create custom QR code for your page - presented by our online partner.</p>
+            <a href="https://www.the-qrcode-generator.com" class="card-link text-warning">Get me the QR code</a>
+          </div>
+        </div>
+	</div>
+	<div class="col-md-1 col-sm-none">
+	</div>
+</div>
+</section>
+
+<br/>
+<br/>
+<br/>
+
+<br/>
+<br/>
+<br/>
 <script src="/js/login.js"></script>
 
 <?php
