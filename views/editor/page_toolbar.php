@@ -1,3 +1,14 @@
+<?php
+
+$col2 = '<br/><table class="table-responsive" width="100%"><tr><td width="50%">col1</td><td width="50%">col2</td></tr></table><br/>';
+$col3 = '<br/><table class="table-responsive" width="100%"><tr><td width="33%">col1</td><td width="33%">col2</td><td width="33%">col3</td></tr></table><br/>';
+$col4 = '<br/><table class="table-responsive" width="100%"><tr><td width="25%">col1</td><td width="25%">col2</td><td width="25%">col3</td><td width="25%">col4</td></tr></table><br/>';
+$col5 = '<br/><table class="table-responsive" width="100%"><tr><td width="20%">col1</td><td width="20%">col2</td><td width="20%">col3</td><td width="20%">col4</td><td width="20%">col5</td></tr></table><br/>';
+$col6 = '<br/><table class="table-responsive" width="100%"><tr><td width="17%">col1</td><td width="16%">col2</td><td width="16%">col3</td><td width="16%">col4</td><td width="16%">col5</td><td width="17%">col6</td></tr></table><br/>';
+$col7 = '<br/><table class="table-responsive" width="100%"><tr><td width="14%">col1</td><td width="14%">col2</td><td width="14%">col3</td><td width="14%">col4</td><td width="14%">col5</td><td width="14%">col6</td><td width="14%">col7</td></tr></table><br/>';
+$col8 = '<br/><table class="table-responsive" width="100%"><tr><td width="12%">col1</td><td width="12%">col2</td><td width="12%">col3</td><td width="12%">col4</td><td width="12%">col5</td><td width="12%">col6</td><td width="12%">col7</td><td width="12%">col8</td></tr></table><br/>';
+
+?>
 <div class="container-fluid no_select">
       <div class="row header-toolbar">
         <div class="col-1">
@@ -77,12 +88,13 @@
             Insert:<select
                     onchange="formatDoc('insertHtml',this[this.selectedIndex].value + '\n');this.selectedIndex=0;">
                     <option class="heading" selected>Row</option>
-                     <option value='<br/><div class="row"><div class="col">col-1</div><div class="col">col-2</div><br/>'>2 Col</option>
-                     <option value='<br/><div class="row"><div class="col">col-1</div><div class="col">col-2</div><div class="col">col-3</div></div><br/>'>3 Col</option>
-                     <option value='<br/><div class="row"><div class="col">col-1</div><div class="col">col-2</div><div class="col">col-3</div><div class="col">col-4</div></div><br/>'>4 Col</option>
-                     <option value='<br/><div class="row"><div class="col">col-1</div><div class="col">col-2</div><div class="col">col-3</div><div class="col">col-4</div><div class="col">col-5</div></div><br/>'>5 Col</option>
-                     <option value='<br/><div class="row"><div class="col">col-1</div><div class="col">col-2</div><div class="col">col-3</div><div class="col">col-4</div><div class="col">col-5</div><div class="col">col-6</div></div><br/>'>6 Col</option>
-                     <option value='<br/><div class="row"><div class="col">col-1</div><div class="col">col-2</div><div class="col">col-3</div><div class="col">col-4</div><div class="col">col-5</div><div class="col">col-6</div><div class="col">col-7</div><div class="col">col-8</div><</div><br/>'>8 Col</option>
+                     <option value='<?php echo $col2; ?>'>2 Col</option>
+                     <option value='<?php echo $col3; ?>'>3 Col</option>
+                     <option value='<?php echo $col4; ?>'>4 Col</option>
+                     <option value='<?php echo $col5; ?>'>5 Col</option>
+                     <option value='<?php echo $col6; ?>'>6 Col</option>
+                     <option value='<?php echo $col7; ?>'>7 Col</option>
+                     <option value='<?php echo $col8; ?>'>8 Col</option>
               </select>
 		</div>
      </div>

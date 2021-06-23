@@ -84,7 +84,7 @@ $imgs = new Images();
                   <?php include_once(__ROOT__ . '/views/editor/page_toolbar.php'); ?>
 
                   <div class="form-group" id="html_content">
-                   		<div id="htmlEditorPane" contenteditable="true" onscroll="setScrollPosition();"><?php echo $page_code==null ? "": $content; ?></div>
+                   		<div id="htmlEditorPane" contenteditable="true" style="display:inline-block;" onscroll="setScrollPosition();"><?php echo $page_code==null ? "": $content; ?></div>
                   </div>
 
                   <input id="content_input" type="hidden" name="content" value="">
@@ -143,6 +143,17 @@ function doSubmitNodeForm(){
     return true;
 }
 
+
+$('div[contenteditable]').keydown(function(e) {
+    // trap the return key being pressed
+    if (e.keyCode === 13) {
+        //console.log("Retrun pressed.." + e.keyCode);
+        // insert 2 br tags (if only one br tag is inserted the cursor won't go to the next line)
+        document.execCommand('insertHTML', false, '<br/><br/>');
+        // prevent the default behaviour of return key pressed
+        return false;
+    }
+});
 
 enableImageResizeInDiv("htmlEditorPane");
 </script>

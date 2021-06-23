@@ -106,6 +106,7 @@ function formatDoc(sCmd, sValue) {
     }
 }
 
+
 function validateMode() {
     if (!document.nodeform.switchMode.checked) {
         return true;
