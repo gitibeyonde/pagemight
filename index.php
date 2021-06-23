@@ -3,6 +3,22 @@ if (!defined('__ROOT__')) define ( '__ROOT__', dirname ( __FILE__ ) ) ;
 include (__ROOT__ . '/views/_header.php');
 ?>
 <link rel="stylesheet" href="/css/login.css">
+
+<br/>
+<br/>
+<br/>
+<section class="container"><div class="row my-cards">
+	<div class="col-md-3 col-sm-none">
+	</div>
+	<div class="col-md-6 col-sm-none">
+    	<h3>Coming Soon, under construction.</h3>
+	</div>
+	<div class="col-md-3 col-sm-none">
+	</div>
+</div>
+</section>
+
+
 <section class="container-fluid h-100 my-login-page">
 	<div class="container h-100">
 		<div class="row justify-content-md-center h-100">
@@ -113,6 +129,31 @@ include (__ROOT__ . '/views/_header.php');
 <br/>
 <br/>
 <br/>
+<section class="container"><div class="row my-cards">
+	<div class="col-md-3 col-sm-none">
+	</div>
+	<div class="col-md-6 col-sm-none">
+    	<div class="card">
+          <div class="card-body">
+            <h5 class="card-title icon-info">Keep your page updated</h5>
+            <img src="/img/mobile-to-webpage.png" height="200px">
+            <h6 class="card-subtitle mb-2 text-muted">PageMight Android App</h6>
+            <p class="card-text">With PageMight Android App you can keep the images, videos and other elements updated while on the move.</p>
+            <a href="https://www.the-qrcode-generator.com" class="card-link">Get me the PageMight App</a>
+          </div>
+        </div>
+	</div>
+	<div class="col-md-3 col-sm-none">
+	</div>
+</div>
+</section>
+
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
 <section class="container">
 <div class="row my-cards">
 	<div class="col-md-1 col-sm-none">
@@ -121,7 +162,7 @@ include (__ROOT__ . '/views/_header.php');
     	<div class="card">
           <div class="card-body">
             <h5 class="card-title icon-info">Shorten url</h5>
-            <img src="/img/tinyurl.png" height="100px">
+            <img src="/img/tinyurl.png" width="100%">
             <!-- h6 class="card-subtitle mb-2 text-muted">-</h6> -->
             <p class="card-text">Create tiny URL from partner website. Tiny URL allows you to collect access stats.</p>
             <a href="https://tiny.cc" class="card-link">Get me the tiny url</a>
