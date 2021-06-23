@@ -138,7 +138,7 @@ function doSubmitNodeForm(){
     //remove resize frames added by image resizer
     document.querySelectorAll(".resize-frame,.resizer").forEach((item) => item.parentNode.removeChild(item));
 
-    console.log("Setting content to " + oDoc.innerHTML);
+    //console.log("Setting content to " + oDoc.innerHTML);
     $("#content_input").val(oDoc.innerHTML);
     return true;
 }
@@ -147,9 +147,12 @@ function doSubmitNodeForm(){
 $('div[contenteditable]').keydown(function(e) {
     // trap the return key being pressed
     if (e.keyCode === 13) {
-        //console.log("Retrun pressed.." + e.keyCode);
+        //console.log("Return pressed.." + e.keyCode);
+        e.preventDefault();
         // insert 2 br tags (if only one br tag is inserted the cursor won't go to the next line)
-        document.execCommand('insertHTML', false, '<br/><br/>');
+        insertAtCursor("<br/><br/>");
+        document.getSelection().collapseToEnd();
+        //document.execCommand('insertHTML', false, '<br><br>');
         // prevent the default behaviour of return key pressed
         return false;
     }

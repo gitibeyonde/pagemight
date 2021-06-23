@@ -122,8 +122,8 @@ function setDocMode(showHTML) {
         console.log("oDoc is NULL !!");
         oDoc = document.getElementById("htmlEditorPane");
     }
-    console.log("setDocMode" + showHTML);
-    console.log("doc inner html" + tidy_html5(oDoc.innerHTML, options));
+    //console.log("setDocMode" + showHTML);
+    //console.log("doc inner html" + tidy_html5(oDoc.innerHTML, options));
     var oContent;
     if (showHTML) {
         oContent = document.createTextNode(tidy_html5(oDoc.innerHTML, options));
@@ -136,7 +136,7 @@ function setDocMode(showHTML) {
         oPre.appendChild(oContent);
         oDoc.appendChild(oPre);
         document.execCommand("defaultParagraphSeparator", false, "div");
-        console.log("HTML text=" + oPre.innerHTML);
+        //console.log("HTML text=" + oPre.innerHTML);
     } else {
         if (document.all) {
             oDoc.innerHTML = oDoc.innerText;
@@ -146,7 +146,7 @@ function setDocMode(showHTML) {
             oContent = document.createRange();
             oContent.selectNodeContents(oDoc.firstChild);
             oDoc.innerHTML = oContent.toString();
-            console.log("Rendered=" + oDoc.innerHTML);
+            //console.log("Rendered=" + oDoc.innerHTML);
         }
         oDoc.contentEditable = true;
         isHTML = true;
@@ -249,6 +249,7 @@ function insertImageAtCursor(src, selectPastedContent) {
 }
 
 $("#htmlEditorPane").on("DOMNodeInserted", $.proxy(function(e) {
+    console.log("Dom inserted");
     if (e.target.parentNode.getAttribute("contenteditable") === "true") {
         var newTextNode = document.createTextNode("");
         function antiChrome(node) {
