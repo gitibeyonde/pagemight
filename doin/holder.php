@@ -28,10 +28,12 @@ $user_name = $p['user_name'];
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+		<meta property="title" content="<?php echo $title; ?>">
 		<meta property="og:title" content="<?php echo $title; ?>">
-		<meta property="og:description" content="<?php $description; ?>">
-		<meta property="og:image" content="<?php $img; ?>">
-		<meta property="og:url" content="<?php echo $_SERVER['REQUEST_URI']; ?>">
+		<meta property="description" content="<?php echo $description; ?>">
+		<meta property="og:description" content="<?php echo $description; ?>">
+		<meta property="og:image" content="<?php echo $img; ?>">
+		<meta property="og:url" content="<?php echo "https://".$_SERVER['SERVER_NAME']."/".$_SERVER['REQUEST_URI']; ?>">
 		<meta name="twitter:card" content="<?php $description;?>">
         <meta name="author" content="Abhinandan Prateek" />
         <title><?php echo $title; ?></title>
