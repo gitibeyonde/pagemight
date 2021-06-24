@@ -1,14 +1,17 @@
 <?php
 include (__ROOT__ . '/views/_header.php');
 include_once(__ROOT__ . '/classes/pm/Images.php');
+include_once(__ROOT__ . '/classes/core/Log.php');
 
 $user_name = $_SESSION['user_name'];
 $SU = new Images();
 $page_code = isset($_GET['page_code']) ? $_GET['page_code'] : $_POST['page_code'];
+$submit = isset($_GET['submit']) ? $_GET['submit'] : $_POST['submit'];
+
+$log = new Log('debug');
 
 $msg="";
-if (isset($_POST['submit'])){
-    $submit = $_POST['submit'];
+if (isset($submit)){
     error_log("submit =" . $submit);
     if ($submit == "add"){
         $image_name=$_POST['name'];
@@ -46,12 +49,12 @@ if (isset($_POST['submit'])){
         }
 
     }
-}
+    else if ($submit == "delete"){
+            $basename = $_GET['basename'];
+            $SU->deleteImage($user_name."/img/".$basename);
+            $log->debug("Deleting".$user_name."/img/".$basename);
+    }
 
-if ($submit == "delete"){
-    $basename = $_GET['basename'];
-    $SU->deleteImage($user_name."/img/".$basename);
-    $log->debug("Deleting".$user_name."/img/".$basename);
 }
 
 $images = $SU->listImages($user_name);

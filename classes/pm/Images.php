@@ -115,7 +115,7 @@ class Images
 
     public function deleteImage($prefix){
         $result = self::$s3->deleteMatchingObjects(self::bucket, $prefix);
-        //error_log(print_r($result, true));
+        error_log(print_r($result, true));
     }
 
 
