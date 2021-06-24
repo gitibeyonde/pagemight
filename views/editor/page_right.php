@@ -35,8 +35,8 @@
     <div class="row">
         <?php $Limges = $imgs->listImages($user_name);
         foreach($Limges as $imgurl){
-            $name = basename($imgurl);
-            $jsname = preg_replace("/[^A-Za-z0-9]/", '', $name);;
+            $image_name = basename($imgurl);
+            $jsname = preg_replace("/[^A-Za-z0-9]/", '', $image_name);;
             echo "<img class='img-box' id='image-".$jsname."' src='".$imgurl."' width='25%' height='25%'  style='padding: 5px;'>";
         }
         ?>
@@ -66,8 +66,8 @@
  <script>
  <?php $Limges = $imgs->listImages($user_name);
  foreach($Limges as $imgurl){
-     $name = basename($imgurl);
-     $jsname = preg_replace("/[^A-Za-z0-9]/", '', $name);;
+     $image_name = basename($imgurl);
+     $jsname = preg_replace("/[^A-Za-z0-9]/", '', $image_name);;
      ?>
  $("#<?php echo "image-".$jsname; ?>").click(function(){
      var src = '<?php echo $imgurl; ?>' ;

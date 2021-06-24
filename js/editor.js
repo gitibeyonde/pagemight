@@ -1,27 +1,4 @@
 
-let vh = (window.innerHeight
-    || document.documentElement.clientHeight
-    || document.body.clientHeight)
-    * 0.01;
-document.documentElement.style.setProperty('--vh', `${vh}px`);
-// We listen to the resize event
-window.addEventListener('resize', () => {
-    // We execute the same script as before
-    let vh = (window.innerHeight
-        || document.documentElement.clientHeight
-        || document.body.clientHeight)
-        * 0.01;
-    document.documentElement.style.setProperty('--vh', `${vh}px`);
-});
-window.addEventListener('load', () => {
-    // We execute the same script as before
-    let vh = (window.innerHeight
-        || document.documentElement.clientHeight
-        || document.body.clientHeight)
-        * 0.01;
-    document.documentElement.style.setProperty('--vh', `${vh}px`);
-});
-
 var imported = document.createElement('script');
 imported.src = '/js/tidy.js';
 document.head.appendChild(imported);

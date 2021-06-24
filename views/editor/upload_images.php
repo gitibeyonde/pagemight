@@ -11,7 +11,7 @@ if (isset($_POST['submit'])){
     $submit = $_POST['submit'];
     error_log("submit =" . $submit);
     if ($submit == "add"){
-        $name=$_POST['name'];
+        $image_name=$_POST['name'];
 
         $error = false;
         if ($_FILES["fileToUpload"]["error"] != 0){
@@ -42,7 +42,7 @@ if (isset($_POST['submit'])){
             $filename = $_FILES["fileToUpload"]["tmp_name"];
             $log->debug("Upload file=".$_FILES["fileToUpload"]["name"]);
             $ext = pathinfo($_FILES["fileToUpload"]["name"], PATHINFO_EXTENSION);
-            $SU->uploadFilePageMight($user_name."/img/".$name.".".$ext, $filename);
+            $SU->uploadFilePageMight($user_name."/img/".$image_name.".".$ext, $filename);
         }
 
     }
@@ -115,6 +115,13 @@ $count = $SU->imageCount($user_name);
 
 
 <script>
+function copyToClipboard(text) {
+    var $temp = $("<input>");
+    $("body").append($temp);
+    $temp.val(text).select();
+    document.execCommand("copy");
+    $temp.remove();
+  }
 $('#textInput').on('input', function() {
 	  var c = this.selectionStart,
 	      r = /[^a-z0-9_\- ]/gi,

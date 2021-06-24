@@ -3,22 +3,6 @@ if (!defined('__ROOT__')) define ( '__ROOT__', dirname ( __FILE__ ) ) ;
 include (__ROOT__ . '/views/_header.php');
 ?>
 <link rel="stylesheet" href="/css/login.css">
-
-<br/>
-<br/>
-<br/>
-<section class="container"><div class="row my-cards">
-	<div class="col-md-3 col-sm-none">
-	</div>
-	<div class="col-md-6 col-sm-none">
-    	<h3>Coming Soon, under construction.</h3>
-	</div>
-	<div class="col-md-3 col-sm-none">
-	</div>
-</div>
-</section>
-
-
 <section class="container-fluid h-100 my-login-page">
 	<div class="container h-100">
 		<div class="row justify-content-md-center h-100">
@@ -85,7 +69,7 @@ include (__ROOT__ . '/views/_header.php');
     	<div class="card">
           <div class="card-body">
             <h5 class="card-title"><i class="ti-write icon-blue"></i></h5>
-            <!-- h6 class="card-subtitle mb-2 text-muted">-</h6> -->
+            <h6 class="card-subtitle mb-2 text-muted">Online HTML editor</h6>
             <p class="card-text">Create Landing Pages, Catalogs and Flyers. Lightening fast load time !</p>
             <a href="#" class="card-link"></a>
           </div>
@@ -95,7 +79,7 @@ include (__ROOT__ . '/views/_header.php');
     	<div class="card">
           <div class="card-body">
             <h5 class="card-title"><i class="ti-share icon-blue"></i></h5>
-            <!-- h6 class="card-subtitle mb-2 text-muted">-</h6> -->
+            <h6 class="card-subtitle mb-2 text-muted">Page Analytics</h6>
             <p class="card-text">Gather page access analytics. Compare pages and find out what content does better.</p>
             <a href="#" class="card-link"></a>
           </div>
@@ -105,7 +89,7 @@ include (__ROOT__ . '/views/_header.php');
     	<div class="card">
           <div class="card-body">
             <h5 class="card-title"><i class="ti-cloud-up icon-blue"></i></h5>
-            <!-- h6 class="card-subtitle mb-2 text-muted">-</h6> -->
+            <h6 class="card-subtitle mb-2 text-muted">Cloud Hosting</h6>
             <p class="card-text">Host and embed Images, css, js and forms. Flexible forms to capture information.</p>
             <a href="#" class="card-link"></a>
           </div>
@@ -115,7 +99,7 @@ include (__ROOT__ . '/views/_header.php');
     	<div class="card">
           <div class="card-body">
             <h5 class="card-title"><i class="ti-server icon-blue"></i></h5>
-            <!-- h6 class="card-subtitle mb-2 text-muted">-</h6> -->
+            <h6 class="card-subtitle mb-2 text-muted">Gather Customer Data</h6>
             <p class="card-text">Manage form submission data. Get customer data and respond to them.</p>
             <a href="#" class="card-link"></a>
           </div>
@@ -125,9 +109,6 @@ include (__ROOT__ . '/views/_header.php');
 
 </section>
 
-
-<br/>
-<br/>
 <br/>
 <section class="container"><div class="row my-cards">
 	<div class="col-md-3 col-sm-none">
@@ -139,7 +120,7 @@ include (__ROOT__ . '/views/_header.php');
             <img src="/img/mobile-to-webpage.png" height="200px">
             <h6 class="card-subtitle mb-2 text-muted">PageMight Android App</h6>
             <p class="card-text">With PageMight Android App you can keep the images, videos and other elements updated while on the move.</p>
-            <a href="https://www.the-qrcode-generator.com" class="card-link">Get me the PageMight App</a>
+            <a href="#" class="card-link">Get me the PageMight App</a>
           </div>
         </div>
 	</div>
@@ -148,9 +129,6 @@ include (__ROOT__ . '/views/_header.php');
 </div>
 </section>
 
-<br/>
-<br/>
-<br/>
 <br/>
 <br/>
 <br/>

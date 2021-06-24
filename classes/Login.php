@@ -93,9 +93,6 @@ class Login
         }
 
         $this->log = $_SESSION['log'] == null ? new Log("trace")  : $_SESSION['log'];
-        $this->log->trace("Logging on at trace");
-        $this->log->trace("post=".print_r($_POST, true));
-        $this->log->trace("get=".print_r($_GET, true));
         // TODO: organize this stuff better and make the constructor very small
         // TODO: unite Login and Registration classes ?
 
@@ -694,8 +691,10 @@ class Login
             $query_user->bindValue(':user_name', $user_name, PDO::PARAM_STR);
             $query_user->execute();
             // get result row (as an object)
-            $tp =  $query_user->fetchObject();
-            $tp = Utils::rand64();
+            $tp =  $query_user->fetch()[0];
+            if ($tp == null){
+                $tp = Utils::rand64();
+            }
             $sth = $this->db_connection->prepare("UPDATE users SET tpass64 = :tp WHERE user_name = :user_name");
             $sth->execute(array(':tp' => $tp, ':user_name' => $user_name));
             return $tp;
