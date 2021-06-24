@@ -12,6 +12,7 @@ define("EDITOR_VIEW", "editor_view");
 define("EDITOR_CSS", "editor_css");
 define("EDITOR_JS", "editor_js");
 define("UPLOAD_IMAGES", "upload_images");
+define("SEO_UPDATE", "seo_update");
 define("FORM_CREATE", "form_create");
 define("FORM_DATA", "form_data");
 

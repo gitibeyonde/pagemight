@@ -36,6 +36,14 @@ class Page extends Mysql {
         $r = $this->changeRow ( sprintf ( "update page set js=%s where user_name=%s and code=%s;", $js, $user_name, $page_code) );
         return $this->selectRow(sprintf ("select * from page where user_name=%s and code=%s;", $user_name , $page_code));
     }
+    public function savePageSEO($user_name, $page_code, $seo) {
+        $user_name = $this->quote($user_name);
+        $page_code = $this->quote($page_code);
+        $seo = $this->quote($seo);
+        $r = $this->changeRow ( sprintf ( "update page set seo=%s where user_name=%s and code=%s;", $seo, $user_name, $page_code) );
+        return $this->selectRow(sprintf ("select * from page where user_name=%s and code=%s;", $user_name , $page_code));
+    }
+
     public function getPages($user_name) {
         return $this->selectRows( sprintf ( "select * from page where user_name=%s;", $this->quote($user_name)) );
     }

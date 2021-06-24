@@ -16,13 +16,21 @@
 
    <hr/>
 
-<!--
+
 
 	&nbsp;&nbsp;<label id="console-event2">Comments</label>&nbsp;&nbsp;
-	<input type="checkbox" id="toggle-event2" data-toggle="toggle" data-on="<i class='ti-check'></i>"
-			data-off="<i class='ti-close'></i>" <?php echo ($comment == 1 ? "checked" : ""); ?>>
+	<input type="checkbox" id="toggle-event2" data-toggle="toggle" class="icon-blue" style="width: 26px; height: 26px;"  <?php echo ($comment == 1 ? "checked" : ""); ?> >
    <hr/>
- -->
+
+
+    <form action="/redirect.php"  method="get">
+    <input type=hidden name="view" value="<?php echo SEO_UPDATE; ?>">
+    <input type=hidden name="page_code" value="<?php echo $page_code; ?>">
+    &nbsp;&nbsp;<label>SEO</label>
+    <button type="submit" name="submit" value="toimages" class="btn btn-link">&nbsp;&nbsp;&nbsp;&nbsp;<i class="ti-plus icon-green"></i></button>
+    </form>
+
+    <hr/>
 
 
     <form action="/redirect.php"  method="get">

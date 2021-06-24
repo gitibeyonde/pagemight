@@ -60,7 +60,7 @@ $page_name = $p['name'];
 $page_code = $p['code'];
 $content = $p['content'];
 $public = $p['public'];
-$comment = $p['comment'];;
+$comment = $p['comment'];
 error_log("Page code = ".$page_code." comment=".$comment." public=".$public);
 
 $kb = new UserForm($user_name);

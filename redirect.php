@@ -61,6 +61,14 @@ else if  ($login->getView() == EDITOR_JS){
             include("index.php");
         }
 }
+else if  ($login->getView() == SEO_UPDATE){
+    if (isset( $_SESSION ['user_id']) && isset( $_SESSION ['user_name'])){
+        include("views/editor/seo_update.php");
+    }
+    else {
+        include("index.php");
+    }
+}
 else if  ($login->getView() == UPLOAD_IMAGES){
     if (isset( $_SESSION ['user_id']) && isset( $_SESSION ['user_name'])){
         include("views/editor/upload_images.php");
