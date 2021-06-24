@@ -60,8 +60,8 @@ if (isset($seo) && strlen($seo) > 5){
     </form>
 </div>
  <div class=container" style="padding: 6vh 20vh 0vh 20vh;">
-    <h3 class="sel0">Update SEO Info</h3>
-
+    <h3 class="sel0">Update SEO</h3>
+    <br/>
   	<form action="/redirect.php?"  method="get">
         <input type=hidden name=view value="<?php echo SEO_UPDATE; ?>">
 		<input type=hidden name="page_code" value="<?php echo $page_code; ?>">
@@ -73,7 +73,7 @@ if (isset($seo) && strlen($seo) > 5){
 
         <div class="form-group form-fields">
             <label>Desc: </label>
-        	<textarea name="description" Placeholder="Description"><?php echo $description; ?></textarea>
+        	<textarea name="description" cols="80" rows="3" Placeholder="Description"><?php echo $description; ?></textarea>
        	</div>
 
 
