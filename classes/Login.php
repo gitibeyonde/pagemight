@@ -92,7 +92,10 @@ class Login
             $_SESSION['log'] = new Log('debug');
         }
 
-        $this->log = $_SESSION['log'] == null ? new Log("trace")  : $_SESSION['log'];
+        $this->log = isset($_SESSION['log']) ? $_SESSION['log'] : new Log('trace');
+        $this->log->trace("Logging on at trace");
+        $this->log->trace("post=".print_r($_POST, true));
+        $this->log->trace("get=".print_r($_GET, true));
         // TODO: organize this stuff better and make the constructor very small
         // TODO: unite Login and Registration classes ?
 

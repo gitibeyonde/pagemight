@@ -31,8 +31,6 @@ else if (isset($_POST['t'])){
     $E = new Encryption();
     $token = unserialize($E->decrypt($t));
 
-    var_dump($token);
-
     $user_tpass = $token['tpass'];
     $user_name = $token['user_name'];
 
@@ -40,6 +38,9 @@ else if (isset($_POST['t'])){
     $r = $L->validateTpass($user_name, $user_tpass);
     if(!$r){
         echo 0;
+    }
+    else {
+	echo $r->user_email;
     }
 }
 else {
