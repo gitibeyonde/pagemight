@@ -41,31 +41,7 @@ function formatDoc(sCmd, sValue) {
     console.log("Command = " + sCmd + " value=" + sValue);
     if (validateMode()) {
         if (sCmd == "formatBlock"){
-            //insert a div so that it is replaced with the sValue
-            document.execCommand("bold", false, null);
             document.execCommand(sCmd, false, sValue);
-            document.execCommand("undo", false, null);
-            if (sValue == "h1" ){
-            	 document.execCommand("fontsize", false, "7");
-            }
-            else if (sValue == "h2" ){
-            	 document.execCommand("fontsize", false, "6");
-            }
-            else if (sValue == "h3" ){
-            	 document.execCommand("fontsize", false, "5");
-            }
-            else if (sValue == "h4" ){
-            	 document.execCommand("fontsize", false, "4");
-            }
-            else if (sValue == "h5" ){
-            	 document.execCommand("fontsize", false, "3");
-            }
-            else if (sValue == "h6" ){
-            	 document.execCommand("fontsize", false, "2");
-            }
-            else if (sValue == "h7" ){
-            	 document.execCommand("fontsize", false, "1");
-            }
         }
         else if (sCmd == "createlink"){
             if (sValue == ""){
@@ -114,6 +90,7 @@ function setDocMode(showHTML) {
         oDoc.appendChild(oPre);
         document.execCommand("defaultParagraphSeparator", false, "div");
         //console.log("HTML text=" + oPre.innerHTML);
+    	oDoc.focus();
     } else {
         if (document.all) {
             oDoc.innerHTML = oDoc.innerText;
@@ -127,25 +104,10 @@ function setDocMode(showHTML) {
         }
         oDoc.contentEditable = true;
         isHTML = true;
+    	oDoc.focus();
     }
-    oDoc.focus();
 }
 
-function printDoc() {
-    if (!validateMode()) {
-        return;
-    }
-    var oPrntWin = window
-        .open(
-            "",
-            "_blank",
-            "width=450,height=470,left=400,top=100,menubar=yes,toolbar=no,location=no,scrollbars=yes");
-    oPrntWin.document.open();
-    oPrntWin.document
-        .write("<!doctype html><html><head><title>Print<\/title><\/head><body onload=\"print();\">"
-            + oDoc.innerHTML + "<\/body><\/html>");
-    oPrntWin.document.close();
-}
 
 function insertAtCursor(text) {
     console.log("isHTML" + isHTML);
@@ -244,6 +206,7 @@ $("#htmlEditorPane").on("DOMNodeInserted", $.proxy(function(e) {
         e.target.parentNode.replaceChild(newTextNode, e.target);
     }
 }, this));
+
 
 
 var editorScrollTop = 0;

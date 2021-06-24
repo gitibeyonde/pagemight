@@ -1,6 +1,6 @@
 <?php
 
-$col2 = '<br/><br/><div class="row"><div class="col-md-6 col-sm-12">col-1<br/></div><div class="col-md-6 col-sm-12">col-2<br/></div><br/><br/>';
+$col2 = '<br/><br/><div class="row"><div class="col-md-6 col-sm-12"><p>col-1</p><br/></div><div class="col-md-6 col-sm-12"><p>col-2</p><br/></div><br/><br/>';
 $col3 = '<br/><div class="row"><div class="col-md-4 col-sm-12">col-1<br/></div><div class="col-md-4 col-sm-12">col-2<br/></div><div class="col-md-4 col-sm-12">col-3<br/></div><br/>';
 $col4 = '<br/><div class="row"><div class="col-md-3 col-sm-12">col-1<br/></div><div class="col-md-3 col-sm-12">col-2<br/></div><div class="col-md-3 col-sm-12">col-3<br/></div><div class="col-md-3 col-sm-12">col-4<br/></div><br/>';
 $col6 = '<br/><div class="row"><div class="col-md-2 col-sm-6">col-1<br/></div><div class="col-md-2 col-sm-6">col-2<br/></div><div class="col-md-2 col-sm-6">col-3<br/></div><div class="col-md-2 col-sm-6">col-4<br/></div><div class="col-md-2 col-sm-6">col-5<br/></div><div class="col-md-2 col-sm-6">col-6<br/></div><br/>';
@@ -51,32 +51,9 @@ $col8 = '<br/><div class="row"><div class="col">col-1<br/></div><div class="col"
 				<option value="h7">Title 7 &lt;h7&gt;</option>
 				<option value="p">Para &lt;p&gt;</option>
 				<option value="pre">Pre &lt;pre&gt;</option>
-                <option value="div">Tidy</option>
 			</select>
 
 
-
-            <!-- <select
-				onchange="formatDoc('fontname',this[this.selectedIndex].value);this.selectedIndex=0;">
-				<option class="heading" selected>- font -</option>
-				<option>Arial</option>
-				<option>Arial Black</option>
-				<option>Courier New</option>
-				<option>Times New Roman</option>
-
-			</select>
--->
-           <select
-				onchange="formatDoc('fontsize',this[this.selectedIndex].value);this.selectedIndex=0;">
-				<option class="heading" selected>Font Size</option>
-				<option value="1">Very small</option>
-				<option value="2">Small</option>
-				<option value="3">Normal</option>
-				<option value="4">Big</option>
-				<option value="5">Bigger</option>
-				<option value="6">Very big</option>
-				<option value="7">Huge</option>
-			</select>
 
 			Foreground:<input type="color" class="form-control-color" value="#000000" size="20px" title="Choose text color"
 						onchange="formatDoc('forecolor',this.value);this.value='#000000';">

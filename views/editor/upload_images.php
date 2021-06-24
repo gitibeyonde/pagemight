@@ -72,7 +72,7 @@ $count = $SU->imageCount($user_name);
  <div class=container" style="padding: 6vh 20vh 0vh 20vh;">
     <h3 class="sel0">Manage Media</h3>
     <br/>
-        <?php if ($count > 10) {
+        <?php if ($count > 100) {
                 echo "<b> You have exceeded the quota of 100 images, delete some to upload</b>";
          } else { ?>
               <form action="/redirect.php?view=<?php echo UPLOAD_IMAGES; ?>"  method="post" enctype="multipart/form-data">

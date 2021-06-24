@@ -143,20 +143,36 @@ function doSubmitNodeForm(){
     return true;
 }
 
+var texttags = [ 'H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'H7', 'P' ];
 
-$('div[contenteditable]').keydown(function(e) {
+$('#htmlEditorPane').keydown(function(e) {
     // trap the return key being pressed
     if (e.keyCode === 13) {
-        //console.log("Return pressed.." + e.keyCode);
-        e.preventDefault();
+        console.log("Return pressed.." + e.keyCode);
+        //console.log(e.target.innerHTML);
+        var selection = window.getSelection();
+          var range = selection.getRangeAt(0);
+          var container = range.commonAncestorContainer;
+          var nodeParent = container.parentNode;
+          console.log("tageName=" + nodeParent.tagName);
+          if (texttags.includes(nodeParent.tagName)){
+              console.log("Text tag");
+          	   e.preventDefault();
+              insertAtCursor("<br/><br/>");
+              document.getSelection().collapseToEnd();
+          }
+
+        //
         // insert 2 br tags (if only one br tag is inserted the cursor won't go to the next line)
-        insertAtCursor("<br/><br/>");
-        document.getSelection().collapseToEnd();
+        //if you are in a column then insert at sursor
+        //insertAtCursor("<br/><br/>");
+        //document.getSelection().collapseToEnd();
+        //else insert deafult
         //document.execCommand('insertHTML', false, '<br><br>');
         // prevent the default behaviour of return key pressed
-        return false;
     }
 });
+
 
 enableImageResizeInDiv("htmlEditorPane");
 </script>
