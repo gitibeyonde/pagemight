@@ -31,18 +31,18 @@ else if (isset($_GET['view'])) {
 $log->debug( "VIEW=".$login->getView() );
 if  ($login->getView() == MAIN_VIEW){
     if (isset( $_SESSION ['user_id']) && isset( $_SESSION ['user_name'])){
-         include("views/main_view.php");
+         include("index.php");
     }
     else {
-        include("index.php");
+        include("login.php");
     }
 }
 else if  ($login->getView() == EDITOR_VIEW){
     if (isset( $_SESSION ['user_id']) && isset( $_SESSION ['user_name'])){
-        include("views/editor_view.php");
+        include("views/editor/editor_view.php");
     }
     else {
-        include("index.php");
+        include("login.php");
     }
 }
 else if  ($login->getView() == EDITOR_CSS){
@@ -50,7 +50,7 @@ else if  ($login->getView() == EDITOR_CSS){
         include("views/editor/editor_css.php");
     }
     else {
-        include("index.php");
+        include("login.php");
     }
 }
 else if  ($login->getView() == EDITOR_JS){
@@ -58,7 +58,7 @@ else if  ($login->getView() == EDITOR_JS){
             include("views/editor/editor_js.php");
         }
         else {
-            include("index.php");
+            include("login.php");
         }
 }
 else if  ($login->getView() == SEO_UPDATE){
@@ -66,7 +66,7 @@ else if  ($login->getView() == SEO_UPDATE){
         include("views/editor/seo_update.php");
     }
     else {
-        include("index.php");
+        include("login.php");
     }
 }
 else if  ($login->getView() == UPLOAD_IMAGES){
@@ -74,7 +74,7 @@ else if  ($login->getView() == UPLOAD_IMAGES){
         include("views/editor/upload_images.php");
     }
     else {
-        include("index.php");
+        include("login.php");
     }
 }
 else if  ($login->getView() == FORM_CREATE){
@@ -82,7 +82,7 @@ else if  ($login->getView() == FORM_CREATE){
         include("views/editor/form_create.php");
     }
     else {
-        include("index.php");
+        include("login.php");
     }
 }
 else if  ($login->getView() == FORM_DATA){
@@ -90,17 +90,41 @@ else if  ($login->getView() == FORM_DATA){
         include("views/editor/form_data.php");
     }
     else {
-        include("index.php");
+        include("login.php");
+    }
+}
+else if  ($login->getView() == TEMPLATE_EDITOR){
+    if (isset( $_SESSION ['user_id']) && isset( $_SESSION ['user_name'])){
+        include("views/editor/template_html.php");
+    }
+    else {
+        include("login.php");
+    }
+}
+else if  ($login->getView() == TEMPLATE_CSS){
+    if (isset( $_SESSION ['user_id']) && isset( $_SESSION ['user_name'])){
+        include("views/editor/template_css.php");
+    }
+    else {
+        include("login.php");
+    }
+}
+else if  ($login->getView() == TEMPLATE_JS){
+    if (isset( $_SESSION ['user_id']) && isset( $_SESSION ['user_name'])){
+        include("views/editor/template_js.php");
+    }
+    else {
+        include("login.php");
     }
 }
 else if  ($login->getView() == LOGOUT_VIEW){
         $login->doLogout();
-        include("index.php");
+        include("login.php");
 }
 else {
     // the user is not logged in. you can do whatever you want here.
     // for demonstration purposes, we simply show the "you are not logged in" view.
-    include("index.php");
+    include("login.php");
 }
 
 ?>

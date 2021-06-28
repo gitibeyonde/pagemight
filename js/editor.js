@@ -1,4 +1,28 @@
 
+function allowDrop(ev) {
+  ev.preventDefault();
+}
+
+function drag(ev) {
+  console.log("DRAG" + ev.target.outerHTML);
+  ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function drop(ev) {
+  console.log("DROP" + ev.target.outerHTML);
+  ev.preventDefault();
+  var data = ev.dataTransfer.getData("text");
+  console.log("DROPING " + document.getElementById(data).id);
+  var div_id = document.getElementById(data).id.substring(5);
+  console.log("ID " + div_id);
+  console.log("MAIN ELEMENT=" + document.getElementById(data).children[1].outerHTML);
+  var clone = document.getElementById(data).children[1].cloneNode(true);
+  clone.style.display = "block";
+  clone.id="div_id";
+  ev.target.appendChild(clone);
+}
+
+
 var imported = document.createElement('script');
 imported.src = '/js/tidy.js';
 document.head.appendChild(imported);

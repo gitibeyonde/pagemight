@@ -1,12 +1,12 @@
 <?php
 define('__ROOT__', dirname(dirname(__FILE__)));
-include_once(__ROOT__ . '/classes/pm/Page.php');
+include_once(__ROOT__ . '/classes/pm/Template.php');
 
 error_log("Id=".$_GET['id']);
 if (isset($_GET['id'])){
     $id=$_GET['id'];
     error_log("Id id=".$id);
-    $P = new Page();
+    $P = new Template();
     $p =  $P->getTemplate($id);
     $ip = getenv('HTTP_CLIENT_IP')?:
     getenv('HTTP_X_FORWARDED_FOR')?:
