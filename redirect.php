@@ -30,12 +30,7 @@ else if (isset($_GET['view'])) {
 
 $log->debug( "VIEW=".$login->getView() );
 if  ($login->getView() == MAIN_VIEW){
-    if (isset( $_SESSION ['user_id']) && isset( $_SESSION ['user_name'])){
          include("index.php");
-    }
-    else {
-        include("login.php");
-    }
 }
 else if  ($login->getView() == EDITOR_VIEW){
     if (isset( $_SESSION ['user_id']) && isset( $_SESSION ['user_name'])){

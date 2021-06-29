@@ -41,7 +41,7 @@ $ts = $T->getAllTemplates();
         	<div class="thumbnail-container">
                 <div class="thumbnail">
     				<iframe src="/doin/lkt.php?id=<?php echo $t['name']; ?>"
-                           onload="this.style.opacity = 1" frameborder="0"> </iframe>
+                           onload="this.style.opacity = 1"> </iframe>
                 </div>
             </div>
           <div class="card-img-overlay text-white d-flex flex-column justify-content-top">
@@ -55,7 +55,7 @@ $ts = $T->getAllTemplates();
               	<a href="/doin/lkt.php?id=<?php echo $t['name']; ?>" target="_blank">
               	<span class="material-icons green md-36"   style="background-color: var(--bs-white);">link</span></a>
               	&nbsp;&nbsp;&nbsp;&nbsp;
-              	<a href="/redirect.php?view=template_editor&template_name=<?php echo $t['name']; ?>&submit=edit" target="_blank">
+              	<a href="/redirect.php?view=template_editor&template_name=<?php echo $t['name']; ?>&submit=edit">
               	<span class="material-icons green md-36"   style="background-color: var(--bs-white);">settings</span></a>
 		  </div>
 
@@ -68,11 +68,6 @@ $ts = $T->getAllTemplates();
 
 </div>
 
-<script>
-if ( window.history.replaceState ) {
-  window.history.replaceState( null, null, window.location.href );
-}
-</script>
 <?php
 include (__ROOT__ . '/views/_footer.php');
 ?>

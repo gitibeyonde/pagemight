@@ -48,6 +48,7 @@ $hero_css = '
 #insertColumnModal > * > * > * > * > * > * > * {
   border: 1px dotted blue;
 }
+
 /* The hero image */
 .hero-image {
   /* Use "linear-gradient" to add a darken background effect to the image (photographer.jpg). This will make the text easier to read */
@@ -74,32 +75,3 @@ $hero_css = '
 }
 </style>
 
-
-    <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
-        <div  id="temp-<?php echo $id; ?>" draggable="true" ondragstart="drag(event)" >
-		<span type="button" class="material-icons md-36 blue">view_day</span>
-        <div  id="perm-<?php echo $id; ?>"  class="hero-image" draggable="true" ondragstart="drag(event)" style="display: none">
-          <div class="hero-text" >
-            <h1>I am John Doe</h1>
-            <p>And I\'m a Photographer</p>
-            <button>Hire me</button>
-          </div>
-        </div>
-        </div>
-   </div>
-
-
-        <script>
-			function setRowAlignment(align){
-				$('[class*="col"]').css('text-align', align);
-			}
-
-			function onClickRow(e){
-				console.log(e);
-				console.log(e.id);
-				console.log($(e).attr("class"));
-				console.log(e.children);
-				insertAtCursor(e.outerHTML);
-			}
-
-        </script>

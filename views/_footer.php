@@ -1,4 +1,3 @@
-
 <footer class="fixed-bottom">
   <div class="container">
   <div id="error" class="row">
@@ -64,6 +63,10 @@ if (isset ( $_SESSION ['message'] ) && $_SESSION ['message'] != "") {
 setTimeout(function(){
     $('#error').hide()
 }, 5000) // time in millisecond for as long as you like
+
+if ( window.history.replaceState ) {
+  window.history.replaceState( null, null, window.location.href );
+}
 </script>
 </body>
 </html>

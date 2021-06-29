@@ -1,7 +1,7 @@
 <div class="container-fluid no_select">
 
    <!-- HEADER TOOLBAR 1 -->
-      <div class="row header-toolbar">
+      <div id="headerToolbar" class="row">
          <!-- BACK -->
         <div class="col-1">
             <button type="submit" name="submit" value="back" class="btn btn-link  btn-icon"
@@ -74,7 +74,7 @@
 
         <?php if ($view == EDITOR_VIEW) { ?>
 		<div class="col-2" >
-               Preview<a class="btn btn-link" href="/doin/lkp.php?id=<?php echo $page_code; ?>" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;<i class="ti-new-window icon-green"></i></a>
+               <a class="btn btn-link" href="/doin/lkp.php?id=<?php echo $page_code; ?>" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;<i class="ti-new-window icon-green"></i></a>
 		</div>
 		<div class="col-2" >
             	<label id="console-event1">Public</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -88,38 +88,30 @@
 
         </div>
 		<div class="col-2" >
-                <form action="/redirect.php"  method="get">
-                <input type=hidden name="view" value="<?php echo SEO_UPDATE; ?>">
-                <input type=hidden name="page_code" value="<?php echo $page_code; ?>">
-                &nbsp;&nbsp;<label>SEO</label>
-                <button type="submit" name="submit" value="toimages" class="btn btn-link">&nbsp;&nbsp;&nbsp;&nbsp;<i class="ti-plus icon-green"></i></button>
-                </form>
+		<button type="submit" name="submit" value="back" class="btn btn-link  btn-icon"
+							   onclick="return onClickSubmitButton('<?php echo SEO_UPDATE; ?>');">
+                &nbsp;&nbsp;SEO
+                </button>
 		</div>
        <?php } else { ?>
 		<div class="col-2" >
-               Preview<a class="btn btn-link btn-icon" href="/doin/lkt.php?id=<?php echo $template_name; ?>" target="_blank">
+               <a class="btn btn-link btn-icon" href="/doin/lkt.php?id=<?php echo $template_name; ?>" target="_blank">
                <span class="material-icons md-36 blue">preview</span></a>
         </div>
        <?php } ?>
 
 		<div class="col-2" >
-            <form class="form-inline" action="/redirect.php"  method="get">
-            <input type=hidden name="view" value="<?php echo UPLOAD_IMAGES; ?>">
-            <input type=hidden name="page_code" value="<?php echo $page_code; ?>">
-            <input type=hidden name="template_name" value="<?php echo $template_name; ?>">
-            <label>Images</label>
-            <button type="submit" name="submit" value="toimages" class="btn btn-link  btn-icon"><span class="material-icons md-36 green">upload</span></button>
-            </form>
+				<button type="submit" name="submit" value="back" class="btn btn-link  btn-icon"
+							   onclick="return onClickSubmitButton('<?php echo UPLOAD_IMAGES; ?>');">
+                <span class="material-icons md-36 red">images</span></button>
         </div>
 
         <?php if ($view == EDITOR_VIEW) { ?>
 		 <div class="col-2" >
-                <form action="/redirect.php"  method="get">
-                <input type=hidden name="view" value="<?php echo FORM_CREATE; ?>">
-                <input type=hidden name="page_code" value="<?php echo $page_code; ?>">
-                &nbsp;&nbsp;<label>Forms</label>
-                <button type="submit" name="submit" value="toimages" class="btn btn-link">&nbsp;&nbsp;&nbsp;&nbsp;<i class="ti-plus icon-green"></i></button>
-                </form>
+				<button type="submit" name="submit" value="back" class="btn btn-link  btn-icon"
+							   onclick="return onClickSubmitButton('<?php echo FORM_CREATE; ?>');">
+                &nbsp;&nbsp;FORMS
+                </button>
          </div>
         <?php } ?>
 
@@ -128,18 +120,64 @@
 
    <!-- TOOLBAR TWO -->
 
-     <div class="row">
-		<div class="col-12 toolbar" id="toolBar2">
+     <div id="toolBar2" class="row">
+        <!--  *** HERO **/ -->
+		<div class="col-1">
+            <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
+                <div  id="temp-<?php echo $id; ?>" draggable="true" ondragstart="drag(event)" >
+        		<img class="img-fluid" src="/img/editor/hero.png" width="200px" height="150p">
+                <div  id="perm-<?php echo $id; ?>"  class="hero-image" draggable="true" ondragstart="drag(event)" style="display: none"  onclick="openProperties(this);">
+                  <div class="hero-text" >
+                    <h1>I am John Doe</h1>
+                    <p>And I\'m a Photographer</p>
+                    <button>Hire me</button>
+                  </div>
+                </div>
+                </div>
+           </div>
+		</div>
 
-
-		<?php include_once(__ROOT__ . '/views/editor/modals/_hero_modal.php');?>
-		<?php include_once(__ROOT__ . '/views/editor/modals/_col_modal.php');?>
-
-		<?php include_once(__ROOT__ . '/views/editor/modals/_icon_modal.php');?>
-		<?php include_once(__ROOT__ . '/views/editor/modals/_image_modal.php');?>
-
+        <!--  *** HERO **/ -->
+		<div class="col-1">
+		<img class="img-fluid" src="/img/editor/col1.png" width="200px" height="150p">
+		</div>
+        <!--  *** HERO **/ -->
+		<div class="col-1">
+		<img class="img-fluid" src="/img/editor/col2.png" width="200px" height="150p">
+		</div>
+        <!--  *** HERO **/ -->
+		<div class="col-1">
+		<img class="img-fluid" src="/img/editor/col3.png" width="200px" height="150p">
+		</div>
+        <!--  *** HERO **/ -->
+		<div class="col-1">
+		<img class="img-fluid" src="/img/editor/col4.png" width="200px" height="150p">
+		</div>
+        <!--  *** HERO **/ -->
+		<div class="col-1">
+		</div>
+        <!--  *** HERO **/ -->
+		<div class="col-1">
+		</div>
+        <!--  *** HERO **/ -->
+		<div class="col-1">
+		</div>
+        <!--  *** HERO **/ -->
+		<div class="col-1">
+		</div>
+        <!--  *** HERO **/ -->
+		<div class="col-1">
+		</div>
+        <!--  *** HERO **/ -->
+		<div class="col-1">
+		</div>
+        <!--  *** HERO **/ -->
+		<div class="col-1">
+		</div>
+        <!--  *** HERO **/ -->
+		<div class="col-1">
+		</div>
 
         </div>
 
-     </div>
  </div>

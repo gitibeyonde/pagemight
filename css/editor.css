@@ -9,26 +9,31 @@ img.intLink {
     height: 32px;
 }
 
-.header-toolbar {
-	background: #fdfdfd;
+#headerToolbar {
+	background: #fdf0fd;
 }
-.toolbar {
-	background: #fafafa;
-}
+
 
 #toolBar1 select {
     font-size: calc(.6vh + .6vw);
 }
 
-#toolBar2 img {
-    height: calc(1vh + 1.2vw);
+#toolBar1  {
+    background: #f0fdfd;
 }
 
+#toolBar2 img {
+    height: calc(2vh + 2vw);
+}
+
+#toolBar2 {
+	background: #fafaf0;
+}
 
 #htmlEditorPane {
 	width: 100%;
     position: relative;
-    height: calc(100vh - 200px);
+    height: calc(100vh - 400px);
     padding-left: 5px;
     padding-bottom: 18px;
     padding-right: 18px;
