@@ -12,7 +12,7 @@
 
          <!-- NAME -->
         <div class="col-3">
-			<?php if ($view == TEMPLATE_EDITOR) { ?>
+			<?php if ($view == TEMPLATE_HTML) { ?>
 			   <input type="text" name="template_name" placeholder="template name" size="16" value="<?php echo $template_name; ?>"
             												style="border: 0px;text-decoration: underline;" required>
 			<?php } else { ?>
@@ -25,11 +25,11 @@
          <!-- SAVE -->
         <div class="col-1">
             <button type="submit" id="save_content" name="submit" value="update" class="btn btn-link btn-icon"
-								onclick="return onClickSubmitButton('<?php echo TEMPLATE_EDITOR; ?>');"><span class="material-icons md-36 green">save</span></button></button>
+								onclick="return onClickSubmitButton('<?php echo TEMPLATE_HTML; ?>');"><span class="material-icons md-36 green">save</span></button></button>
 	    </div>
 
 
-        <!-- DELETE -->
+        <!-- XXX -->
         <div class="col-1">
         </div>
 
@@ -40,14 +40,14 @@
         </div>
 
 
-        <!-- DELETE -->
+        <!-- XXX -->
         <div class="col-1">
         </div>
 
         <!-- HTML CSS JS SELECTOR -->
-		<?php if ($view == TEMPLATE_EDITOR) { ?>
+		<?php if ($view == TEMPLATE_HTML) { ?>
 		<div class="col-1">
-    			<a class="btn btn-sim0" href="/redirect.php?view=template_editor&template_name=<?php echo $template_name; ?>"><b>HTML</b></a>
+    			<a class="btn btn-sim0" href="/redirect.php?view=template_html&template_name=<?php echo $template_name; ?>"><h2>HTML</h2></a>
 		</div>
 		<div class="col-1">
     			<a class="btn btn-sim0" href="/redirect.php?view=template_css&template_name=<?php echo $template_name; ?>"><b>CSS</b></a>
@@ -123,9 +123,10 @@
      <div id="toolBar2" class="row">
         <!--  *** HERO **/ -->
 		<div class="col-1">
-            <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
-                <div  id="temp-<?php echo $id; ?>" draggable="true" ondragstart="drag(event)" >
-        		<img class="img-fluid" src="/img/editor/hero.png" width="200px" height="150p">
+            <div id="drag-cover" ondrop="drop(event)" ondragover="allowDrop(event)">
+             <div  id="temp-<?php echo $id = Utils::rand10(); ?>" draggable="true" ondragstart="drag(event)" >
+        		<img id="imag-<?php echo $id; ?>" class="img-fluid" src="/img/editor/hero.png" width="200px" height="150p">
+
                 <div  id="perm-<?php echo $id; ?>"  class="hero-image" draggable="true" ondragstart="drag(event)" style="display: none"  onclick="openProperties(this);">
                   <div class="hero-text" >
                     <h1>I am John Doe</h1>
@@ -133,21 +134,58 @@
                     <button>Hire me</button>
                   </div>
                 </div>
-                </div>
-           </div>
+             </div>
+           </div> <!-- drag-cover -->
 		</div>
 
         <!--  *** HERO **/ -->
 		<div class="col-1">
-		<img class="img-fluid" src="/img/editor/col1.png" width="200px" height="150p">
+		 <div id="drag-cover" ondrop="drop(event)" ondragover="allowDrop(event)">
+           <div  id="temp-<?php echo $id = Utils::rand10(); ?>" draggable="true" ondragstart="drag(event)" >
+				<img id="imag-<?php echo $id; ?>" class="img-fluid" src="/img/editor/col1.png" width="200px" height="150p">
+
+                <div  id="perm-<?php echo $id; ?>"  class="row" draggable="true" ondragstart="drag(event)" style="display: none"  onclick="openProperties(this);">
+                  <div class="col-12" >
+						COL1
+                  </div>
+                </div>
+              </div>
+           </div>
 		</div>
         <!--  *** HERO **/ -->
 		<div class="col-1">
-		<img class="img-fluid" src="/img/editor/col2.png" width="200px" height="150p">
+		 <div id="drag-cover" ondrop="drop(event)" ondragover="allowDrop(event)">
+           <div  id="temp-<?php echo $id = Utils::rand10(); ?>" draggable="true" ondragstart="drag(event)" >
+			  <img id="imag-<?php echo $id; ?>" class="img-fluid" src="/img/editor/col2.png" width="200px" height="150p">
+                <div  id="perm-<?php echo $id; ?>"  class="row" draggable="true" ondragstart="drag(event)" style="display: none"  onclick="openProperties(this);">
+                  <div class="col-6" >
+					COL1
+                  </div>
+                  <div class="col-6" >
+					COL2
+                  </div>
+                </div>
+           </div>
+          </div>
 		</div>
         <!--  *** HERO **/ -->
 		<div class="col-1">
-		<img class="img-fluid" src="/img/editor/col3.png" width="200px" height="150p">
+		 <div id="drag-cover" ondrop="drop(event)" ondragover="allowDrop(event)">
+           <div  id="temp-<?php echo $id = Utils::rand10(); ?>" draggable="true" ondragstart="drag(event)" >
+			  <img id="imag-<?php echo $id; ?>" class="img-fluid" src="/img/editor/col3.png" width="200px" height="150p">
+                <div  id="perm-<?php echo $id; ?>"  class="row" draggable="true" ondragstart="drag(event)" style="display: none"  onclick="openProperties(this);">
+                  <div class="col-md-4 col-sm-12">
+					COL1
+                  </div>
+                  <div class="col-md-4 col-sm-12">
+					COL2
+                  </div>
+                  <div class="col-md-4 col-sm-12">
+					COL3
+                  </div>
+                </div>
+             </div>
+           </div>
 		</div>
         <!--  *** HERO **/ -->
 		<div class="col-1">

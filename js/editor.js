@@ -1,4 +1,17 @@
 
+function addCss(params) {
+    var httpc = new XMLHttpRequest(); // simplified for clarity
+    var url = "/views/editor/api_update_css.php";
+    httpc.open("POST", url, true); // sending as POST
+
+    httpc.onreadystatechange = function() { //Call a function when the state changes.
+        if(httpc.readyState == 4 && httpc.status == 200) { // complete and no errors
+            alert(httpc.responseText); // some processing here, or whatever you want to do with the response
+        }
+    };
+    httpc.send(params);
+}
+
 function openProperties(e){
 	console.log(e.innerHTML);
 }
@@ -10,19 +23,21 @@ function allowDrop(ev) {
 }
 
 function drag(ev) {
-  console.log("DRAG" + ev.target.outerHTML);
+  console.log("DRAG=" + ev.target);
+  console.log("DRAG=" + ev.target.id);
   ev.dataTransfer.setData("text", ev.target.id);
 }
 
 function drop(ev) {
-  console.log("DROP" + ev.target.outerHTML);
+  console.log("DROP=" + ev.target.outerHTML);
   ev.preventDefault();
   var data = ev.dataTransfer.getData("text");
-  console.log("DROPING " + document.getElementById(data).id);
+  console.log("DROPING=" + document.getElementById(data));
+  console.log("DROPING=" + document.getElementById(data).id);
   var div_id = document.getElementById(data).id.substring(5);
-  console.log("ID " + div_id);
-  console.log("MAIN ELEMENT=" + document.getElementById(data).children[1].outerHTML);
-  var clone = document.getElementById(data).children[1].cloneNode(true);
+  console.log("ID=" + div_id);
+  console.log("MAIN ELEMENT=" + document.getElementById("perm-"+div_id).outerHTML);
+  var clone = document.getElementById("perm-"+div_id).cloneNode(true);
   clone.style.display = "block";
   clone.id="div_id";
   ev.target.appendChild(clone);

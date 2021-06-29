@@ -1,5 +1,5 @@
 
-<div class=container-fluid">
+<div class=container-fluid" style="margin: 0 0 20vh 0;">
 <div id="propertiesBar" class="toolbar">
 
     <!--
@@ -32,17 +32,25 @@
 
     <div class="hero-properties">
       <div class="row">
-    	<div class="col-12">
-    		Background Image
+    		<p>Select background image:</p>
+ 			<?php include_once(__ROOT__ . '/views/editor/modals/_image_modal.php'); ?>
     	</div>
+      <div class="row">
     	<div class="col-12">
-    		Height
+    		Adjust Height
+    		<button>20%</button>
+    		<button>30%</button>
+    		<button>40%</button>
+    		<button>50%</button>
+    		<button>60%</button>
     	</div>
     	<div>
     		Text align
+    		<button>Center</button>
+    		<button>Left</button>
+    		<button>Right</button>
     	</div>
      </div>
-    </div>
 
 </div>
 </div>
@@ -50,7 +58,9 @@
 
 'use strict';
 
-const prop_map = { 'hero-header' : 'hero-properties' };
+const prop_map = { 'hero-image' : 'hero-properties',
+					'row' : 'row-properties'
+			};
 
 function hideAll(){
 	for (const [key, value] of Object.entries(prop_map)) {

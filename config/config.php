@@ -17,9 +17,9 @@ define("FORM_CREATE", "form_create");
 define("FORM_DATA", "form_data");
 
 
-define("TEMPLATE_EDITOR", "template_editor");
+define("TEMPLATE_HTML", "template_html");
 define("TEMPLATE_CSS", "template_css");
-define("TEMPLATE_JS", "editor_js");
+define("TEMPLATE_JS", "template_js");
 
 
 define("RZRID","rzp_live_y7DZ0tpYujza3v");

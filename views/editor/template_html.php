@@ -14,16 +14,17 @@ $submit = isset($_GET['submit']) ? $_GET['submit'] : $_POST['submit'];
 $view = isset($_GET['view']) ? $_GET['view'] : $_POST['view'];
 $template_name = isset($_GET['template_name']) ? $_GET['template_name'] : $_POST['template_name'];
 
-if ($submit == "edit"){
+
+if ($submit == "update"){
+    $T = new Template();
+    $t = $T->saveTemplateHtml($template_name, $_POST['content']);
+}
+else {
     if (isset($template_name)){
         //create page from template and start
         $T = new Template();
         $t = $T->getTemplate($template_name);
     }
-}
-else if ($submit == "save"){
-    $T = new Template();
-    $t = $T->savesavePageHtmlPageCss($template_name, $_POST['content']);
 }
 
 

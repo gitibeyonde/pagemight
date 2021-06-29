@@ -26,8 +26,11 @@ if (isset($_GET['id'])){
         include(__ROOT__.'/doin/_footer.php');
     }
     else {
-        //$od->logAccess($id, $ip, $ag);
-        include(__ROOT__.'/doin/holder.php');
+        include(__ROOT__.'/doin/_header.php');
+        echo "<style>".$p['css']."</style>";
+        echo $p['html'];
+        echo "<script>".$p['js']."</script>";
+        include(__ROOT__.'/doin/_footer.php');
     }
 }
 else {

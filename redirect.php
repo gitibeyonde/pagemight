@@ -88,7 +88,7 @@ else if  ($login->getView() == FORM_DATA){
         include("login.php");
     }
 }
-else if  ($login->getView() == TEMPLATE_EDITOR){
+else if  ($login->getView() == TEMPLATE_HTML){
     if (isset( $_SESSION ['user_id']) && isset( $_SESSION ['user_name'])){
         include("views/editor/template_html.php");
     }
