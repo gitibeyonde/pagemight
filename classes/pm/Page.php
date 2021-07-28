@@ -70,9 +70,9 @@ class Page extends Mysql {
         }
         return $url_code;
     }
-    public function createPageFromTemplate($user_name, $template, $name){
+    public function createPageFromTemplate($user_name, $template){
         $page_code = Utils::rand36();
-        $this->savePageHtml($user_name, $page_code, $name, $template['html']);
+        $this->savePageHtml($user_name, $page_code, $template['name'], $template['html']);
         $this->savePageCss($user_name, $page_code, $template['css']);
         $this->savePageJs($user_name, $page_code, $template['js']);
         return $this->selectRow(sprintf ("select * from page where user_name=%s and code=%s;", $this->quote($user_name) , $this->quote($page_code)));

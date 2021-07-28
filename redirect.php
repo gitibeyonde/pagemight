@@ -32,6 +32,14 @@ $log->debug( "VIEW=".$login->getView() );
 if  ($login->getView() == MAIN_VIEW){
          include("index.php");
 }
+else if  ($login->getView() == TEMPLATE_COPY){
+    if (isset( $_SESSION ['user_id']) && isset( $_SESSION ['user_name'])){
+        include("views/editor/make_copy.php");
+    }
+    else {
+        include("login.php");
+    }
+}
 else if  ($login->getView() == EDITOR_VIEW){
     if (isset( $_SESSION ['user_id']) && isset( $_SESSION ['user_name'])){
         include("views/editor/editor_view.php");

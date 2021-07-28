@@ -64,14 +64,14 @@ $log = $_SESSION['log'];
 $user_name=$_SESSION['user_name'];
 
 $submit = isset($_GET['submit']) ? $_GET['submit'] : $_POST['submit'];
-$template_name = isset($_GET['template']) ? $_GET['template'] : $_POST['template'];
 $page_code = isset($_GET['page_code']) ? $_GET['page_code'] : $_POST['page_code'];
 $page_name = isset($_GET['page_name']) ? $_GET['page_name'] : $_POST['page_name'];
 
-$log->debug("User name=".$user_name." submit=".$submit." template=".$template_name." page code=".$page_code);
+$log->debug("User name=".$user_name." submit=".$submit." page code=".$page_code);
 
 $P = new Page();
 if (isset($page_code)){
+    $p = null;
     if ($submit == "update"){
         //editing an existing page
         $p = $P->savePageHtml($user_name, $page_code, $page_name, $_POST['content']);
@@ -81,22 +81,11 @@ if (isset($page_code)){
     }
     $page_name = $p['name'];
     $page_code = $p['code'];
-    $content = $p['content'];
+    $content = $p['html'];
     $public = $p['public'];
     $comment = $p['comment'];
 }
-else if (isset($template_name)){
-    //create page from template and start
-    $T = new Template();
-    $P = new Page();
-    $t = $T->getTemplate($template_name);
-    $page_name = $t['name'];
-    $page_code = null;
-    $content = $t['html'];
-    $public = 0;
-    $comment = 0;
-}
-error_log("Page code = ".$page_code." comment=".$comment." public=".$public);
+error_log(" comment=".$comment." public=".$public);
 
 $kb = new UserForm($user_name);
 $imgs = new Images();

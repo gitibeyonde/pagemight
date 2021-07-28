@@ -49,7 +49,7 @@ $ts = $T->getAllTemplates();
           </div>
 
           <div class="card-img-overlay text-white d-flex flex-column justify-content-end">
-              <a href="/redirect.php?view=editor_view&template=<?php echo $t['name']; ?>">
+              <a href="/redirect.php?view=<?php echo TEMPLATE_COPY; ?>&template=<?php echo $t['name']; ?>">
               	<span class="material-icons blue md-36">edit</span></a>
               	&nbsp;&nbsp;&nbsp;&nbsp;
               	<a href="/doin/lkt.php?id=<?php echo $t['name']; ?>" target="_blank">
