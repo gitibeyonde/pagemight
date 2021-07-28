@@ -39,8 +39,8 @@ if (isset ( $_SESSION ['message'] ) && $_SESSION ['message'] != "") {
 </div>
     <div class="row">
         <div class="col-md-4 col-6">
-            <a href="/terms&conditions.html" class="footer-text">Terms</a>&emsp;|&emsp;
-            <a href="/privacy_policy.html" class="footer-text">Privacy</a>
+            <a href="/terms&conditions.html" class="footer-text text-orange">Terms</a>&emsp;|&emsp;
+            <a href="/privacy_policy.html" class="footer-text text-orange">Privacy</a>
         </div>
         <div class="col-md-1 d-md-block d-sm-none d-none">
         </div>

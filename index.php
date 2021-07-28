@@ -53,7 +53,7 @@ $ts = $T->getAllTemplates();
               	<span class="material-icons blue md-36"   style="background-color: var(--bs-white);">edit</span></a>
               	&nbsp;&nbsp;&nbsp;&nbsp;
               	<a href="/doin/lkt.php?id=<?php echo $t['name']; ?>" target="_blank">
-              	<span class="material-icons green md-36"   style="background-color: var(--bs-white);">link</span></a>
+              	<span class="material-icons green md-36"   style="background-color: var(--bs-white);">preview</span></a>
               	&nbsp;&nbsp;&nbsp;&nbsp;
               	<a href="/redirect.php?view=template_html&template_name=<?php echo $t['name']; ?>&submit=edit">
               	<span class="material-icons green md-36"   style="background-color: var(--bs-white);">settings</span></a>

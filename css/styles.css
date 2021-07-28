@@ -19,7 +19,7 @@ h3, h4, h5, h5, h7 {
 }
 
 .text-orange {
-	color: var(--bs-orange);
+	color: var(--bs-orange) ! important;
 }
 
 /* Sticky footer styles

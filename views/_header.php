@@ -56,7 +56,7 @@ require_once(__ROOT__.'/config/config.php');
         <!-- Responsive navbar-->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
-                <a class="navbar-brand" href="/index.php" >
+                <a class="navbar-brand text-orange" href="/index.php" >
    					<span class="material-icons md-48 orange">home</span>&nbsp;&nbsp;PageMight</a>
                  <ul class="nav navbar-nav menu_nav justify-content-end">
                     <?php if (isset($_SESSION['user_logged_in']) && $_SESSION['user_logged_in'] == 1){ ?>

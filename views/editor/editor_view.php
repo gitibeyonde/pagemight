@@ -1,26 +1,56 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
+<html lang="en"> <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="build online html pages with embedded forms and images" />
+        <meta name="description" content="Create Landing Pages, Catalogs and Flyers, Share minified links, QR-code and measure performance." />
         <meta name="author" content="Abhinandan Prateek" />
-        <title>PageMight - Online Page builder</title>
+        <title>Free Landing Page builder</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="/img/write48x48.ico" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <link href="/css/styles.css" rel="stylesheet" />
-        <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
-        <link rel="stylesheet" href="/themify-icons/themify-icons.css">
-        <link rel="stylesheet" href="/css/editor.css">
-        <link rel="stylesheet" href="/css/thumbnail.css">
-        <link rel="stylesheet" href="/css/styles.css">
+
+
+		<!-- https://material.io/resources/icons/?style=baseline -->
+        <link href="https://fonts.googleapis.com/css2?family=Material+Icons"
+              rel="stylesheet">
+
+        <!-- https://material.io/resources/icons/?style=outline -->
+        <link href="https://fonts.googleapis.com/css2?family=Material+Icons+Outlined"
+              rel="stylesheet">
+
+        <!-- https://material.io/resources/icons/?style=round -->
+        <link href="https://fonts.googleapis.com/css2?family=Material+Icons+Round"
+              rel="stylesheet">
+
+        <!-- https://material.io/resources/icons/?style=sharp -->
+        <link href="https://fonts.googleapis.com/css2?family=Material+Icons+Sharp"
+              rel="stylesheet">
+
+        <!-- https://material.io/resources/icons/?style=twotone -->
+        <link href="https://fonts.googleapis.com/css2?family=Material+Icons+Two+Tone"
+      		rel="stylesheet">
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-GZM18BWQGY"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'G-GZM18BWQGY');
+        </script>
+
+	   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <!-- Bootstrap core JS-->
-        <script src="/jquery/jquery-3.6.0.min.js"></script>
-        <script src="/bootstrap/js/bootstrap.bundle.min.js"></script>
-		<script src="/js/scripts.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+       <script src="/js/scripts.js"></script>
         <script src="/js/editor.js"></script>
         <script src="/js/tidy.js"></script>
+
     </head>
+
 <?php
 require_once(__ROOT__.'/config/config.php');
 include_once(__ROOT__ . '/classes/core/Log.php');

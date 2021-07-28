@@ -10,14 +10,14 @@ class Page extends Mysql {
         Page::$dv = str_split('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ');
     }
 
-    public function savePageContent($user_name, $code, $name, $content) {
+    public function savePageHtml($user_name, $code, $name, $html) {
         $user_name = $this->quote($user_name);
         $code = $this->quote($code);
         $name = $this->quote($name);
-        $content = $this->quote($content);
-        $r = $this->changeRow ( sprintf ( "insert into page (user_name, code, name, content, changedOn)  values( %s, %s, %s, %s, now()) ".
-            "on duplicate key update user_name=%s, code=%s, name=%s, content=%s",
-            $user_name, $code, $name, $content,  $user_name, $code, $name, $content ) );
+        $html = $this->quote($html);
+        $r = $this->changeRow ( sprintf ( "insert into page (user_name, code, name, html, changedOn)  values( %s, %s, %s, %s, now()) ".
+            "on duplicate key update user_name=%s, code=%s, name=%s, html=%s",
+            $user_name, $code, $name, $html,  $user_name, $code, $name, $html ) );
         return $this->selectRow(sprintf ("select * from page where user_name=%s and code=%s;", $user_name , $code));
     }
 
@@ -72,7 +72,7 @@ class Page extends Mysql {
     }
     public function createPageFromTemplate($user_name, $template, $name){
         $page_code = Utils::rand36();
-        $this->savePageContent($user_name, $page_code, $name, $template['content']);
+        $this->savePageHtml($user_name, $page_code, $name, $template['html']);
         $this->savePageCss($user_name, $page_code, $template['css']);
         $this->savePageJs($user_name, $page_code, $template['js']);
         return $this->selectRow(sprintf ("select * from page where user_name=%s and code=%s;", $this->quote($user_name) , $this->quote($page_code)));

@@ -62,7 +62,7 @@ $ps = $P->getPages($user_name);
           	<i class="ti-cloud-down icon-green">&nbsp;&nbsp;&nbsp;</i></a><?php echo $t['name']; ?>
           	&nbsp;&nbsp;&nbsp;&nbsp;
           	<a href="/doin/lkt.php?id=<?php echo $t['name']; ?>" target="_blank">
-          	<i class="ti-link icon-blue"></i></a></h5>
+          	<span class="material-icons md-48 orange">link</span></a></h5>
 
    </div>
   <?php } ?>
