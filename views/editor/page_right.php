@@ -7,8 +7,8 @@
 	</div>
 	<hr/>
 
-   <button class="btn" href="/doin/lkp.php?id=<?php echo $page_code; ?>" target="_blank">
-   <span class="material-icons green md-36">preview</span>&nbsp;Preview</button>
+   <a class="btn" href="/doin/lkp.php?id=<?php echo $page_code; ?>" target="_blank">
+   <span class="material-icons green md-36">preview</span>&nbsp;Preview</a>
    <hr/>
 
     <form action="/redirect.php"  method="get">

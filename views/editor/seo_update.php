@@ -56,11 +56,11 @@ if (isset($seo) && strlen($seo) > 5){
     <form action="/redirect.php"  method="get">
     <input type=hidden name="view" value="<?php echo EDITOR_VIEW; ?>">
     <input type=hidden name="page_code" value="<?php echo $page_code; ?>">
-    	<button type="submit" name="submit" value="editor" class="btn btn-link">Back&nbsp;&nbsp;&nbsp;&nbsp;<i class="ti-control-backward icon-blue"></i></button>
+    	<button type="submit" name="submit" value="editor" class="btn"><span class="material-icons green md-36">arrow_back</span></button>
     </form>
 </div>
  <div class=container" style="padding: 6vh 20vh 0vh 20vh;">
-    <h3 class="sel0">Update SEO</h3>
+    <h3 class="sel0 text-orange">Add SEO fields</h3>
     <br/>
   	<form action="/redirect.php?"  method="get">
         <input type=hidden name=view value="<?php echo SEO_UPDATE; ?>">
@@ -91,13 +91,14 @@ if (isset($seo) && strlen($seo) > 5){
                 echo "</select>";
            ?>
          </div>
-
+		<br/>
 	      <div class="mb-3">
-            <button type="submit" name="submit" value="add" class="btn btn-sim1">Upload</button>
+            <button type="submit" name="submit" value="add" class="btn btn-block btn-warning">View & Save</button>
           </div>
 
     </form>
     <hr/>
+    <h5 class="text-orange">Preview</h5>
 	<div class="row" style="background-color: #f0f0f0;">
 		<div class="col-6">
 			<img class="img-fluid" src="<?php echo $img; ?>"/>
