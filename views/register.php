@@ -54,12 +54,12 @@ include('_header.php');
 							</div>
 
 							<div class="form-group m-0">
-								<button name="register" type="submit" class="btn btn-primary btn-block">
+								<button name="register" type="submit" class="btn btn-warning btn-block">
 									Register
 								</button>
 							</div>
 							<div class="mt-4 text-center">
-								Already have an account? <a href="index.php">Login</a>
+								Already have an account? <a href="login.php">Sign In</a>
 							</div>
 						</form>
 					</div>

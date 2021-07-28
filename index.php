@@ -50,13 +50,13 @@ $ts = $T->getAllTemplates();
 
           <div class="card-img-overlay text-white d-flex flex-column justify-content-end">
               <a href="/redirect.php?view=editor_view&template=<?php echo $t['name']; ?>">
-              	<span class="material-icons blue md-36"   style="background-color: var(--bs-white);">edit</span></a>
+              	<span class="material-icons blue md-36">edit</span></a>
               	&nbsp;&nbsp;&nbsp;&nbsp;
               	<a href="/doin/lkt.php?id=<?php echo $t['name']; ?>" target="_blank">
-              	<span class="material-icons green md-36"   style="background-color: var(--bs-white);">preview</span></a>
+              	<span class="material-icons green md-36">preview</span></a>
               	&nbsp;&nbsp;&nbsp;&nbsp;
               	<a href="/redirect.php?view=template_html&template_name=<?php echo $t['name']; ?>&submit=edit">
-              	<span class="material-icons green md-36"   style="background-color: var(--bs-white);">settings</span></a>
+              	<span class="material-icons green md-36">settings</span></a>
 		  </div>
 
 	</div>

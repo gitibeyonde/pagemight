@@ -2,42 +2,41 @@
 <div class="container no_select">
 	<div class="row">
 	  <div class="col" style="text-align: right;">
-		<a class="btn btn-link" href="/redirect.php?view=<?php echo LOGOUT_VIEW ?>"><i class="ti-power-off btn-logout"></i></a>
+		<a class="btn" href="/redirect.php?view=<?php echo LOGOUT_VIEW ?>"><span class="material-icons red md-36">logout</span></a>
 	  </div>
 	</div>
 	<hr/>
 
-   &nbsp;&nbsp;Preview<a class="btn btn-link" href="/doin/lkp.php?id=<?php echo $page_code; ?>" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;<i class="ti-new-window icon-green"></i></a>
+   <button class="btn" href="/doin/lkp.php?id=<?php echo $page_code; ?>" target="_blank">
+   <span class="material-icons green md-36">preview</span>&nbsp;Preview</button>
    <hr/>
-
-
-	&nbsp;&nbsp;<label id="console-event1">Public</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	<input type="checkbox" id="toggle-event1" data-toggle="toggle" class="icon-blue" style="width: 26px; height: 26px;" <?php echo ($public == 1 ?  "checked" :  ""); ?> >
-
-   <hr/>
-
-
-
-	&nbsp;&nbsp;<label id="console-event2">Comments</label>&nbsp;&nbsp;
-	<input type="checkbox" id="toggle-event2" data-toggle="toggle" class="icon-blue" style="width: 26px; height: 26px;"  <?php echo ($comment == 1 ? "checked" : ""); ?> >
-   <hr/>
-
 
     <form action="/redirect.php"  method="get">
     <input type=hidden name="view" value="<?php echo SEO_UPDATE; ?>">
     <input type=hidden name="page_code" value="<?php echo $page_code; ?>">
-    &nbsp;&nbsp;<label>SEO</label>
-    <button type="submit" name="submit" value="toimages" class="btn btn-link">&nbsp;&nbsp;&nbsp;&nbsp;<i class="ti-plus icon-green"></i></button>
+    <button type="submit" name="submit" value="toimages" class="btn">
+    <span class="material-icons blue md-36">travel_explore</span>&nbsp;&nbsp;SEO</button>
     </form>
 
     <hr/>
 
 
+	&nbsp;&nbsp;&nbsp;<input type="checkbox" id="toggle-event1" data-toggle="toggle" class="icon-blue" style="width: 26px; height: 26px;"
+	<?php echo ($public == 1 ?  "checked" :  ""); ?> >&nbsp;&nbsp;Public
+   <hr/>
+
+
+	&nbsp;&nbsp;&nbsp;<input type="checkbox" id="toggle-event2" data-toggle="toggle" class="icon-blue" style="width: 26px; height: 26px;"
+	<?php echo ($comment == 1 ? "checked" : ""); ?> >&nbsp;&nbsp;Comments
+   <hr/>
+
+
+
     <form action="/redirect.php"  method="get">
     <input type=hidden name="view" value="<?php echo UPLOAD_IMAGES; ?>">
     <input type=hidden name="page_code" value="<?php echo $page_code; ?>">
-    &nbsp;&nbsp;<label>Images</label>
-    <button type="submit" name="submit" value="toimages" class="btn btn-link">&nbsp;&nbsp;&nbsp;&nbsp;<i class="ti-plus icon-green"></i></button>
+    <button type="submit" name="submit" value="toimages" class="btn">
+    <span class="material-icons blue md-36">images</span>&nbsp;Upload</button>
     </form>
 
     <div class="row">

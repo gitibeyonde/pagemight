@@ -9,10 +9,10 @@
 	overflow: hidden;
 	border-radius: 50%;
 	margin: 40px auto;
-	box-shadow: 0 4px 8px #007bff;
+	box-shadow: 0 4px 8px var(--bs-orange);
 	position: relative;
 	z-index: 1;
-	background: linear-gradient(45deg, rgb(234, 234, 234), #c0c0c0);
+	background: linear-gradient(45deg, var(--bs-white), var(--bs-orange));
 	display: block;
 }
 
@@ -63,7 +63,7 @@
 
 .my-login-page .card {
 	border-color: transparent;
-	box-shadow: 0 4px 8px rgba(0,0,0,.05);
+	box-shadow: 0 4px 8px var(--bs-orange);
 }
 
 .my-login-page .card.fat {
@@ -84,7 +84,7 @@
 }
 
 .my-login-page .btn.btn-block {
-	padding: 12px 10px;
+	padding: 12px 32px;
 }
 
 .my-login-page .footer {

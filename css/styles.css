@@ -110,6 +110,7 @@ h3, h4, h5, h5, h7 {
     align-content: space-around;
     flex-wrap: nowrap;
     flex-direction: row;
+    background-color: var(--bs-white)
 }
 .material-icons.md-24, .material-icons-two-tone.md-24, .material-icons-outlined.md-24, .material-icons-sharp.md-24, .material-icons-round.md-24   {
 	font-size: 24px !important;
@@ -121,6 +122,7 @@ h3, h4, h5, h5, h7 {
     align-content: space-around;
     flex-wrap: nowrap;
     flex-direction: row;
+    background-color: var(--bs-white)
 }
 .material-icons.md-36, .material-icons-two-tone.md-36, .material-icons-outlined.md-36, .material-icons-sharp.md-36, .material-icons-round.md-36   {
 	font-size: 36px !important;
@@ -132,6 +134,7 @@ h3, h4, h5, h5, h7 {
     align-content: space-around;
     flex-wrap: nowrap;
     flex-direction: row;
+    background-color: var(--bs-white)
 }
 .material-icons.md-48, .material-icons-two-tone.md-48, .material-icons-outlined.md-48, .material-icons-sharp.md-48, .material-icons-round.md-48   {
 	font-size: 48px !important;
@@ -142,6 +145,7 @@ h3, h4, h5, h5, h7 {
     align-content: space-around;
     flex-wrap: nowrap;
     flex-direction: row;
+    background-color: var(--bs-white)
 }
 .material-icons.md-dark { color: rgba(0, 0, 0, 0.54); }
 .material-icons.md-dark.md-inactive { color: rgba(0, 0, 0, 0.26); }

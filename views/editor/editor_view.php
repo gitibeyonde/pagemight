@@ -9,6 +9,7 @@
         <link rel="icon" type="image/x-icon" href="/img/write48x48.ico" />
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <link href="/css/styles.css" rel="stylesheet" />
+        <link href="/css/editor.css" rel="stylesheet" />
 
 
 		<!-- https://material.io/resources/icons/?style=baseline -->
@@ -73,24 +74,28 @@ $P = new Page();
 if (isset($page_code)){
     if ($submit == "update"){
         //editing an existing page
-        $p = $P->savePageContent($user_name, $page_code, $page_name, $_POST['content']);
+        $p = $P->savePageHtml($user_name, $page_code, $page_name, $_POST['content']);
     }
     else {
         $p = $P->getPageForUser($user_name, $page_code);
     }
+    $page_name = $p['name'];
+    $page_code = $p['code'];
+    $content = $p['content'];
+    $public = $p['public'];
+    $comment = $p['comment'];
 }
 else if (isset($template_name)){
     //create page from template and start
     $T = new Template();
     $P = new Page();
     $t = $T->getTemplate($template_name);
-    $p  = $P->createPageFromTemplate($user_name, $t, Utils::rand10());
+    $page_name = $t['name'];
+    $page_code = null;
+    $content = $t['html'];
+    $public = 0;
+    $comment = 0;
 }
-$page_name = $p['name'];
-$page_code = $p['code'];
-$content = $p['content'];
-$public = $p['public'];
-$comment = $p['comment'];
 error_log("Page code = ".$page_code." comment=".$comment." public=".$public);
 
 $kb = new UserForm($user_name);
@@ -101,12 +106,7 @@ $imgs = new Images();
 	<div class='container-fluid'>
 
     <div class="row">
-    	<div class="col-lg-1 d-lg-block d-md-none d-sm-none d-none my-login-page">
-    		<div class="brand">
-					<img src="/img/html.png" alt="pagemight html builder login page">
-			</div>
-    	</div>
-    	<div class="col-lg-9 col-md-10 d-lg-block d-md-block col-12 col-sm-12">
+    	<div class="col-lg-10 col-md-10 d-lg-block d-md-block col-12 col-sm-12">
                 <form id="nodeform" name="nodeform" action="/redirect.php" method="post" onsubmit="return doSubmitNodeForm();">
                   <input type="hidden" id="viewname" name="view" value="">
                   <input type="hidden" name="page_code" value="<?php echo $page_code; ?>">
@@ -114,7 +114,7 @@ $imgs = new Images();
                   <?php include_once(__ROOT__ . '/views/editor/page_toolbar.php'); ?>
 
                   <div class="form-group" id="html_content">
-                   		<div id="htmlEditorPane" contenteditable="true" style="display:inline-block;" onscroll="setScrollPosition();"><?php echo $page_code==null ? "": $content; ?></div>
+                   		<div id="htmlEditorPane" contenteditable="true" style="display:inline-block;" onscroll="setScrollPosition();"><?php echo $content; ?></div>
                   </div>
 
                   <input id="content_input" type="hidden" name="content" value="">

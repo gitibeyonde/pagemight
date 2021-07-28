@@ -43,7 +43,7 @@ include (__ROOT__ . '/views/_header.php');
 							</div>
 
 							<div class="form-group m-0">
-                                <button type="submit" name="login" value="login" class="btn btn-primary btn-block">
+                                <button type="submit" name="login" value="login" class="btn btn-warning btn-block">
 									Login
 								</button>
 							</div>
@@ -63,6 +63,7 @@ include (__ROOT__ . '/views/_header.php');
 <br/>
 <br/>
 <br/>
+<!--
 <section class="container">
 <div class="row my-cards">
 	<div class="col-md-3 col-sm-12">
@@ -141,7 +142,7 @@ include (__ROOT__ . '/views/_header.php');
           <div class="card-body">
             <h5 class="card-title icon-info">Shorten url</h5>
             <img src="/img/tinyurl.png" width="100%">
-            <!-- h6 class="card-subtitle mb-2 text-muted">-</h6> -->
+            < h6 class="card-subtitle mb-2 text-muted">-</h6>
             <p class="card-text">Create tiny URL from partner website. Tiny URL allows you to collect access stats.</p>
             <a href="https://tiny.cc" class="card-link">Get me the tiny url</a>
           </div>
@@ -154,7 +155,7 @@ include (__ROOT__ . '/views/_header.php');
           <div class="card-body">
             <h5 class="card-title icon-info">Qr-code generator</h5>
             <img src="/img/qr-code.png" height="100px">
-            <!-- h6 class="card-subtitle mb-2 text-muted">-</h6> -->
+            < h6 class="card-subtitle mb-2 text-muted">-</h6>
             <p class="card-text">Create custom QR code for your page - presented by our online partner.</p>
             <a href="https://www.the-qrcode-generator.com" class="card-link">Get me the QR code</a>
           </div>
@@ -164,7 +165,7 @@ include (__ROOT__ . '/views/_header.php');
 	</div>
 </div>
 </section>
-
+ -->
 <br/>
 <br/>
 <br/>

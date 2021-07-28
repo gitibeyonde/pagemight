@@ -9,10 +9,10 @@ $col8 = '<br/><div class="row"><div class="col">col-1<br/></div><div class="col"
 ?>
 <div class="container-fluid no_select">
       <div class="row header-toolbar">
-        <div class="col-1">
-            <button type="submit" name="submit" value="back" class="btn btn-link"
+        <div class="col-2">
+            <button type="submit" name="submit" value="back" class="btn"
 							   onclick="return onClickSubmitButton('<?php echo MAIN_VIEW; ?>');">
-            	<i class="ti-control-backward icon-blue"></i>&nbsp;&nbsp;</button>
+            	<span class="material-icons green md-36">arrow_back</span>&nbsp;&nbsp;</button>
         </div>
         <div class="col-4">
             <input type="text" name="page_name" placeholder="page name" size="16" value="<?php echo $page_name; ?>"
@@ -21,23 +21,23 @@ $col8 = '<br/><div class="row"><div class="col">col-1<br/></div><div class="col"
         <div class="col-2">
             <input type="checkbox" name="switchMode" onchange="setDocMode(this.checked);" /> <label for="switchBox">HTML</label>
         </div>
-        <div class="col-2">
+        <div class="col-1">
         </div>
-        <div class="col-3" style="text-align: right;background: red;">
-			<a class="btn btn-sim0" href="/redirect.php?view=editor_view&page_code=<?php echo $page_code; ?>"><b style="color: pink;">HTML</b></a>
-			<a class="btn btn-sim0" href="/redirect.php?view=editor_css&page_code=<?php echo $page_code; ?>"><b style="color: white;">CSS</b></a>
-			<a class="btn btn-sim0" href="/redirect.php?view=editor_js&page_code=<?php echo $page_code; ?>"><b style="color: white;">JS</b></a>
+        <div class="col-3">
+			<a class="btn btn-sim0" href="/redirect.php?view=editor_view&page_code=<?php echo $page_code; ?>"><b style="color: red;">HTML</b></a>
+			<a class="btn btn-sim0" href="/redirect.php?view=editor_css&page_code=<?php echo $page_code; ?>"><b style="color: pink;">CSS</b></a>
+			<a class="btn btn-sim0" href="/redirect.php?view=editor_js&page_code=<?php echo $page_code; ?>"><b style="color: pink;">JS</b></a>
         </div>
       </div>
 
       <div class="row">
 		<div class="col-12 toolbar" id="toolBar1">
 
-            <button type="submit" id="save_content" name="submit" value="update" class="btn btn-link"
-								onclick="return onClickSubmitButton('<?php echo EDITOR_VIEW; ?>');"><i class="ti-save icon-green"></i></button>
+            <button type="submit" id="save_content" name="submit" value="update" class="btn"
+								onclick="return onClickSubmitButton('<?php echo EDITOR_VIEW; ?>');"><span class="material-icons green md-36">save</span></button>
 
-            <button type="submit" name="submit" value="delete"  class="btn btn-link"  onclick="return onClickDel('<?php echo MAIN_VIEW; ?>');">
-            					<i class="ti-trash icon-orange"></i></button>
+            <button type="submit" name="submit" value="delete"  class="btn"  onclick="return onClickDel('<?php echo MAIN_VIEW; ?>');">
+            					<span class="material-icons red md-36">delete</span></button>
 
 			Text:<select
 				onchange="formatDoc('formatBlock',this[this.selectedIndex].value);this.selectedIndex=0;">
@@ -55,9 +55,9 @@ $col8 = '<br/><div class="row"><div class="col">col-1<br/></div><div class="col"
 
 
 
-			Foreground:<input type="color" class="form-control-color" value="#000000" size="20px" title="Choose text color"
+			Foreground:<input type="color" class="form-control-color" value="#000000" title="Choose text color"
 						onchange="formatDoc('forecolor',this.value);this.value='#000000';">
-		    Background:<input type="color" class="form-control-color" value="#ffffff" size="20px" title="Choose text color"
+		    Background:<input type="color" class="form-control-color" value="#ffffff" title="Choose text color"
 						onchange="formatDoc('backcolor',this.value);this.value='#ffffff';">
 
             Insert:<select
